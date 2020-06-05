@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Canvas } from "react-three-fiber";
 import "./index.scss";
-import App from "./components/App";
+
 import * as serviceWorker from "./serviceWorker";
+import Road from "./components/Road";
+import Car from "./components/Car";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Canvas camera={{ position: [0, 25, -100] }} perspective="true">
+    <ambientLight />
+    <pointLight position={[100, 100, 100]} />
+    <Road />
+    <Car position={[0, 1, -70]} color={"white"} />
+  </Canvas>,
   document.getElementById("root")
 );
 
