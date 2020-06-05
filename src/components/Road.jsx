@@ -4,7 +4,6 @@ import RoadSegment from "./RoadSegment";
 
 const SPEED = 5;
 const CUTOFF = -200;
-const SPAWN = 600;
 const LENGTH = 7;
 
 export default function Road(props) {
@@ -15,7 +14,6 @@ export default function Road(props) {
   }
 
   let prevColor = "cyan";
-
   return roadPositions.map((position) => {
     let color;
     if (prevColor === "purple") {
@@ -30,7 +28,7 @@ export default function Road(props) {
         position={position}
         speed={SPEED}
         cutoff={CUTOFF}
-        spawn={SPAWN}
+        spawn={100 * (LENGTH - 1)}
         color={color}
       />
     );
