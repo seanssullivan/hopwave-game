@@ -5,18 +5,14 @@ import "./index.scss";
 
 import * as serviceWorker from "./serviceWorker";
 import Road from "./components/Road";
+import Car from "./components/Car";
 
 ReactDOM.render(
-  <Canvas camera={{ position: [100, 25, 0] }} perspective>
+  <Canvas camera={{ position: [0, 25, -100] }} perspective="true">
     <ambientLight />
     <pointLight position={[100, 100, 100]} />
-    <Road position={[100, 0, 0]} color={"white"} />
-    <Road position={[0, 0, 0]} color={"orange"} />
-    <Road position={[-100, 0, 0]} color={"blue"} />
-    <Road position={[-200, 0, 0]} color={"red"} />
-    <Road position={[-300, 0, 0]} color={"purple"} />
-    <Road position={[-400, 0, 0]} color={"green"} />
-    <Road position={[-500, 0, 0]} color={"cyan"} />
+    <Road />
+    <Car position={[0, 1, -70]} color={"white"} />
   </Canvas>,
   document.getElementById("root")
 );

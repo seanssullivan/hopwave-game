@@ -1,24 +1,38 @@
-import React, { useRef } from "react";
-import { useFrame } from "react-three-fiber";
+import React from "react";
 
-const SPEED = 1;
+import RoadSegment from "./RoadSegment";
+
+const SPEED = 5;
+const CUTOFF = -200;
+const SPAWN = 600;
+const LENGTH = 7;
 
 export default function Road(props) {
-  // This reference will give us direct access to the mesh
-  const mesh = useRef();
+  const roadPositions = [];
+  for (let seg = 0; seg <= LENGTH; seg++) {
+    const zPosition = -100 + seg * 100;
+    roadPositions.push([0, 0, zPosition]);
+  }
 
-  // Rotate mesh every frame, this is outside of React without overhead
-  useFrame(() => {
-    mesh.current.position.x += SPEED;
-    if (mesh.current.position.x >= 200) {
-      mesh.current.position.x = -500;
+  let prevColor = "cyan";
+
+  return roadPositions.map((position) => {
+    let color;
+    if (prevColor === "purple") {
+      color = "cyan";
+      prevColor = "cyan";
+    } else {
+      color = "purple";
+      prevColor = "purple";
     }
+    return (
+      <RoadSegment
+        position={position}
+        speed={SPEED}
+        cutoff={CUTOFF}
+        spawn={SPAWN}
+        color={color}
+      />
+    );
   });
-
-  return (
-    <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <boxBufferGeometry attach="geometry" args={[100, 1, 100]} />
-      <meshStandardMaterial attach="material" color={props.color} />
-    </mesh>
-  );
 }
