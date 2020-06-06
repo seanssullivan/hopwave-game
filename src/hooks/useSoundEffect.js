@@ -2,7 +2,7 @@
 
 import * as Tone from "tone";
 
-export function useSoundEffect() {
+export default function useSoundEffect() {
   const synth = new Tone.Synth().toMaster();
   // const polySynth = new Tone.PolySynth(4, Tone.Synth).toMaster();
   const playSound = () => {

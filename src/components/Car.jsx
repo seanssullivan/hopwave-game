@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
+<<<<<<< HEAD
 import { useKeyPress } from "../hooks/useKeyPress";
 import { useSoundEffect } from "../hooks/useSoundEffect";
 
@@ -8,17 +9,33 @@ const CAR_HEIGHT = 5;
 const CAR_LENGTH = 20;
 const CAR_COLOR = "white";
 const ACCELERATION = 0.25;
+=======
+// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+>>>>>>> master
 
+// Import hooks
+import useKeyPress from "../hooks/useKeyPress";
+import useMovement from "../hooks/useMovement";
+import useSoundEffect from "../hooks/useSoundEffect";
 
+// Import settings
+import settings from "../settings";
+const {
+  WIDTH,
+  HEIGHT,
+  LENGTH,
+  COLOR,
+  ACCELERATION,
+  TURN_SPEED,
+  ROTATION,
+  BOUNDARY,
+} = settings.CAR;
 
 export default function Car(props) {
-
-  
-
   // This reference will give us direct access to the mesh
   const mesh = useRef();
-
-  const  playSound  = useSoundEffect(); // Temp
+  const move = useMovement(mesh, "x");
+  const playSound = useSoundEffect(); // Temp
 
   const { keyPressed: aKeyPressed } = useKeyPress("a");
   const { keyPressed: dKeyPressed } = useKeyPress("d");
@@ -27,14 +44,38 @@ export default function Car(props) {
 
   const { keyPressed: fKeyPressed } = useKeyPress("f"); // Temp
 
-  // Rotate mesh every frame, this is outside of React without overhead
   useFrame(() => {
-    if (aKeyPressed && mesh.current.position.x <= 50) {
-      mesh.current.position.x += 0.5;
+    // Move the car side-to-side using the A and D keys
+    if (aKeyPressed && mesh.current.position.x <= BOUNDARY) {
+      if (mesh.current.rotation.y < 0.1) {
+        // Add a slight rotation when car is moving to the right
+        mesh.current.rotation.y += ROTATION;
+      }
+      move(TURN_SPEED);
     }
-    if (dKeyPressed && mesh.current.position.x >= -50) {
-      mesh.current.position.x -= 0.5;
+    if (dKeyPressed && mesh.current.position.x >= 0 - BOUNDARY) {
+      if (mesh.current.rotation.y > -0.1) {
+        // Add a slight rotation when car is moving to the left
+        mesh.current.rotation.y -= ROTATION;
+      }
+      move(0 - TURN_SPEED);
     }
+
+    // Straight car when not moving to either side
+    if (
+      (!aKeyPressed && !dKeyPressed) ||
+      mesh.current.position.x >= BOUNDARY ||
+      mesh.current.position.x <= 0 - BOUNDARY
+    ) {
+      if (mesh.current.rotation.y < 0) {
+        mesh.current.rotation.y += ROTATION;
+      }
+      if (mesh.current.rotation.y > 0) {
+        mesh.current.rotation.y -= ROTATION;
+      }
+    }
+
+    // Control speed with W and S keys
     if (wKeyPressed) {
       props.setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
     }
@@ -58,13 +99,8 @@ export default function Car(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <boxBufferGeometry
-        attach="geometry"
-        args={[CAR_WIDTH, CAR_HEIGHT, CAR_LENGTH]}
-      />
-      <meshStandardMaterial attach="material" color={CAR_COLOR} />
-      
-
+      <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
+      <meshStandardMaterial attach="material" color={COLOR} />
     </mesh>
   );
 }
