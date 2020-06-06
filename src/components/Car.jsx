@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "react-three-fiber";
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useKeyPress } from "../hooks/useKeyPress";
 import { useSoundEffect } from "../hooks/useSoundEffect";
 
@@ -19,7 +18,7 @@ export default function Car(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef();
 
-  const { playSound } = useSoundEffect(); // Temp
+  const  playSound  = useSoundEffect(); // Temp
 
   const { keyPressed: aKeyPressed } = useKeyPress("a");
   const { keyPressed: dKeyPressed } = useKeyPress("d");

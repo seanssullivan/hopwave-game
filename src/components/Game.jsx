@@ -4,6 +4,8 @@ import "./Game.scss";
 import Zuckerberg from "./Zuckerberg"
 import Road from "./Road";
 import Car from "./Car";
+import Orb from './Orb'
+import Obstacle from "./Obstacle"
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 extend({ OrbitControls })
@@ -38,6 +40,8 @@ export default function Game() {
       <ambientLight />
       <pointLight position={[100, 100, 100]} />
       <Road speed={speed} />
+     
+      <Obstacle/>  
       <Car
         position={[0, 1, -70]}
         color={"white"}
@@ -47,6 +51,7 @@ export default function Game() {
       <OrbitControl/>
       <Suspense fallback={null}>
         <Zuckerberg/>
+        
       </Suspense>
     </Canvas>
   );

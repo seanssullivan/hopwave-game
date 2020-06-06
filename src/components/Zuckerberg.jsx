@@ -13,7 +13,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 export default function Model(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useLoader(GLTFLoader, '/scene.gltf')
+  const { nodes, materials, animations } = useLoader(GLTFLoader, '/Elon/scene.gltf')
 
   const actions = useRef()
   const [mixer] = useState(() => new THREE.AnimationMixer())
@@ -21,7 +21,7 @@ export default function Model(props) {
   useEffect(() => void mixer.clipAction(animations[0], group.current).play(), [])
   return (
     <group ref={group} {...props} dispose={null}>
-      <group onClick={(e) => actions.current['miaxamo.com'].play()} />
+      
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group scale={[0.3, 0.3, 0.3]}>
           <group rotation={[Math.PI / 2, 0, 0]}>
