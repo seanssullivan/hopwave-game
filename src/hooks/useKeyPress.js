@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
  * Sets event listeners for key-press events.
  * @param {String} targetKey
  */
-export function useKeyPress(targetKey) {
+export default function useKeyPress(targetKey) {
   const [keyPressed, setKeyPressed] = useState(false);
 
   /**
@@ -38,6 +38,10 @@ export function useKeyPress(targetKey) {
   useEffect(() => {
     window.addEventListener("keydown", keyDown);
     window.addEventListener("keyup", keyUp);
+    return () => {
+      window.removeEventListener("keydown", keyDown);
+      window.removeEventListener("keyup", keyUp);
+    };
   });
 
   return { keyPressed, keyDown, keyUp };
