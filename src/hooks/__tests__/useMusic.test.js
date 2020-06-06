@@ -1,6 +1,6 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 
-import useMusic from "hooks/useMusic";
+import { useMusic } from "../useMusic";
 
 test("useMusic should initialize with default BPM value", () => {
   const { result } = renderHook(() => useMusic());
