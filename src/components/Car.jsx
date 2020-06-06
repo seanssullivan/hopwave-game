@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
+// Import hooks
 import useKeyPress from "../hooks/useKeyPress";
 import useSoundEffect from "../hooks/useSoundEffect";
 
@@ -9,7 +10,7 @@ const CAR_WIDTH = 20;
 const CAR_HEIGHT = 5;
 const CAR_LENGTH = 20;
 const CAR_COLOR = "white";
-const ACCELERATION = 0.25;
+const CAR_ACCELERATION = 0.25;
 
 export default function Car(props) {
   // This reference will give us direct access to the mesh
@@ -33,17 +34,17 @@ export default function Car(props) {
       mesh.current.position.x -= 0.5;
     }
     if (wKeyPressed) {
-      props.setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
+      props.setSpeed((prev) => (prev >= 7 ? prev : (prev += CAR_ACCELERATION)));
     }
     if (sKeyPressed) {
-      props.setSpeed((prev) => (prev <= 3 ? prev : (prev -= ACCELERATION)));
+      props.setSpeed((prev) => (prev <= 3 ? prev : (prev -= CAR_ACCELERATION)));
     }
     if (!wKeyPressed && !sKeyPressed) {
       props.setSpeed((prev) => {
         return prev > props.avgSpeed
-          ? (prev -= ACCELERATION)
+          ? (prev -= CAR_ACCELERATION)
           : prev < props.avgSpeed
-          ? (prev += ACCELERATION)
+          ? (prev += CAR_ACCELERATION)
           : prev;
       });
     }

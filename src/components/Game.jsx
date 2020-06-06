@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Canvas } from "react-three-fiber";
 import "./Game.scss";
 
+// Import components
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
 
-import OrbitControl from "./OrbitControls";
+// Optional components
+// import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
 const SPEED = 5;
