@@ -27,6 +27,7 @@ const CAR = {
   COLOR: "white",
   ACCELERATION: 0.25,
   TURN_SPEED: 0.75,
+  ROTATION: 0.01,
   get BOUNDARY() {
     return ROAD_SEGMENT.WIDTH / 2 - this.WIDTH / 2;
   },
