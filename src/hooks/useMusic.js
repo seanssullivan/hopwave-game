@@ -1,5 +1,7 @@
 import { useState, useReducer } from "react";
 
+import * as Tone from "tone";
+
 /**
  * useMusic is a hook to manage music playback with Tone.js
  */
