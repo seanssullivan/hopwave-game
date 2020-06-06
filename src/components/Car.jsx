@@ -6,11 +6,9 @@ import { useFrame } from "react-three-fiber";
 import useKeyPress from "../hooks/useKeyPress";
 import useSoundEffect from "../hooks/useSoundEffect";
 
-const CAR_WIDTH = 20;
-const CAR_HEIGHT = 5;
-const CAR_LENGTH = 20;
-const CAR_COLOR = "white";
-const CAR_ACCELERATION = 0.25;
+// Import settings
+import settings from "../settings";
+const { WIDTH, HEIGHT, LENGTH, COLOR, ACCELERATION } = settings.CAR;
 
 export default function Car(props) {
   // This reference will give us direct access to the mesh
@@ -25,7 +23,6 @@ export default function Car(props) {
 
   const { keyPressed: fKeyPressed } = useKeyPress("f"); // Temp
 
-  // Rotate mesh every frame, this is outside of React without overhead
   useFrame(() => {
     if (aKeyPressed && mesh.current.position.x <= 50) {
       mesh.current.position.x += 0.5;
@@ -34,17 +31,17 @@ export default function Car(props) {
       mesh.current.position.x -= 0.5;
     }
     if (wKeyPressed) {
-      props.setSpeed((prev) => (prev >= 7 ? prev : (prev += CAR_ACCELERATION)));
+      props.setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
     }
     if (sKeyPressed) {
-      props.setSpeed((prev) => (prev <= 3 ? prev : (prev -= CAR_ACCELERATION)));
+      props.setSpeed((prev) => (prev <= 3 ? prev : (prev -= ACCELERATION)));
     }
     if (!wKeyPressed && !sKeyPressed) {
       props.setSpeed((prev) => {
         return prev > props.avgSpeed
-          ? (prev -= CAR_ACCELERATION)
+          ? (prev -= ACCELERATION)
           : prev < props.avgSpeed
-          ? (prev += CAR_ACCELERATION)
+          ? (prev += ACCELERATION)
           : prev;
       });
     }
@@ -56,11 +53,8 @@ export default function Car(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <boxBufferGeometry
-        attach="geometry"
-        args={[CAR_WIDTH, CAR_HEIGHT, CAR_LENGTH]}
-      />
-      <meshStandardMaterial attach="material" color={CAR_COLOR} />
+      <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
+      <meshStandardMaterial attach="material" color={COLOR} />
     </mesh>
   );
 }

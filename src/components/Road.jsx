@@ -1,9 +1,11 @@
 import React from "react";
 
+// Import components
 import RoadSegment from "./RoadSegment";
 
-const CUTOFF = -200;
-const LENGTH = 7;
+// Import settings
+import settings from "../settings";
+const { LENGTH, CUTOFF } = settings.ROAD;
 
 export default function Road(props) {
   const roadPositions = [];
