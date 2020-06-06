@@ -1,6 +1,6 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 
-import { useKeyPress } from "../useKeyPress";
+import useKeyPress from "../useKeyPress";
 
 describe("useKeyPress", () => {
   it("should initialize with default keyPress state of false", () => {

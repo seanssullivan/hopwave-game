@@ -1,25 +1,22 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useKeyPress } from "../hooks/useKeyPress";
-import { useSoundEffect } from "../hooks/useSoundEffect";
+// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
+// Import hooks
+import useKeyPress from "../hooks/useKeyPress";
+import useSoundEffect from "../hooks/useSoundEffect";
 
 const CAR_WIDTH = 20;
 const CAR_HEIGHT = 5;
 const CAR_LENGTH = 20;
 const CAR_COLOR = "white";
-const ACCELERATION = 0.25;
-
-
+const CAR_ACCELERATION = 0.25;
 
 export default function Car(props) {
-
-  
-
   // This reference will give us direct access to the mesh
   const mesh = useRef();
 
-  const { playSound } = useSoundEffect(); // Temp
+  const playSound = useSoundEffect(); // Temp
 
   const { keyPressed: aKeyPressed } = useKeyPress("a");
   const { keyPressed: dKeyPressed } = useKeyPress("d");
@@ -37,17 +34,17 @@ export default function Car(props) {
       mesh.current.position.x -= 0.5;
     }
     if (wKeyPressed) {
-      props.setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
+      props.setSpeed((prev) => (prev >= 7 ? prev : (prev += CAR_ACCELERATION)));
     }
     if (sKeyPressed) {
-      props.setSpeed((prev) => (prev <= 3 ? prev : (prev -= ACCELERATION)));
+      props.setSpeed((prev) => (prev <= 3 ? prev : (prev -= CAR_ACCELERATION)));
     }
     if (!wKeyPressed && !sKeyPressed) {
       props.setSpeed((prev) => {
         return prev > props.avgSpeed
-          ? (prev -= ACCELERATION)
+          ? (prev -= CAR_ACCELERATION)
           : prev < props.avgSpeed
-          ? (prev += ACCELERATION)
+          ? (prev += CAR_ACCELERATION)
           : prev;
       });
     }
@@ -64,8 +61,6 @@ export default function Car(props) {
         args={[CAR_WIDTH, CAR_HEIGHT, CAR_LENGTH]}
       />
       <meshStandardMaterial attach="material" color={CAR_COLOR} />
-      
-
     </mesh>
   );
 }
