@@ -38,6 +38,10 @@ export function useKeyPress(targetKey) {
   useEffect(() => {
     window.addEventListener("keydown", keyDown);
     window.addEventListener("keyup", keyUp);
+    return () => {
+      window.removeEventListener("keydown", keyDown);
+      window.removeEventListener("keyup", keyUp);
+    };
   });
 
   return { keyPressed, keyDown, keyUp };
