@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "react-three-fiber";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useKeyPress } from "../hooks/useKeyPress";
+import { useSoundEffect } from "../hooks/useSoundEffect";
 
 const CAR_WIDTH = 20;
 const CAR_HEIGHT = 5;
@@ -17,10 +18,15 @@ export default function Car(props) {
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
+
+  const { playSound } = useSoundEffect(); // Temp
+
   const { keyPressed: aKeyPressed } = useKeyPress("a");
   const { keyPressed: dKeyPressed } = useKeyPress("d");
   const { keyPressed: wKeyPressed } = useKeyPress("w");
   const { keyPressed: sKeyPressed } = useKeyPress("s");
+
+  const { keyPressed: fKeyPressed } = useKeyPress("f"); // Temp
 
   // Rotate mesh every frame, this is outside of React without overhead
   useFrame(() => {
@@ -44,6 +50,10 @@ export default function Car(props) {
           ? (prev += ACCELERATION)
           : prev;
       });
+    }
+    // Temp
+    if (fKeyPressed) {
+      playSound();
     }
   });
 

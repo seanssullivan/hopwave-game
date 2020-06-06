@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 
+import useMovement from "../hooks/useMovement";
+import useReposition from "../hooks/useReposition";
+
 const ROAD_WIDTH = 100;
 const ROAD_HEIGHT = 1;
 const ROAD_LENGTH = 100;
@@ -11,16 +14,15 @@ export default function RoadSegment(props) {
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
+  const move = useMovement(mesh, "z");
+  const reposition = useReposition(mesh);
 
   useFrame(() => {
-    mesh.current.position.z -= speed;
-    if (mesh.current.position.z <= cutoff) {
-      //? do we need to dispose of these meshes?
-      // mesh.current.geometry.dispose()
-      // mesh.current.material.dispose()
+    move(speed);
 
-      mesh.current.position.z =
-        spawn - Math.abs(cutoff - mesh.current.position.z);
+    if (mesh.current.position.z <= cutoff) {
+      const z = spawn - Math.abs(cutoff - mesh.current.position.z);
+      reposition({ z });
     }
   });
 
