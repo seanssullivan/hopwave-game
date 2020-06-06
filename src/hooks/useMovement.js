@@ -7,7 +7,7 @@
  */
 export default function useMovement(mesh, axis) {
   const setMovement = (distance) => {
-    mesh.current.position[axis] -= distance;
+    mesh.current.position[axis] += distance;
   };
   return setMovement;
 }

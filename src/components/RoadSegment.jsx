@@ -18,7 +18,7 @@ export default function RoadSegment(props) {
   const reposition = useReposition(mesh);
 
   useFrame(() => {
-    move(speed);
+    move(0 - speed);
 
     if (mesh.current.position.z <= cutoff) {
       const z = spawn - Math.abs(cutoff - mesh.current.position.z);
