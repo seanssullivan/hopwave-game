@@ -11,7 +11,9 @@ import Car from "./Car";
 // import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
-const SPEED = 5;
+// Import settings
+import settings from "../settings";
+const { SPEED } = settings.GAME;
 
 export default function Game() {
   const [speed, setSpeed] = useState(SPEED);

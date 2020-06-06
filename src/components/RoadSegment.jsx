@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 
+// Import hooks
 import useMovement from "../hooks/useMovement";
 import useReposition from "../hooks/useReposition";
 
-const ROAD_WIDTH = 100;
-const ROAD_HEIGHT = 1;
-const ROAD_LENGTH = 100;
-const ROAD_COLOR = "cyan";
+// Import settings
+import settings from "../settings";
+const { WIDTH, HEIGHT, LENGTH, COLOR } = settings.ROAD_SEGMENT;
 
 export default function RoadSegment(props) {
   const { speed, cutoff, spawn, color } = props;
@@ -28,10 +28,7 @@ export default function RoadSegment(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <boxBufferGeometry
-        attach="geometry"
-        args={[ROAD_WIDTH, ROAD_HEIGHT, ROAD_LENGTH]}
-      />
+      <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
       <meshStandardMaterial attach="material" color={color} />
     </mesh>
   );
