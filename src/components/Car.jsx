@@ -34,24 +34,37 @@ export default function Car(props) {
   const { keyPressed: fKeyPressed } = useKeyPress("f"); // Temp
 
   useFrame(() => {
+    // Move the car side-to-side using the A and D keys
     if (aKeyPressed && mesh.current.position.x <= BOUNDARY) {
       if (mesh.current.rotation.y < 0.1) {
+        // Add a slight rotation when car is moving to the right
         mesh.current.rotation.y += ROTATION;
       }
       move(TURN_SPEED);
     }
     if (dKeyPressed && mesh.current.position.x >= 0 - BOUNDARY) {
       if (mesh.current.rotation.y > -0.1) {
+        // Add a slight rotation when car is moving to the left
         mesh.current.rotation.y -= ROTATION;
       }
       move(0 - TURN_SPEED);
     }
-    if (!aKeyPressed && !dKeyPressed && mesh.current.rotation.y < 0) {
-      mesh.current.rotation.y += ROTATION;
+
+    // Straight car when not moving to either side
+    if (
+      (!aKeyPressed && !dKeyPressed) ||
+      mesh.current.position.x >= BOUNDARY ||
+      mesh.current.position.x <= 0 - BOUNDARY
+    ) {
+      if (mesh.current.rotation.y < 0) {
+        mesh.current.rotation.y += ROTATION;
+      }
+      if (mesh.current.rotation.y > 0) {
+        mesh.current.rotation.y -= ROTATION;
+      }
     }
-    if (!aKeyPressed && !dKeyPressed && mesh.current.rotation.y > 0) {
-      mesh.current.rotation.y -= ROTATION;
-    }
+
+    // Control speed with W and S keys
     if (wKeyPressed) {
       props.setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
     }
