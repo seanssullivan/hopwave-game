@@ -1,32 +1,13 @@
-import React, { useState, useRef, Suspense } from "react";
-import { Canvas, extend, useThree, useFrame } from "react-three-fiber";
+import React, { useState } from "react";
+import { Canvas } from "react-three-fiber";
 import "./Game.scss";
+
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
-
-// extend({ OrbitControls });
-
-// const OrbitControl = () => {
-//   const orbitRef = useRef();
-//   const { camera, gl } = useThree();
-
-//   useFrame(() => {
-//     orbitRef.current.update();
-//   });
-
-//   return (
-//     <orbitControls
-//       args={[camera, gl.domElement]}
-//       ref={orbitRef}
-//       autoRotate
-//       maxPolarAngle={Math.PI / 3}
-//       minPolarAngle={Math.PI / 3}
-//     />
-//   );
-// };
 
 const SPEED = 5;
 
