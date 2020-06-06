@@ -8,7 +8,15 @@ import useSoundEffect from "../hooks/useSoundEffect";
 
 // Import settings
 import settings from "../settings";
-const { WIDTH, HEIGHT, LENGTH, COLOR, ACCELERATION } = settings.CAR;
+const {
+  WIDTH,
+  HEIGHT,
+  LENGTH,
+  COLOR,
+  ACCELERATION,
+  TURN_SPEED,
+  BOUNDARY,
+} = settings.CAR;
 
 export default function Car(props) {
   // This reference will give us direct access to the mesh
@@ -24,11 +32,11 @@ export default function Car(props) {
   const { keyPressed: fKeyPressed } = useKeyPress("f"); // Temp
 
   useFrame(() => {
-    if (aKeyPressed && mesh.current.position.x <= 50) {
-      mesh.current.position.x += 0.5;
+    if (aKeyPressed && mesh.current.position.x <= BOUNDARY) {
+      mesh.current.position.x += TURN_SPEED;
     }
-    if (dKeyPressed && mesh.current.position.x >= -50) {
-      mesh.current.position.x -= 0.5;
+    if (dKeyPressed && mesh.current.position.x >= 0 - BOUNDARY) {
+      mesh.current.position.x -= TURN_SPEED;
     }
     if (wKeyPressed) {
       props.setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));

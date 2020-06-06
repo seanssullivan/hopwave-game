@@ -26,6 +26,10 @@ const CAR = {
   LENGTH: 20,
   COLOR: "white",
   ACCELERATION: 0.25,
+  TURN_SPEED: 0.75,
+  get BOUNDARY() {
+    return ROAD_SEGMENT.WIDTH / 2 - this.WIDTH / 2;
+  },
 };
 
 // Combine settings for export
