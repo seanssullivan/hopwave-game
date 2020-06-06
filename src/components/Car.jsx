@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
-import { useSpring, animated } from 'react-spring/three'
+import { animated } from "react-spring/three";
 
 import { useKeyPress } from "../hooks/useKeyPress";
 
@@ -17,10 +17,10 @@ export default function Car(props) {
 
   // Rotate mesh every frame, this is outside of React without overhead
   useFrame(() => {
-    if (aKeyPressed) {
+    if (aKeyPressed && mesh.current.position.x <= 50) {
       mesh.current.position.x += 0.5;
     }
-    if (dKeyPressed) {
+    if (dKeyPressed && mesh.current.position.x >= -50) {
       mesh.current.position.x -= 0.5;
     }
   });
