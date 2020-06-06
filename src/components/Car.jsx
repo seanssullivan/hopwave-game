@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
+import { useSpring, animated } from 'react-spring/three'
 
 const CAR_WIDTH = 20;
 const CAR_HEIGHT = 5;
@@ -17,12 +18,12 @@ export default function Car(props) {
   });
 
   return (
-    <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
+    <animated.mesh {...props} ref={mesh} scale={[1, 1, 1]}>
       <boxBufferGeometry
         attach="geometry"
         args={[CAR_WIDTH, CAR_HEIGHT, CAR_LENGTH]}
       />
       <meshStandardMaterial attach="material" color={CAR_COLOR} />
-    </mesh>
+    </animated.mesh>
   );
 }
