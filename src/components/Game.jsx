@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
+import Obstacles from "./Obstacles"
 import "./Game.scss";
 
 // Import components
@@ -8,8 +9,8 @@ import Road from "./Road";
 import Car from "./Car";
 
 // Optional components
-// import OrbitControl from "./OrbitControls";
-// import Zuckerberg from "./Zuckerberg";
+import OrbitControl from "./OrbitControls";
+import Zuckerberg from "./Zuckerberg";
 
 // Import settings
 import settings from "../settings";
@@ -18,6 +19,18 @@ const { SPEED } = settings.GAME;
 export default function Game() {
   const [speed, setSpeed] = useState(SPEED);
 
+  // const [showObstacle, setShowObstacle] = useState(true)
+
+  // // this is too delete the obstacle once it hits the player/reaches the end
+  // const destroyObstacle = useCallback(() => {
+    
+  //   setShowObstacle(showObstacle => !showObstacle)
+  //   return () => AbortController.abort()
+
+  // }, [setShowObstacle])
+
+
+
   return (
     <Canvas camera={{ position: [0, 25, -100] }} perspective="true">
       <ambientLight />
@@ -25,17 +38,20 @@ export default function Game() {
       <Ground position={[0, 0, 175]} />
       <Road speed={speed} />
      
-      <Obstacle/>  
+      {/* {showObstacle && <Obstacle destroyObstacle={destroyObstacle}/>}
+       */}
+      <Obstacles />
+  
       <Car
         position={[0, 1, -70]}
         color={"white"}
         avgSpeed={SPEED}
         setSpeed={setSpeed}
       />
-      {/* <OrbitControl /> */}
-      {/* <Suspense fallback={null}>
+      <OrbitControl />
+      <Suspense fallback={null}>
         <Zuckerberg/>
-      </Suspense> */}
+      </Suspense>
     </Canvas>
   );
 }

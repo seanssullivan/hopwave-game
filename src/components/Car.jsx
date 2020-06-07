@@ -1,17 +1,6 @@
-import React, { useRef } from "react";
-import { useFrame } from "react-three-fiber";
-<<<<<<< HEAD
-import { useKeyPress } from "../hooks/useKeyPress";
-import { useSoundEffect } from "../hooks/useSoundEffect";
-
-const CAR_WIDTH = 20;
-const CAR_HEIGHT = 5;
-const CAR_LENGTH = 20;
-const CAR_COLOR = "white";
-const ACCELERATION = 0.25;
-=======
+  import React, { useRef } from "react";
+  import { useFrame } from "react-three-fiber";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
->>>>>>> master
 
 // Import hooks
 import useKeyPress from "../hooks/useKeyPress";

@@ -1,41 +1,36 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 
+// Import hooks
 import useMovement from "../hooks/useMovement";
-import useReposition from "../hooks/useReposition";
 
+// Import settings
+import settings from "../settings";
+const { SPEED } = settings.GAME;
 
-export default function RoadSegment(props) {
-  const { speed, cutoff, spawn} = props;
+const SHAPE_WIDTH = 30;
+
+export default function RandomObstacle(props) {
+  const { destroyObstacle } = props;
 
   // This reference will give us direct access to the mesh
-  const mesh = useRef()
+  const mesh = useRef();
   const move = useMovement(mesh, "z");
-  const reposition = useReposition(mesh);
-  // Set up state for the hovered and active state
-  // const [hovered, setHover] = useState(false)
-  // const [active, setActive] = useState(false)
-
-  // Rotate mesh every frame, this is outside of React without overhead
-  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
+  
 
   useFrame(() => {
-    move(speed);
-
-    if (mesh.current.position.z <= cutoff) {
-      const z = 100 * (7 - 1) - Math.abs(cutoff - mesh.current.position.z);
-      reposition({ z });
+    move(0 - SPEED);
+    if (mesh.current.position.z <= -200) {
+      
+      destroyObstacle()
     }
   });
-
+  
   return (
-    <mesh
-    {...props}
-    ref={mesh}
-    scale={[1.5, 1.5, 1.5]}
-    >
-    <boxBufferGeometry attach="geometry" args={[100, 100, 100]} />
-    <meshStandardMaterial attach="material" color={  'black' } />
-  </mesh>
-  );
+    <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
+      <boxBufferGeometry attach="geometry" args={[SHAPE_WIDTH, SHAPE_WIDTH, 1]} />
+      <meshStandardMaterial attach="material" color={'orange'} />
+    </mesh>
+  )
+
 }
