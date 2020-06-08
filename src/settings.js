@@ -3,6 +3,7 @@
 // Global settings are defined here:
 const GAME = {
   SPEED: 5,
+  START_POSITION: [0, 3, -70],
 };
 
 // Road component settings are defined here:

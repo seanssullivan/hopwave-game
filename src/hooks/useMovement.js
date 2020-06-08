@@ -5,9 +5,12 @@
  * @param {Object} mesh - Three.js object mesh
  * @param {String} axis - The axis on which to move the object (x, y, or z)
  */
-export default function useMovement(mesh, axis) {
+export default function useMovement(mesh, axis, callback) {
   const setMovement = (distance) => {
     mesh.current.position[axis] += distance;
+    if (callback) {
+      callback(mesh);
+    }
   };
   return setMovement;
 }
