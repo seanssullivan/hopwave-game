@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import RandomObstacle from "./RandomObstacle"
 import { useFrame } from "react-three-fiber";
 import Hexagon from "./Shapes/Hexagon";
 import Circle from "./Shapes/Circle";

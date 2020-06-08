@@ -12,7 +12,7 @@ import Car from "./Car";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
-// import OrbitControl from "./OrbitControls";
+import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
 // Import settings
@@ -39,7 +39,7 @@ export default function Game() {
         setSpeed={setSpeed}
         setPosition={setPlayerPosition}
       />
-      {/* <OrbitControl /> */}
+      <OrbitControl />
       {/* <Suspense fallback={null}>
         <Zuckerberg/>
       </Suspense> */}

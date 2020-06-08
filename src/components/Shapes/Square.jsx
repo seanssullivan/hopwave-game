@@ -25,7 +25,12 @@ export default function Square(props) {
   });
 
   return (
-    <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
+    <mesh
+      {...props}
+      ref={mesh}
+      scale={[1, 1, 1]}
+      rotation={[0, 0, -Math.PI / 4]}
+    >
       <torusBufferGeometry attach="geometry" args={[SHAPE_WIDTH, 1, 4, 4]} />
       <meshStandardMaterial attach="material" color={"purple"} />
     </mesh>

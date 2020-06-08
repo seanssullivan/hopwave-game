@@ -26,7 +26,12 @@ export default function Triangle(props) {
   });
 
   return (
-    <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
+    <mesh
+      {...props}
+      ref={mesh}
+      scale={[1, 1, 1]}
+      rotation={[0, 0, -Math.PI / 6]}
+    >
       <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 3, 3]} />
       <meshToonMaterial attach="material" color={"green"} />
     </mesh>
