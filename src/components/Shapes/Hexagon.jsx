@@ -8,10 +8,9 @@ import useMovement from "../../hooks/useMovement";
 import settings from "../../settings";
 
 const { SPEED } = settings.GAME;
+const { RADIUS } = settings.SHAPE;
 
-const RADIUS = 7;
-
-export default function Dodecahedron(props) {
+export default function Hexagon(props) {
   const { destroyObstacle } = props;
 
   // This reference will give us direct access to the mesh
@@ -27,7 +26,7 @@ export default function Dodecahedron(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <dodecahedronBufferGeometry attach="geometry" args={[RADIUS]} />
+      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 6, 6]} />
       <meshToonMaterial attach="material" color={"blue"} />
     </mesh>
   );

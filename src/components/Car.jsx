@@ -1,5 +1,5 @@
-  import React, { useRef } from "react";
-  import { useFrame } from "react-three-fiber";
+import React, { useRef } from "react";
+import { useFrame } from "react-three-fiber";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // Import hooks
@@ -23,7 +23,7 @@ const {
 export default function Car(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef();
-  const move = useMovement(mesh, "x");
+  const move = useMovement(mesh, "x", props.setPlayerPosition);
   const playSound = useSoundEffect(); // Temp
 
   const { keyPressed: aKeyPressed } = useKeyPress("a");
