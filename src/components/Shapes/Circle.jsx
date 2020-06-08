@@ -9,9 +9,9 @@ import settings from "../../settings";
 
 const { SPEED } = settings.GAME;
 
-const RADIUS = 7;
+const RADIUS = 30;
 
-export default function Dodecahedron(props) {
+export default function Circle(props) {
   const { destroyObstacle } = props;
 
   // This reference will give us direct access to the mesh
@@ -27,8 +27,8 @@ export default function Dodecahedron(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <dodecahedronBufferGeometry attach="geometry" args={[RADIUS]} />
-      <meshToonMaterial attach="material" color={"blue"} />
+      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 30, 30]} />
+      <meshToonMaterial attach="material" color={"red"} />
     </mesh>
   );
 }

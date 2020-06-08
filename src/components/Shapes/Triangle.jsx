@@ -9,7 +9,7 @@ import settings from "../../settings";
 
 const { SPEED } = settings.GAME;
 
-const RADIUS = 7;
+const RADIUS = 30;
 
 export default function Triangle(props) {
   const { destroyObstacle } = props;
@@ -17,21 +17,18 @@ export default function Triangle(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef();
   const move = useMovement(mesh, "z");
-  
 
   useFrame(() => {
     move(0 - SPEED);
     if (mesh.current.position.z <= -200) {
-      
-      destroyObstacle()
+      destroyObstacle();
     }
   });
-  
+
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <tetrahedronBufferGeometry attach="geometry" args={[RADIUS]} />
-      <meshToonMaterial attach="material" color={'green'} />
+      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 3, 3]} />
+      <meshToonMaterial attach="material" color={"green"} />
     </mesh>
-  )
-
+  );
 }

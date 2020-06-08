@@ -6,12 +6,11 @@ import useMovement from "../../hooks/useMovement";
 
 // Import settings
 import settings from "../../settings";
-
 const { SPEED } = settings.GAME;
 
-const RADIUS = 7;
+const SHAPE_WIDTH = 30;
 
-export default function Donut(props) {
+export default function Square(props) {
   const { destroyObstacle } = props;
 
   // This reference will give us direct access to the mesh
@@ -27,8 +26,8 @@ export default function Donut(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <torusBufferGeometry attach="geometry" args={[RADIUS]} />
-      <meshToonMaterial attach="material" color={"red"} />
+      <torusBufferGeometry attach="geometry" args={[SHAPE_WIDTH, 1, 4, 4]} />
+      <meshStandardMaterial attach="material" color={"purple"} />
     </mesh>
   );
 }
