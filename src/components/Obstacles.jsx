@@ -7,7 +7,8 @@ const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
 const { RADIUS } = settings.SHAPE;
 
 export default function Obstacles(props) {
-  const [objects, setObjects] = useState([]);
+  const objects = props.objects;
+  const setObjects = props.setObjects;
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
   const setObjectPositions = props.setObjectPositions;

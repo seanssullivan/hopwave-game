@@ -1,12 +1,14 @@
-import React, { useState, useEffect, Suspense } from "react";
+import * as THREE from "three";
+import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
-import Obstacles from "./Obstacles";
 import "./Game.scss";
 
 // Import components
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
+import Obstacles from "./Obstacles";
+import Song from "./Song";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";
@@ -22,8 +24,8 @@ import settings from "../settings";
 const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
-  const [speed, setSpeed] = useState(SPEED);
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
+  const [speed, setSpeed] = useState(SPEED);
   const [objectPositions, setObjectPositions] = useState({});
   const detectCollision = useCollisionDetection(
     playerPosition,
