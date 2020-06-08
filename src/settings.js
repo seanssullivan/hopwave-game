@@ -32,7 +32,12 @@ const CAR = {
     return ROAD_SEGMENT.WIDTH / 2 - this.WIDTH / 2;
   },
 };
+// PalmTrees component setting are defined here:
+  const PALM = {
+    CUTOFF: -200,
+    SPAWN: 100
+  }
 
 // Combine settings for export
-const settings = { GAME, ROAD, ROAD_SEGMENT, CAR };
+const settings = { GAME, ROAD, ROAD_SEGMENT, CAR, PALM };
 export default settings;
