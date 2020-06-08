@@ -7,8 +7,7 @@ import useMovement from "../../hooks/useMovement";
 // Import settings
 import settings from "../../settings";
 const { SPEED } = settings.GAME;
-
-const SHAPE_WIDTH = 30;
+const { RADIUS } = settings.SHAPE;
 
 export default function Square(props) {
   const { destroyObstacle } = props;
@@ -31,7 +30,7 @@ export default function Square(props) {
       scale={[1, 1, 1]}
       rotation={[0, 0, -Math.PI / 4]}
     >
-      <torusBufferGeometry attach="geometry" args={[SHAPE_WIDTH, 1, 4, 4]} />
+      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 4, 4]} />
       <meshStandardMaterial attach="material" color={"purple"} />
     </mesh>
   );

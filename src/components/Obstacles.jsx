@@ -7,8 +7,7 @@ import Triangle from "./Shapes/Triangle";
 
 import settings from "../settings";
 const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
-
-const SHAPE_WIDTH = 30;
+const { RADIUS } = settings.SHAPE;
 
 export default function Obstacles(props) {
   const [objects, setObjects] = useState([]);
@@ -28,8 +27,8 @@ export default function Obstacles(props) {
       const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
       setShape(() => randomShape);
       const randomX =
-        Math.abs(Math.random() * ROAD_WIDTH - SHAPE_WIDTH) -
-        (ROAD_WIDTH - SHAPE_WIDTH) / 2;
+        Math.abs(Math.random() * ROAD_WIDTH - RADIUS) -
+        (ROAD_WIDTH - RADIUS) / 2;
 
       if (shape === "Hexagon") {
         setObjects((all) => {

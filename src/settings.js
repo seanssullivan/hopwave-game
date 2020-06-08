@@ -20,6 +20,11 @@ const ROAD_SEGMENT = {
   COLOR: "cyan",
 };
 
+// Shape component settings are defined here:
+const SHAPE = {
+  RADIUS: 30,
+};
+
 // Car component settings are defined here:
 const CAR = {
   WIDTH: 20,

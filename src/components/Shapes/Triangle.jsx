@@ -8,8 +8,7 @@ import useMovement from "../../hooks/useMovement";
 import settings from "../../settings";
 
 const { SPEED } = settings.GAME;
-
-const RADIUS = 30;
+const { RADIUS } = settings.SHAPE;
 
 export default function Triangle(props) {
   const { destroyObstacle } = props;
