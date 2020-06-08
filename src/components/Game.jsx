@@ -20,8 +20,6 @@ export default function Game() {
   const [speed, setSpeed] = useState(SPEED);
 
   // const [showObstacle, setShowObstacle] = useState(true)
-
-  // // this is too delete the obstacle once it hits the player/reaches the end
   // const destroyObstacle = useCallback(() => {
     
   //   setShowObstacle(showObstacle => !showObstacle)
