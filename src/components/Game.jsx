@@ -1,12 +1,14 @@
-import React, { useState, Suspense } from "react";
+import * as THREE from "three";
+import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
-import Obstacles from "./Obstacles";
 import "./Game.scss";
 
 // Import components
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
+import Obstacles from "./Obstacles";
+import Song from "./Song";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";
