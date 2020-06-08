@@ -10,10 +10,10 @@ const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
 const { RADIUS } = settings.SHAPE;
 
 export default function Obstacles(props) {
-  const [objects, setObjects] = useState([]);
+  const objects = props.objects;
+  const setObjects = props.setObjects;
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
-  const [shape, setShape] = useState();
 
   const destroyObject = function (key) {
     setObjects((all) => all.slice(1));
@@ -25,12 +25,11 @@ export default function Obstacles(props) {
       const shapes = ["Hexagon", "Circle", "Square", "Triangle"];
 
       const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-      setShape(() => randomShape);
       const randomX =
         Math.abs(Math.random() * ROAD_WIDTH - RADIUS) -
         (ROAD_WIDTH - RADIUS) / 2;
 
-      if (shape === "Hexagon") {
+      if (randomShape === "Hexagon") {
         setObjects((all) => {
           return [
             ...all,
@@ -41,7 +40,7 @@ export default function Obstacles(props) {
             />,
           ];
         });
-      } else if (shape === "Circle") {
+      } else if (randomShape === "Circle") {
         setObjects((all) => {
           return [
             ...all,
@@ -52,7 +51,7 @@ export default function Obstacles(props) {
             />,
           ];
         });
-      } else if (shape === "Square") {
+      } else if (randomShape === "Square") {
         setObjects((all) => {
           return [
             ...all,

@@ -21,6 +21,7 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
+  const [objects, setObjects] = useState([]);
   const [speed, setSpeed] = useState(SPEED);
 
   return (
@@ -30,7 +31,7 @@ export default function Game() {
       <Ground position={[0, 0, 175]} />
       <Road speed={speed} />
 
-      <Obstacles />
+      <Obstacles objects={objects} setObjects={setObjects} />
 
       <Car
         position={playerPosition}

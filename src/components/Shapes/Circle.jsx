@@ -19,6 +19,7 @@ export default function Circle(props) {
 
   useFrame(() => {
     move(0 - SPEED);
+
     if (mesh.current.position.z <= -200) {
       destroyObstacle();
     }

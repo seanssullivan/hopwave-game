@@ -40,5 +40,5 @@ const CAR = {
 };
 
 // Combine settings for export
-const settings = { GAME, ROAD, ROAD_SEGMENT, CAR };
+const settings = { GAME, ROAD, ROAD_SEGMENT, SHAPE, CAR };
 export default settings;
