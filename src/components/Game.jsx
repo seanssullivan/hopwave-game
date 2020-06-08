@@ -10,46 +10,42 @@ import Car from "./Car";
 import Obstacles from "./Obstacles";
 import Song from "./Song";
 
+// Import hooks
+import usePlayerPosition from "../hooks/usePlayerPosition";
+
 // Optional components
-import OrbitControl from "./OrbitControls";
-import Zuckerberg from "./Zuckerberg";
+// import OrbitControl from "./OrbitControls";
+// import Zuckerberg from "./Zuckerberg";
 
 // Import settings
 import settings from "../settings";
-const { SPEED } = settings.GAME;
+const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
+  const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
+  const [objects, setObjects] = useState([]);
   const [speed, setSpeed] = useState(SPEED);
 
-  // const [showObstacle, setShowObstacle] = useState(true)
-  // const destroyObstacle = useCallback(() => {
-
-  //   setShowObstacle(showObstacle => !showObstacle)
-  //   return () => AbortController.abort()
-
-  // }, [setShowObstacle])
-
   return (
-    <>
-      <Canvas camera={{ position: [0, 25, -100] }} perspective="true">
-        <ambientLight />
-        <pointLight position={[100, 100, 100]} />
-        <Ground position={[0, 0, 175]} />
-        <Road speed={speed} />
+    <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
+      <ambientLight />
+      <pointLight position={[100, 100, 100]} />
+      <Ground position={[0, 0, 175]} />
+      <Road speed={speed} />
 
-        {/* {showObstacle && <Obstacle destroyObstacle={destroyObstacle}/>}
-         */}
-        <Obstacles />
-        <Song />
-        <Car
-          position={[0, 1, -70]}
-          color={"white"}
-          avgSpeed={SPEED}
-          setSpeed={setSpeed}
-        />
-        {/* <OrbitControl /> */}
-        <Suspense fallback={null}>{/* <Zuckerberg /> */}</Suspense>
-      </Canvas>
-    </>
+      <Obstacles objects={objects} setObjects={setObjects} />
+
+      <Car
+        position={playerPosition}
+        color={"white"}
+        avgSpeed={SPEED}
+        setSpeed={setSpeed}
+        setPosition={setPlayerPosition}
+      />
+      {/* <OrbitControl /> */}
+      {/* <Suspense fallback={null}>
+        <Zuckerberg/>
+      </Suspense> */}
+    </Canvas>
   );
 }

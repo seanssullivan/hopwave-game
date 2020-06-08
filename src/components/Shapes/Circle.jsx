@@ -8,10 +8,9 @@ import useMovement from "../../hooks/useMovement";
 import settings from "../../settings";
 
 const { SPEED } = settings.GAME;
+const { RADIUS } = settings.SHAPE;
 
-const RADIUS = 7;
-
-export default function Donut(props) {
+export default function Circle(props) {
   const { destroyObstacle } = props;
 
   // This reference will give us direct access to the mesh
@@ -20,6 +19,7 @@ export default function Donut(props) {
 
   useFrame(() => {
     move(0 - SPEED);
+
     if (mesh.current.position.z <= -200) {
       destroyObstacle();
     }
@@ -27,7 +27,7 @@ export default function Donut(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <torusBufferGeometry attach="geometry" args={[RADIUS]} />
+      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 30, 30]} />
       <meshToonMaterial attach="material" color={"red"} />
     </mesh>
   );
