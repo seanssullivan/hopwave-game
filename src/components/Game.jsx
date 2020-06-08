@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Canvas } from "react-three-fiber";
 import Obstacles from "./Obstacles";
 import "./Game.scss";
@@ -10,6 +10,8 @@ import Car from "./Car";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";
+import useCollisionDetection from "../hooks/useCollisionDetection";
+import useSoundEffect from "../hooks/useSoundEffect";
 
 // Optional components
 // import OrbitControl from "./OrbitControls";
@@ -20,9 +22,20 @@ import settings from "../settings";
 const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
-  const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
-  const [objects, setObjects] = useState([]);
   const [speed, setSpeed] = useState(SPEED);
+  const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
+  const [objectPositions, setObjectPositions] = useState({});
+  const detectCollision = useCollisionDetection(
+    playerPosition,
+    objectPositions
+  );
+  const playSound = useSoundEffect();
+
+  useEffect(() => {
+    if (detectCollision(playerPosition)) {
+      playSound();
+    }
+  }, [playerPosition, detectCollision, playSound]);
 
   return (
     <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
@@ -31,13 +44,13 @@ export default function Game() {
       <Ground position={[0, 0, 175]} />
       <Road speed={speed} />
 
-      <Obstacles objects={objects} setObjects={setObjects} />
+      <Obstacles setObjectPositions={setObjectPositions} />
 
       <Car
-        position={playerPosition}
         color={"white"}
         avgSpeed={SPEED}
         setSpeed={setSpeed}
+        position={playerPosition}
         setPosition={setPlayerPosition}
       />
       {/* <OrbitControl /> */}

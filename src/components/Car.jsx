@@ -5,7 +5,6 @@ import { useFrame } from "react-three-fiber";
 // Import hooks
 import useKeyPress from "../hooks/useKeyPress";
 import useMovement from "../hooks/useMovement";
-import useSoundEffect from "../hooks/useSoundEffect";
 
 // Import settings
 import settings from "../settings";
@@ -24,14 +23,11 @@ export default function Car(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef();
   const move = useMovement(mesh, "x", props.setPlayerPosition);
-  const playSound = useSoundEffect(); // Temp
 
   const { keyPressed: aKeyPressed } = useKeyPress("a");
   const { keyPressed: dKeyPressed } = useKeyPress("d");
   const { keyPressed: wKeyPressed } = useKeyPress("w");
   const { keyPressed: sKeyPressed } = useKeyPress("s");
-
-  const { keyPressed: fKeyPressed } = useKeyPress("f"); // Temp
 
   useFrame(() => {
     // Move the car side-to-side using the A and D keys
@@ -79,10 +75,6 @@ export default function Car(props) {
           ? (prev += ACCELERATION)
           : prev;
       });
-    }
-    // Temp
-    if (fKeyPressed) {
-      playSound();
     }
   });
 

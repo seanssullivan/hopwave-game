@@ -10,7 +10,7 @@ const { SPEED } = settings.GAME;
 const { RADIUS } = settings.SHAPE;
 
 export default function Square(props) {
-  const { destroyObstacle } = props;
+  const { destroyShape, setPosition } = props;
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
@@ -18,8 +18,14 @@ export default function Square(props) {
 
   useFrame(() => {
     move(0 - SPEED);
+
+    setPosition((positions) => {
+      positions[props.key] = mesh.current.position;
+      return positions;
+    });
+
     if (mesh.current.position.z <= -200) {
-      destroyObstacle();
+      destroyShape(props.key);
     }
   });
 
