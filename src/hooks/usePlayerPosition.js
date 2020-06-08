@@ -4,7 +4,7 @@ import { useState } from "react";
 
 /**
  * Return player position and a function to update the player position in state.
- * @param {Object} mesh - Three.js object mesh
+ * @param {Object} initialPosition - Initial player coordinates
  */
 export default function usePlayerPosition(initialPosition = [0, 0, 0]) {
   const [position, setPosition] = useState(initialPosition);
