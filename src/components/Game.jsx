@@ -12,8 +12,6 @@ import Song from "./Song";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";
-import useCollisionDetection from "../hooks/useCollisionDetection";
-import useSoundEffect from "../hooks/useSoundEffect";
 
 // Optional components
 // import OrbitControl from "./OrbitControls";
@@ -27,17 +25,8 @@ export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
   const [speed, setSpeed] = useState(SPEED);
   const [objectPositions, setObjectPositions] = useState({});
-  const detectCollision = useCollisionDetection(
-    playerPosition,
-    objectPositions
-  );
-  const playSound = useSoundEffect();
 
-  useEffect(() => {
-    if (detectCollision(playerPosition)) {
-      playSound();
-    }
-  }, [playerPosition, detectCollision, playSound]);
+  useEffect(() => {});
 
   return (
     <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
@@ -46,7 +35,7 @@ export default function Game() {
       <Ground position={[0, 0, 175]} />
       <Road speed={speed} />
 
-      <Obstacles setObjectPositions={setObjectPositions} />
+      <Obstacles setShapePositions={setObjectPositions} />
 
       <Car
         color={"white"}

@@ -11,7 +11,7 @@ const { SPEED } = settings.GAME;
 const { RADIUS } = settings.SHAPE;
 
 export default function Hexagon(props) {
-  const { destroyShape, setPosition } = props;
+  const { destroyShape, setPositions } = props;
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
@@ -20,13 +20,13 @@ export default function Hexagon(props) {
   useFrame(() => {
     move(0 - SPEED);
 
-    setPosition((positions) => {
-      positions[props.key] = mesh.current.position;
+    setPositions((positions) => {
+      positions[props.shapeId] = mesh.current.position;
       return positions;
     });
 
     if (mesh.current.position.z <= -200) {
-      destroyShape(props.key);
+      destroyShape(props.shapeId);
     }
   });
 

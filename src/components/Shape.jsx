@@ -6,7 +6,7 @@ import Square from "./Shapes/Square";
 import Triangle from "./Shapes/Triangle";
 
 export default function Shape(props) {
-  const destroyObject = props.destroyObject;
+  const { destroyShape, setPositions } = props;
   const shapes = ["Hexagon", "Circle", "Square", "Triangle"];
 
   const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
@@ -14,33 +14,41 @@ export default function Shape(props) {
   if (randomShape === "Hexagon") {
     return (
       <Hexagon
-        key={props.key}
+        key={props.shapeId}
+        shapeId={props.shapeId}
         position={props.position}
-        destroyShape={destroyObject}
+        destroyShape={destroyShape}
+        setPositions={setPositions}
       />
     );
   } else if (randomShape === "Circle") {
     return (
       <Circle
-        key={props.key}
+        key={props.shapeId}
+        shapeId={props.shapeId}
         position={props.position}
-        destroyShape={destroyObject}
+        destroyShape={destroyShape}
+        setPositions={setPositions}
       />
     );
   } else if (randomShape === "Square") {
     return (
       <Square
-        key={props.key}
+        key={props.shapeId}
+        shapeId={props.shapeId}
         position={props.position}
-        destroyShape={destroyObject}
+        destroyShape={destroyShape}
+        setPositions={setPositions}
       />
     );
   } else {
     return (
       <Triangle
-        key={props.key}
+        key={props.shapeId}
+        shapeId={props.shapeId}
         position={props.position}
-        destroyShape={destroyObject}
+        destroyShape={destroyShape}
+        setPositions={setPositions}
       />
     );
   }

@@ -22,7 +22,7 @@ const {
 export default function Car(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef();
-  const move = useMovement(mesh, "x", props.setPlayerPosition);
+  const move = useMovement(mesh, "x", props.setPosition);
 
   const { keyPressed: aKeyPressed } = useKeyPress("a");
   const { keyPressed: dKeyPressed } = useKeyPress("d");
