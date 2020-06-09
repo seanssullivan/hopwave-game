@@ -5,8 +5,6 @@ import * as Tone from "tone";
 import "./Game.scss";
 
 // Import components
-import Ground from "./Ground";
-import Grid from "./Grid";
 import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
@@ -39,29 +37,23 @@ export default function Game() {
 
   return (
     <>
-      <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
-        <ambientLight />
-        <pointLight position={[100, 100, 100]} />
-        <Grid position={[0, -0.8, 200]} />
-        <Ground position={[0, -1, 200]} />
-        <Road speed={speed} />
+      <Road speed={speed} />
 
-        <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
-        {/* <Sun /> */}
-        <Car
-          color={"white"}
-          avgSpeed={SPEED}
-          setSpeed={setSpeed}
-          position={playerPosition}
-          setPosition={setPlayerPosition}
-        />
+      <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
+      {/* <Sun /> */}
+      <Car
+        color={"white"}
+        avgSpeed={SPEED}
+        setSpeed={setSpeed}
+        position={playerPosition}
+        setPosition={setPlayerPosition}
+      />
 
-        {/* <OrbitControl /> */}
-        <Suspense fallback={null}>
-          <PalmTrees />
-          {/* <Zuckerberg/> */}
-        </Suspense>
-      </Canvas>
+      {/* <OrbitControl /> */}
+      <Suspense fallback={null}>
+        <PalmTrees />
+        {/* <Zuckerberg/> */}
+      </Suspense>
       {/* <Hud player={player} /> */}
     </>
   );
