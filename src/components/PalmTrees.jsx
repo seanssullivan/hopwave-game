@@ -17,7 +17,7 @@ export default function PalmTrees(props) {
 
   useFrame(() => {
     const now = Date.now();
-    if (Date.now() - time >= 1000) {
+    if (Date.now() - time >= 850) {
       setObjects((all) => {
         const leftSide = ROAD_WIDTH - 40;
         const rightSide = ROAD_WIDTH - 160;
@@ -25,12 +25,12 @@ export default function PalmTrees(props) {
           ...all,
           <PalmTree
             key={key}
-            position={[leftSide, 5, 600]}
+            position={[leftSide, 0, 600]}
             destroyObstacle={destroyObject}
           />,
           <PalmTree
             key={key + 1}
-            position={[rightSide, 5, 600]}
+            position={[rightSide, 0, 600]}
             destroyObstacle={destroyObject}
           />,
         ];
