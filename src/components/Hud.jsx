@@ -15,7 +15,6 @@ export default function Hud(props) {
   );
   const [music, setMusic] = useState(false);
 
-  console.log(music);
   useEffect(() => {
     if (music) {
       player.start();
@@ -62,7 +61,9 @@ export default function Hud(props) {
         {/* <h1>{score}</h1> */}
       </LowerLeft>
       <Global />
-      <LowerRight>{/* <div style={{ width: 100 + "%" }} /> */}</LowerRight>
+      <LowerRight>
+        <div style={{ width: 100 + "%" }} />
+      </LowerRight>
     </>
   );
 }
