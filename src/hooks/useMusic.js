@@ -8,14 +8,13 @@ import * as Tone from "tone";
 export function useMusic() {
   const [song, setSong] = useState(false);
   const [bpm, setBpm] = useState(100);
-
-  var player = new Tone.Player({
-    url: "Song.mp3",
-    autostart: false,
-    volume: -15,
-  }).toMaster();
-
-  new Tone.StereoEffect();
+  const [player] = useState(() =>
+    new Tone.Player({
+      url: "Song.mp3",
+      autostart: true,
+      volume: -15,
+    }).toMaster()
+  );
 
   return { bpm, setBpm, player };
 }
