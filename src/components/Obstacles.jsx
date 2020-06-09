@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-// import RandomObstacle from "./RandomObstacle"
 import { useFrame } from "react-three-fiber";
-import Dodecahedron from "./Shapes/Dodecahedron";
-import Donut from "./Shapes/Donut";
-import Box from "./Shapes/Box";
+
+import Hexagon from "./Shapes/Hexagon";
+import Circle from "./Shapes/Circle";
+import Square from "./Shapes/Square";
 import Triangle from "./Shapes/Triangle";
 
 import settings from "../settings";
 const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
-
-const SHAPE_WIDTH = 30;
+const { RADIUS } = settings.SHAPE;
 
 export default function Obstacles(props) {
-  const [objects, setObjects] = useState([]);
+  const objects = props.objects;
+  const setObjects = props.setObjects;
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
-  const [shape, setShape] = useState();
 
   const destroyObject = function (key) {
     setObjects((all) => all.slice(1));
@@ -24,41 +23,40 @@ export default function Obstacles(props) {
   useFrame(() => {
     const now = Date.now();
     if (Date.now() - time >= 2500) {
-      const shapes = ["Dodecahedron", "Donut", "Box", "Triangle"];
+      const shapes = ["Hexagon", "Circle", "Square", "Triangle"];
 
       const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-      setShape(() => randomShape);
       const randomX =
-        Math.abs(Math.random() * ROAD_WIDTH - SHAPE_WIDTH) -
-        (ROAD_WIDTH - SHAPE_WIDTH) / 2;
+        Math.abs(Math.random() * ROAD_WIDTH - RADIUS) -
+        (ROAD_WIDTH - RADIUS) / 2;
 
-      if (shape === "Dodecahedron") {
+      if (randomShape === "Hexagon") {
         setObjects((all) => {
           return [
             ...all,
-            <Dodecahedron
+            <Hexagon
               key={key}
               position={[randomX, 15, 600]}
               destroyObstacle={destroyObject}
             />,
           ];
         });
-      } else if (shape === "Donut") {
+      } else if (randomShape === "Circle") {
         setObjects((all) => {
           return [
             ...all,
-            <Donut
+            <Circle
               key={key}
               position={[randomX, 15, 600]}
               destroyObstacle={destroyObject}
             />,
           ];
         });
-      } else if (shape === "Box") {
+      } else if (randomShape === "Square") {
         setObjects((all) => {
           return [
             ...all,
-            <Box
+            <Square
               key={key}
               position={[randomX, 15, 600]}
               destroyObstacle={destroyObject}

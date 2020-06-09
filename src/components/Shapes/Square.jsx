@@ -7,10 +7,9 @@ import useMovement from "../../hooks/useMovement";
 // Import settings
 import settings from "../../settings";
 const { SPEED } = settings.GAME;
+const { RADIUS } = settings.SHAPE;
 
-const SHAPE_WIDTH = 30;
-
-export default function Box(props) {
+export default function Square(props) {
   const { destroyObstacle } = props;
 
   // This reference will give us direct access to the mesh
@@ -25,11 +24,13 @@ export default function Box(props) {
   });
 
   return (
-    <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <boxBufferGeometry
-        attach="geometry"
-        args={[SHAPE_WIDTH, SHAPE_WIDTH, 1]}
-      />
+    <mesh
+      {...props}
+      ref={mesh}
+      scale={[1, 1, 1]}
+      rotation={[0, 0, -Math.PI / 4]}
+    >
+      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 4, 4]} />
       <meshStandardMaterial attach="material" color={"purple"} />
     </mesh>
   );

@@ -15,5 +15,19 @@ describe("useMovement", () => {
       result.current(5);
       expect(ref.current.position.x).toBe(5);
     });
+    it("should call the callback when passed a callback function", () => {
+      const ref = { current: { position: { x: 0, y: 0, z: 0 } } };
+      const callback = jest.fn();
+      const { result } = renderHook(() => useMovement(ref, "x", callback));
+      result.current(5);
+      expect(callback).toHaveBeenCalled();
+    });
+    it("should call the callback function with the mesh reference as an argument", () => {
+      const ref = { current: { position: { x: 0, y: 0, z: 0 } } };
+      const callback = jest.fn();
+      const { result } = renderHook(() => useMovement(ref, "x", callback));
+      result.current(10);
+      expect(callback).toHaveBeenCalledWith(ref);
+    });
   });
 });
