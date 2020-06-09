@@ -6,7 +6,7 @@ import Square from "./Shapes/Square";
 import Triangle from "./Shapes/Triangle";
 
 export default function Shape(props) {
-  const { destroyShape, setPositions } = props;
+  const { destroyShape, setPositions, playerPosition } = props;
   const shapes = ["Hexagon", "Circle", "Square", "Triangle"];
 
   const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
@@ -19,6 +19,7 @@ export default function Shape(props) {
         position={props.position}
         destroyShape={destroyShape}
         setPositions={setPositions}
+        playerPosition={playerPosition}
       />
     );
   } else if (randomShape === "Circle") {
@@ -29,6 +30,7 @@ export default function Shape(props) {
         position={props.position}
         destroyShape={destroyShape}
         setPositions={setPositions}
+        playerPosition={playerPosition}
       />
     );
   } else if (randomShape === "Square") {
@@ -39,6 +41,7 @@ export default function Shape(props) {
         position={props.position}
         destroyShape={destroyShape}
         setPositions={setPositions}
+        playerPosition={playerPosition}
       />
     );
   } else {
@@ -49,6 +52,7 @@ export default function Shape(props) {
         position={props.position}
         destroyShape={destroyShape}
         setPositions={setPositions}
+        playerPosition={playerPosition}
       />
     );
   }
