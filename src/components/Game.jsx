@@ -5,6 +5,7 @@ import "./Game.scss";
 
 // Import components
 import Ground from "./Ground";
+import Grid from "./Grid";
 import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
@@ -36,8 +37,8 @@ export default function Game() {
       <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
         <ambientLight />
         <pointLight position={[100, 100, 100]} />
-        <Ground position={[0, -0.8, 200]} />
-
+        <Grid position={[0, -0.8, 200]} />
+        <Ground position={[0, -1, 200]} />
         <Road speed={speed} />
 
         <Obstacles
