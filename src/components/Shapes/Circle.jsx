@@ -3,7 +3,6 @@ import { useFrame } from "react-three-fiber";
 
 // Import hooks
 import useMovement from "../../hooks/useMovement";
-import useSoundEffect from "../../hooks/useSoundEffect";
 
 // Import helpers
 import detectCollision from "../../helpers/detectCollision";
@@ -15,8 +14,7 @@ const { SPEED } = settings.GAME;
 const { RADIUS } = settings.SHAPE;
 
 export default function Circle(props) {
-  const playSound = useSoundEffect();
-  const { destroyShape, setPositions, playerPosition } = props;
+  const { destroyShape, soundEffect, playerPosition } = props;
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
@@ -25,12 +23,7 @@ export default function Circle(props) {
   useFrame(() => {
     move(0 - SPEED);
 
-    setPositions((positions) => {
-      positions[props.shapeId] = mesh.current.position;
-      return positions;
-    });
-
-    detectCollision(mesh.current.position, playerPosition, () => playSound());
+    detectCollision(mesh.current.position, playerPosition, () => soundEffect());
 
     if (mesh.current.position.z <= -200) {
       destroyShape(props.shapeId);
