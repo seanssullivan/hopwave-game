@@ -15,7 +15,7 @@ export default function Ground(props) {
       rotation={[-Math.PI / 2, 0, 0]}
       scale={[1, 1, 1]}
     >
-      <planeGeometry attach="geometry" args={[WIDTH, LENGTH, 100, 30]} />
+      <planeBufferGeometry attach="geometry" args={[WIDTH, LENGTH, 100, 30]} />
       <meshBasicMaterial
         attach="material"
         color={COLOR}

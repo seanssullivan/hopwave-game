@@ -6,31 +6,103 @@ source: https://sketchfab.com/3d-models/elon-musk-running-6ad4bbc11db84e29aa2700
 title: Elon Musk Running
 */
 
-import * as THREE from 'three'
-import React, { useRef, useState, useEffect } from 'react'
-import { useLoader, useFrame } from 'react-three-fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import * as THREE from "three";
+import React, { useRef, useState, useEffect } from "react";
+import { useLoader, useFrame } from "react-three-fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+// Import hooks
+import useKeyPress from "../hooks/useKeyPress";
+import useMovement from "../hooks/useMovement";
+
+// Import settings
+import settings from "../settings";
+const { ACCELERATION, TURN_SPEED, ROTATION, BOUNDARY } = settings.CAR;
 
 export default function Model(props) {
-  const group = useRef()
-  const { nodes, materials, animations } = useLoader(GLTFLoader, '/Elon/scene.gltf')
+  const { avgSpeed, setPosition, position, setSpeed } = props;
+  const group = useRef();
+  const { nodes, materials, animations } = useLoader(
+    GLTFLoader,
+    "/Elon/scene.gltf"
+  );
 
-  const actions = useRef()
-  const [mixer] = useState(() => new THREE.AnimationMixer())
-  useFrame((state, delta) => mixer.update(delta))
-  useEffect(() => void mixer.clipAction(animations[0], group.current).play(), [])
+  const actions = useRef();
+  const [mixer] = useState(() => new THREE.AnimationMixer());
+  useFrame((state, delta) => mixer.update(delta));
+  useEffect(
+    () => void mixer.clipAction(animations[0], group.current).play(),
+    []
+  );
+
+  const move = useMovement(group, "x", setPosition);
+
+  const { keyPressed: aKeyPressed } = useKeyPress("a");
+  const { keyPressed: dKeyPressed } = useKeyPress("d");
+  const { keyPressed: wKeyPressed } = useKeyPress("w");
+  const { keyPressed: sKeyPressed } = useKeyPress("s");
+
+  useFrame(() => {
+    // Move the car side-to-side using the A and D keys
+    if (aKeyPressed && group.current.position.x <= BOUNDARY) {
+      if (group.current.rotation.y < 0.1) {
+        // Add a slight rotation when car is moving to the right
+        group.current.rotation.y += ROTATION;
+      }
+      move(TURN_SPEED);
+    }
+    if (dKeyPressed && group.current.position.x >= 0 - BOUNDARY) {
+      if (group.current.rotation.y > -0.1) {
+        // Add a slight rotation when car is moving to the left
+        group.current.rotation.y -= ROTATION;
+      }
+      move(0 - TURN_SPEED);
+    }
+
+    // Straight car when not moving to either side
+    if (
+      (!aKeyPressed && !dKeyPressed) ||
+      group.current.position.x >= BOUNDARY ||
+      group.current.position.x <= 0 - BOUNDARY
+    ) {
+      if (group.current.rotation.y < 0) {
+        group.current.rotation.y += ROTATION;
+      }
+      if (group.current.rotation.y > 0) {
+        group.current.rotation.y -= ROTATION;
+      }
+    }
+
+    // Control speed with W and S keys
+    if (wKeyPressed) {
+      setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
+    }
+    if (sKeyPressed) {
+      setSpeed((prev) => (prev <= 3 ? prev : (prev -= ACCELERATION)));
+    }
+    if (!wKeyPressed && !sKeyPressed) {
+      setSpeed((prev) => {
+        return prev > avgSpeed
+          ? (prev -= ACCELERATION)
+          : prev < avgSpeed
+          ? (prev += ACCELERATION)
+          : prev;
+      });
+    }
+  });
   return (
     <group ref={group} {...props} dispose={null}>
-      
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <group scale={[0.3, 0.3, 0.3]}>
+        <group scale={[0.13, 0.13, 0.13]}>
           <group rotation={[Math.PI / 2, 0, 0]}>
             <primitive object={nodes._rootJoint} />
-            <group position={[0, -2.9, 158.42]} rotation={[Math.PI / 2, 0, 0]} />
+            <group
+              position={[0, -2.9, 158.42]}
+              rotation={[Math.PI / 2, 0, 0]}
+            />
             <skinnedMesh
               material={materials.bow_tie}
-              geometry={nodes['bow_tie_bow tie_0'].geometry}
-              skeleton={nodes['bow_tie_bow tie_0'].skeleton}
+              geometry={nodes["bow_tie_bow tie_0"].geometry}
+              skeleton={nodes["bow_tie_bow tie_0"].skeleton}
             />
             <skinnedMesh
               material={materials.Blazer}
@@ -39,8 +111,8 @@ export default function Model(props) {
             />
             <skinnedMesh
               material={materials.Henley_Longsleeve}
-              geometry={nodes['Henley_Longsleeve_Henley Longsleeve_0'].geometry}
-              skeleton={nodes['Henley_Longsleeve_Henley Longsleeve_0'].skeleton}
+              geometry={nodes["Henley_Longsleeve_Henley Longsleeve_0"].geometry}
+              skeleton={nodes["Henley_Longsleeve_Henley Longsleeve_0"].skeleton}
             />
             <skinnedMesh
               material={materials.Jeans}
@@ -73,9 +145,9 @@ export default function Model(props) {
               skeleton={nodes.CC_Base_Eye_eyes_0.skeleton}
             />
             <skinnedMesh
-              material={materials['embed_hair_male.1']}
-              geometry={nodes['Hair_embed_hair_male.1_0'].geometry}
-              skeleton={nodes['Hair_embed_hair_male.1_0'].skeleton}
+              material={materials["embed_hair_male.1"]}
+              geometry={nodes["Hair_embed_hair_male.1_0"].geometry}
+              skeleton={nodes["Hair_embed_hair_male.1_0"].skeleton}
             />
             <skinnedMesh
               material={materials.Fingernail}
@@ -86,5 +158,5 @@ export default function Model(props) {
         </group>
       </group>
     </group>
-  )
+  );
 }
