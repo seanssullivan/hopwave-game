@@ -1,54 +1,60 @@
+import * as THREE from "three";
 import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
-import Obstacles from "./Obstacles"
 import "./Game.scss";
 
 // Import components
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
+import PalmTrees from "./PalmTrees";
+import Obstacles from "./Obstacles";
+import Song from "./Song";
+
+// Import hooks
+import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
 import OrbitControl from "./OrbitControls";
-import Zuckerberg from "./Zuckerberg";
+// import Zuckerberg from "./Zuckerberg";
 
 // Import settings
 import settings from "../settings";
-const { SPEED } = settings.GAME;
+const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
+  const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
   const [speed, setSpeed] = useState(SPEED);
+  const [objectPositions, setObjectPositions] = useState({});
 
-  // const [showObstacle, setShowObstacle] = useState(true)
-  // const destroyObstacle = useCallback(() => {
-    
-  //   setShowObstacle(showObstacle => !showObstacle)
-  //   return () => AbortController.abort()
-
-  // }, [setShowObstacle])
-
-
+  useEffect(() => {});
 
   return (
-    <Canvas camera={{ position: [0, 25, -100] }} perspective="true">
+    <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
       <ambientLight />
       <pointLight position={[100, 100, 100]} />
       <Ground position={[0, 0, 175]} />
+
       <Road speed={speed} />
-     
-      {/* {showObstacle && <Obstacle destroyObstacle={destroyObstacle}/>}
-       */}
-      <Obstacles />
-  
+
+      <Obstacles
+        playerPosition={playerPosition}
+        shapePositions={objectPositions}
+        setShapePositions={setObjectPositions}
+      />
+
       <Car
-        position={[0, 1, -70]}
         color={"white"}
         avgSpeed={SPEED}
         setSpeed={setSpeed}
+        position={playerPosition}
+        setPosition={setPlayerPosition}
       />
-      <OrbitControl />
+
+      {/* <OrbitControl /> */}
       <Suspense fallback={null}>
-        <Zuckerberg/>
+        <PalmTrees />
+        {/* <Zuckerberg/> */}
       </Suspense>
     </Canvas>
   );
