@@ -10,7 +10,7 @@ import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
 // import Sun from "./Sun";
-// import Hud from "./Hud";
+import Hud from "./Hud";
 import PalmTrees from "./PalmTrees";
 
 // Import hooks
@@ -20,7 +20,7 @@ import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
 // import OrbitControl from "./OrbitControls";
-// import Zuckerberg from "./Zuckerberg";
+import Zuckerberg from "./Zuckerberg";
 
 // Import settings
 import settings from "../settings";
@@ -47,18 +47,23 @@ export default function Game() {
 
         <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
         {/* <Sun /> */}
-        <Car
+        {/* <Car
           color={"white"}
           avgSpeed={SPEED}
           setSpeed={setSpeed}
           position={playerPosition}
           setPosition={setPlayerPosition}
-        />
+        /> */}
 
         {/* <OrbitControl /> */}
         <Suspense fallback={null}>
           <PalmTrees />
-          {/* <Zuckerberg/> */}
+          <Zuckerberg
+            avgSpeed={SPEED}
+            setSpeed={setSpeed}
+            position={playerPosition}
+            setPosition={setPlayerPosition}
+          />
         </Suspense>
       </Canvas>
 
