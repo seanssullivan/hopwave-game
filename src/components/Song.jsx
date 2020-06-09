@@ -10,11 +10,7 @@ export default function Song() {
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
 
   return (
-    <mesh
-      ref={mesh}
-      position={[0, 150, 600]}
-      onClick={() => (player ? player.start() : null)}
-    >
+    <mesh ref={mesh} position={[0, 150, 600]}>
       <dodecahedronBufferGeometry attach="geometry" args={[80]} />
       <meshToonMaterial attach="material" color={"yellow"} />
     </mesh>
