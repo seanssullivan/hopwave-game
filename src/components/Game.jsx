@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
-import * as Tone from "tone";
 import "./Game.scss";
 
 // Import components
@@ -32,10 +31,6 @@ export default function Game() {
   const [speed, setSpeed] = useState(SPEED);
   const [musicPlayer] = useMusic(speed);
   const [playSound] = useSoundEffects();
-
-  useEffect(() => {
-    musicPlayer.playbackRate = 1 + speed / 10 - 5;
-  }, [musicPlayer, speed]);
 
   return (
     <>
