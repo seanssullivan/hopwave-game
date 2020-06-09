@@ -4,13 +4,11 @@ import { Canvas } from "react-three-fiber";
 import "./Game.scss";
 
 // Import components
-import Ground from "./Ground";
-import Grid from "./Grid";
 import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
 // import Sun from "./Sun";
-// import Hud from "./Hud";
+
 import PalmTrees from "./PalmTrees";
 
 // Import hooks
@@ -19,7 +17,7 @@ import useSoundEffects from "../hooks/useSoundEffects";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
-// import OrbitControl from "./OrbitControls";
+//import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
 // Import settings
@@ -34,30 +32,23 @@ export default function Game() {
 
   return (
     <>
-      <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
-        <ambientLight />
-        <pointLight position={[100, 100, 100]} />
-        <Grid position={[0, -0.8, 200]} />
-        <Ground position={[0, -1, 200]} />
-        <Road speed={speed} />
+      <Road speed={speed} />
 
-        <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
-        {/* <Sun /> */}
-        <Car
-          color={"white"}
-          avgSpeed={SPEED}
-          setSpeed={setSpeed}
-          position={playerPosition}
-          setPosition={setPlayerPosition}
-        />
+      <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
+      {/* <Sun /> */}
+      <Car
+        color={"white"}
+        avgSpeed={SPEED}
+        setSpeed={setSpeed}
+        position={playerPosition}
+        setPosition={setPlayerPosition}
+      />
 
-        {/* <OrbitControl /> */}
-        <Suspense fallback={null}>
-          <PalmTrees />
-          {/* <Zuckerberg/> */}
-        </Suspense>
-      </Canvas>
-      {/* <Hud player={player} /> */}
+      {/* <OrbitControl /> */}
+      <Suspense fallback={null}>
+        <PalmTrees />
+        {/* <Zuckerberg/> */}
+      </Suspense>
     </>
   );
 }
