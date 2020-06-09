@@ -7,6 +7,7 @@ import "./Game.scss";
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
+import PalmTrees from "./PalmTrees";
 import Obstacles from "./Obstacles";
 import Song from "./Song";
 
@@ -14,7 +15,7 @@ import Song from "./Song";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
-// import OrbitControl from "./OrbitControls";
+import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
 // Import settings
@@ -23,8 +24,8 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
-  const [objectPositions, setObjectPositions] = useState({});
   const [speed, setSpeed] = useState(SPEED);
+  const [objectPositions, setObjectPositions] = useState({});
 
   useEffect(() => {});
 
@@ -33,6 +34,7 @@ export default function Game() {
       <ambientLight />
       <pointLight position={[100, 100, 100]} />
       <Ground position={[0, 0, 175]} />
+
       <Road speed={speed} />
 
       <Obstacles
@@ -48,10 +50,12 @@ export default function Game() {
         position={playerPosition}
         setPosition={setPlayerPosition}
       />
-      {/* <OrbitControl /> */}
-      {/* <Suspense fallback={null}>
-        <Zuckerberg/>
-      </Suspense> */}
+
+      <OrbitControl />
+      <Suspense fallback={null}>
+        <PalmTrees />
+        {/* <Zuckerberg/> */}
+      </Suspense>
     </Canvas>
   );
 }
