@@ -20,9 +20,10 @@ const {
 } = settings.CAR;
 
 export default function Car(props) {
+  const { avgSpeed, setPosition, position, setSpeed } = props;
   // This reference will give us direct access to the mesh
   const mesh = useRef();
-  const move = useMovement(mesh, "x", props.setPosition);
+  const move = useMovement(mesh, "x", setPosition);
 
   const { keyPressed: aKeyPressed } = useKeyPress("a");
   const { keyPressed: dKeyPressed } = useKeyPress("d");
@@ -62,16 +63,16 @@ export default function Car(props) {
 
     // Control speed with W and S keys
     if (wKeyPressed) {
-      props.setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
+      setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
     }
     if (sKeyPressed) {
-      props.setSpeed((prev) => (prev <= 3 ? prev : (prev -= ACCELERATION)));
+      setSpeed((prev) => (prev <= 3 ? prev : (prev -= ACCELERATION)));
     }
     if (!wKeyPressed && !sKeyPressed) {
-      props.setSpeed((prev) => {
-        return prev > props.avgSpeed
+      setSpeed((prev) => {
+        return prev > avgSpeed
           ? (prev -= ACCELERATION)
-          : prev < props.avgSpeed
+          : prev < avgSpeed
           ? (prev += ACCELERATION)
           : prev;
       });

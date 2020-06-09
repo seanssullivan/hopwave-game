@@ -1,13 +1,22 @@
 import React, { useMemo, useRef, useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
+import * as Tone from "tone";
 
 export default function Hud(props) {
   // const points = useStore((state) => state.points);
   // const health = useStore((state) => state.health);
-  const { player } = props;
-  const [music, setMusic] = useState(false);
 
-  console.log(music);
+  const [player] = useState(() =>
+    new Tone.Player({
+      url: "Song.mp3",
+      autostart: false,
+      volume: -15,
+    }).toMaster()
+  );
+  
+  const [music, setMusic] = useState(false);
+  // console.log(music);
+  
   useEffect(() => {
     if (music) {
       player.start();
@@ -15,7 +24,6 @@ export default function Hud(props) {
       player.stop();
     }
   }, [music, player]);
-
   const startMusic = function () {
     if (!music) {
       setMusic(true);
@@ -54,7 +62,9 @@ export default function Hud(props) {
         {/* <h1>{score}</h1> */}
       </LowerLeft>
       <Global />
-      <LowerRight>{/* <div style={{ width: 100 + "%" }} /> */}</LowerRight>
+      <LowerRight>
+        <div style={{ width: 100 + "%" }} />
+      </LowerRight>
     </>
   );
 }
