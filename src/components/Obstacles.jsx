@@ -10,7 +10,7 @@ export default function Obstacles(props) {
   const [objects, setObjects] = useState([]);
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
-  const { setShapePositions } = props;
+  const { playerPosition, setShapePositions } = props;
 
   const randomX =
     Math.abs(Math.random() * ROAD_WIDTH - RADIUS) - (ROAD_WIDTH - RADIUS) / 2;
@@ -35,6 +35,7 @@ export default function Obstacles(props) {
             position={[randomX, 15, 600]}
             destroyShape={destroyObject}
             setPositions={setShapePositions}
+            playerPosition={playerPosition}
           />,
         ];
       });

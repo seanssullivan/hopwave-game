@@ -11,7 +11,7 @@ export default function PalmTrees(props) {
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
 
-  const destroyObject = function (key) {
+  const destroyObject = function () {
     setObjects((all) => all.slice(1));
   };
 
@@ -29,7 +29,7 @@ export default function PalmTrees(props) {
             destroyObstacle={destroyObject}
           />,
           <PalmTree
-            key={key}
+            key={key + 1}
             position={[rightSide, 5, 600]}
             destroyObstacle={destroyObject}
           />,
@@ -37,7 +37,7 @@ export default function PalmTrees(props) {
       });
 
       setTime(() => now);
-      setKey((prev) => (prev += 1));
+      setKey((prev) => (prev += 2));
     }
   });
 
