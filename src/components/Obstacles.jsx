@@ -16,7 +16,7 @@ export default function Obstacles(props) {
     Math.abs(Math.random() * ROAD_WIDTH - RADIUS) - (ROAD_WIDTH - RADIUS) / 2;
 
   useFrame(() => {
-    const destroyObject = function (key) {
+    const destroyShape = function (key) {
       setObjects((all) => all.slice(1));
       setShapePositions((positions) => {
         delete positions[key];
@@ -33,7 +33,7 @@ export default function Obstacles(props) {
             key={key}
             shapeId={key}
             position={[randomX, 15, 600]}
-            destroyShape={destroyObject}
+            destroyShape={destroyShape}
             setPositions={setShapePositions}
             playerPosition={playerPosition}
           />,
