@@ -1,4 +1,3 @@
-import { useState } from "react";
 import * as Tone from "tone";
 
 const musicPlayer = new Tone.Player({
@@ -14,5 +13,6 @@ const musicPlayer = new Tone.Player({
  */
 export default function useMusic(speed) {
   musicPlayer.playbackRate = 1 + speed / 10 - 0.5;
+
   return [musicPlayer];
 }
