@@ -7,6 +7,7 @@ import "./Game.scss";
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
+import PalmTrees from "./PalmTrees";
 import Obstacles from "./Obstacles";
 import Song from "./Song";
 
@@ -26,13 +27,12 @@ export default function Game() {
   const [speed, setSpeed] = useState(SPEED);
   const [objectPositions, setObjectPositions] = useState({});
 
-  useEffect(() => {});
-
   return (
     <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
       <ambientLight />
       <pointLight position={[100, 100, 100]} />
       <Ground position={[0, 0, 175]} />
+
       <Road speed={speed} />
 
       <Obstacles setShapePositions={setObjectPositions} />
@@ -44,6 +44,7 @@ export default function Game() {
         position={playerPosition}
         setPosition={setPlayerPosition}
       />
+
       {/* <OrbitControl /> */}
       {/* <Suspense fallback={null}>
         <Zuckerberg/>
