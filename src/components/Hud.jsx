@@ -13,9 +13,10 @@ export default function Hud(props) {
       volume: -15,
     }).toMaster()
   );
-  const [music, setMusic] = useState(false);
 
+  const [music, setMusic] = useState(false);
   // console.log(music);
+
   useEffect(() => {
     if (music) {
       player.start();
