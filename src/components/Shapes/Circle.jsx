@@ -23,14 +23,14 @@ export default function Circle(props) {
   const move = useMovement(mesh, "z");
 
   useFrame(() => {
-    detectCollision(mesh.current.position, playerPosition, () => playSound());
-
     move(0 - SPEED);
 
     setPositions((positions) => {
       positions[props.shapeId] = mesh.current.position;
       return positions;
     });
+
+    detectCollision(mesh.current.position, playerPosition, () => playSound());
 
     if (mesh.current.position.z <= -200) {
       destroyShape(props.shapeId);
