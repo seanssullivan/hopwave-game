@@ -36,7 +36,7 @@ export default function Game() {
       <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
         <ambientLight />
         <pointLight position={[100, 100, 100]} />
-        <Ground position={[0, 0, 175]} />
+        <Ground position={[0, -0.8, 200]} />
 
         <Road speed={speed} />
 
@@ -54,7 +54,7 @@ export default function Game() {
           setPosition={setPlayerPosition}
         />
 
-        {/* <OrbitControl /> */}
+        <OrbitControl />
         <Suspense fallback={null}>
           <PalmTrees />
           {/* <Zuckerberg/> */}
