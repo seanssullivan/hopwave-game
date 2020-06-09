@@ -10,12 +10,14 @@ import Car from "./Car";
 import Obstacles from "./Obstacles";
 import Sun from "./Sun";
 import Hud from "./Hud";
+import PalmTrees from "./PalmTrees";
+import Song from "./Song";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
-// import OrbitControl from "./OrbitControls";
+import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
 // Import settings
@@ -24,29 +26,38 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
-  const [objects, setObjects] = useState([]);
   const [speed, setSpeed] = useState(SPEED);
+  const [objectPositions, setObjectPositions] = useState({});
+
+  useEffect(() => {});
 
   return (
     <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
       <ambientLight />
       <pointLight position={[100, 100, 100]} />
       <Ground position={[0, 0, 175]} />
+
       <Road speed={speed} />
 
-      <Obstacles objects={objects} setObjects={setObjects} />
+      <Obstacles
+        playerPosition={playerPosition}
+        shapePositions={objectPositions}
+        setShapePositions={setObjectPositions}
+      />
 
       <Car
-        position={playerPosition}
         color={"white"}
         avgSpeed={SPEED}
         setSpeed={setSpeed}
+        position={playerPosition}
         setPosition={setPlayerPosition}
       />
+
       {/* <OrbitControl /> */}
-      {/* <Suspense fallback={null}>
-        <Zuckerberg/>
-      </Suspense> */}
+      <Suspense fallback={null}>
+        <PalmTrees />
+        {/* <Zuckerberg/> */}
+      </Suspense>
     </Canvas>
   );
 }

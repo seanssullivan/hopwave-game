@@ -1,80 +1,44 @@
 import React, { useState } from "react";
 import { useFrame } from "react-three-fiber";
-
-import Hexagon from "./Shapes/Hexagon";
-import Circle from "./Shapes/Circle";
-import Square from "./Shapes/Square";
-import Triangle from "./Shapes/Triangle";
+import Shape from "./Shape";
 
 import settings from "../settings";
 const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
 const { RADIUS } = settings.SHAPE;
 
 export default function Obstacles(props) {
-  const objects = props.objects;
-  const setObjects = props.setObjects;
+  const [objects, setObjects] = useState([]);
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
+  const { playerPosition, setShapePositions } = props;
 
-  const destroyObject = function (key) {
-    setObjects((all) => all.slice(1));
-  };
+  const randomX =
+    Math.abs(Math.random() * ROAD_WIDTH - RADIUS) - (ROAD_WIDTH - RADIUS) / 2;
 
   useFrame(() => {
+    const destroyShape = function (key) {
+      setObjects((all) => all.slice(1));
+      setShapePositions((positions) => {
+        delete positions[key];
+        return positions;
+      });
+    };
+
     const now = Date.now();
     if (Date.now() - time >= 2500) {
-      const shapes = ["Hexagon", "Circle", "Square", "Triangle"];
-
-      const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-      const randomX =
-        Math.abs(Math.random() * ROAD_WIDTH - RADIUS) -
-        (ROAD_WIDTH - RADIUS) / 2;
-
-      if (randomShape === "Hexagon") {
-        setObjects((all) => {
-          return [
-            ...all,
-            <Hexagon
-              key={key}
-              position={[randomX, 15, 600]}
-              destroyObstacle={destroyObject}
-            />,
-          ];
-        });
-      } else if (randomShape === "Circle") {
-        setObjects((all) => {
-          return [
-            ...all,
-            <Circle
-              key={key}
-              position={[randomX, 15, 600]}
-              destroyObstacle={destroyObject}
-            />,
-          ];
-        });
-      } else if (randomShape === "Square") {
-        setObjects((all) => {
-          return [
-            ...all,
-            <Square
-              key={key}
-              position={[randomX, 15, 600]}
-              destroyObstacle={destroyObject}
-            />,
-          ];
-        });
-      } else {
-        setObjects((all) => {
-          return [
-            ...all,
-            <Triangle
-              key={key}
-              position={[randomX, 15, 600]}
-              destroyObstacle={destroyObject}
-            />,
-          ];
-        });
-      }
+      setObjects((all) => {
+        return [
+          ...all,
+          <Shape
+            key={key}
+            shapeId={key}
+            position={[randomX, 15, 600]}
+            destroyShape={destroyShape}
+            setPositions={setShapePositions}
+            playerPosition={playerPosition}
+          />,
+        ];
+      });
 
       setTime(() => now);
       setKey((prev) => (prev += 1));

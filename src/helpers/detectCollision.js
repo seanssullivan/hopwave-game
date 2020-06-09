@@ -1,26 +1,29 @@
-// src/helpers/detectCollision.js
+// src/hooks/useCollisionDetection.js
 
 import settings from "../settings";
 
 const { WIDTH, LENGTH } = settings.CAR;
 const { RADIUS } = settings.SHAPE;
 
-export default function detectCollision(mesh, playerPosition) {
+export default function detectCollision(
+  objectPosition,
+  playerPosition,
+  callback
+) {
   const [playerX, playerY, playerZ] = playerPosition;
-  const { shapeX, shapeY, shapeZ } = mesh.current.position;
+  const carFront = playerZ + LENGTH / 2;
+  const carBack = playerZ - LENGTH / 2;
 
-  const shapeLeft = shapeX - RADIUS / 2;
-  const shapeRight = shapeX + RADIUS / 2;
-
-  const carLeft = playerX - WIDTH / 2;
-  const carRight = playerX + WIDTH / 2;
+  const shapeZ = objectPosition.z;
+  const shapeLeft = objectPosition.x - RADIUS;
+  const shapeRight = objectPosition.x + RADIUS;
 
   if (
-    (shapeLeft >= carLeft && shapeLeft <= carRight) ||
-    (shapeRight >= carLeft && shapeRight <= carRight)
+    playerX >= shapeLeft &&
+    playerX <= shapeRight &&
+    shapeZ >= carBack &&
+    shapeZ <= carFront
   ) {
-    return true;
-  } else {
-    return false;
+    callback();
   }
 }
