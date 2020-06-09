@@ -23,8 +23,8 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
-  const [speed, setSpeed] = useState(SPEED);
   const [objectPositions, setObjectPositions] = useState({});
+  const [speed, setSpeed] = useState(SPEED);
 
   useEffect(() => {});
 
@@ -35,7 +35,11 @@ export default function Game() {
       <Ground position={[0, 0, 175]} />
       <Road speed={speed} />
 
-      <Obstacles setShapePositions={setObjectPositions} />
+      <Obstacles
+        playerPosition={playerPosition}
+        shapePositions={objectPositions}
+        setShapePositions={setObjectPositions}
+      />
 
       <Car
         color={"white"}
