@@ -23,8 +23,10 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
-  const [objects, setObjects] = useState([]);
   const [speed, setSpeed] = useState(SPEED);
+  const [objectPositions, setObjectPositions] = useState({});
+
+  useEffect(() => {});
 
   return (
     <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
@@ -33,13 +35,13 @@ export default function Game() {
       <Ground position={[0, 0, 175]} />
       <Road speed={speed} />
 
-      <Obstacles objects={objects} setObjects={setObjects} />
+      <Obstacles setShapePositions={setObjectPositions} />
 
       <Car
-        position={playerPosition}
         color={"white"}
         avgSpeed={SPEED}
         setSpeed={setSpeed}
+        position={playerPosition}
         setPosition={setPlayerPosition}
       />
       {/* <OrbitControl /> */}

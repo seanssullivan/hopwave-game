@@ -11,7 +11,7 @@ const { SPEED } = settings.GAME;
 const { RADIUS } = settings.SHAPE;
 
 export default function Circle(props) {
-  const { destroyObstacle } = props;
+  const { destroyShape, setPositions } = props;
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
@@ -20,8 +20,13 @@ export default function Circle(props) {
   useFrame(() => {
     move(0 - SPEED);
 
+    setPositions((positions) => {
+      positions[props.shapeId] = mesh.current.position;
+      return positions;
+    });
+
     if (mesh.current.position.z <= -200) {
-      destroyObstacle();
+      destroyShape(props.shapeId);
     }
   });
 
