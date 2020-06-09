@@ -10,12 +10,20 @@ export default function detectCollision(
   playerPosition,
   callback
 ) {
-  // const [x, y, z] = playerPosition;
-  // const carLeft = x - WIDTH / 2;
-  // const carRight = x + WIDTH / 2;
+  const [playerX, playerY, playerZ] = playerPosition;
+  const carFront = playerZ + LENGTH / 2;
+  const carBack = playerZ - LENGTH / 2;
 
-  // if (objectPosition.x > carLeft && objectPosition.x < carRight) {
-  //   callback();
-  // }
-  return false;
+  const shapeZ = objectPosition.z;
+  const shapeLeft = objectPosition.x - RADIUS;
+  const shapeRight = objectPosition.x + RADIUS;
+
+  if (
+    playerX >= shapeLeft &&
+    playerX <= shapeRight &&
+    shapeZ >= carBack &&
+    shapeZ <= carFront
+  ) {
+    callback();
+  }
 }
