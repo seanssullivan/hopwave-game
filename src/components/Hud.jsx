@@ -5,6 +5,7 @@ import * as Tone from "tone";
 export default function Hud(props) {
   // const points = useStore((state) => state.points);
   // const health = useStore((state) => state.health);
+
   const [player] = useState(() =>
     new Tone.Player({
       url: "Song.mp3",
@@ -12,8 +13,10 @@ export default function Hud(props) {
       volume: -15,
     }).toMaster()
   );
+  
   const [music, setMusic] = useState(false);
   // console.log(music);
+  
   useEffect(() => {
     if (music) {
       player.start();
@@ -59,7 +62,9 @@ export default function Hud(props) {
         {/* <h1>{score}</h1> */}
       </LowerLeft>
       <Global />
-      <LowerRight>{/* <div style={{ width: 100 + "%" }} /> */}</LowerRight>
+      <LowerRight>
+        <div style={{ width: 100 + "%" }} />
+      </LowerRight>
     </>
   );
 }

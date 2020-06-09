@@ -29,7 +29,7 @@ export default function RoadSegment(props) {
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
       <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
-      <meshStandardMaterial attach="material" color={color} />
+      <meshLambertMaterial roughness={0.5} attach="material" color={color} />
     </mesh>
   );
 }
