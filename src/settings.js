@@ -3,6 +3,7 @@
 // Global settings are defined here:
 const GAME = {
   SPEED: 5,
+  START_POSITION: [0, 3, -70],
 };
 
 // Road component settings are defined here:
@@ -17,6 +18,11 @@ const ROAD_SEGMENT = {
   HEIGHT: 1,
   LENGTH: 100,
   COLOR: "cyan",
+};
+
+// Shape component settings are defined here:
+const SHAPE = {
+  RADIUS: 30,
 };
 
 // Car component settings are defined here:
@@ -39,5 +45,5 @@ const CAR = {
   }
 
 // Combine settings for export
-const settings = { GAME, ROAD, ROAD_SEGMENT, CAR, PALM };
+const settings = { GAME, ROAD, ROAD_SEGMENT, SHAPE, CAR, PALM };
 export default settings;
