@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
 import "./Game.scss";
@@ -11,14 +10,13 @@ import Obstacles from "./Obstacles";
 import Sun from "./Sun";
 import Hud from "./Hud";
 import PalmTrees from "./PalmTrees";
-import Song from "./Song";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
 import OrbitControl from "./OrbitControls";
-// import Zuckerberg from "./Zuckerberg";
+import Zuckerberg from "./Zuckerberg";
 
 // Import settings
 import settings from "../settings";
@@ -54,10 +52,10 @@ export default function Game() {
           setPosition={setPlayerPosition}
         />
 
-        {/* <OrbitControl /> */}
+        <OrbitControl />
         <Suspense fallback={null}>
           <PalmTrees />
-          {/* <Zuckerberg/> */}
+          <Zuckerberg />
         </Suspense>
       </Canvas>
       <Hud />
