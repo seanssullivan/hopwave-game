@@ -11,7 +11,6 @@ import Obstacles from "./Obstacles";
 import Sun from "./Sun";
 import Hud from "./Hud";
 import PalmTrees from "./PalmTrees";
-import Sprite from "./Sprite";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";
@@ -58,9 +57,9 @@ export default function Game() {
         <Suspense fallback={null}>
           <PalmTrees />
           {/* <Zuckerberg/> */}
-          <Sprite scale={[5, 3, 1]} />
         </Suspense>
       </Canvas>
+
       <Hud />
     </>
   );
