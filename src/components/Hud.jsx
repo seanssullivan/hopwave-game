@@ -1,18 +1,10 @@
 import React, { useMemo, useRef, useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
-import * as Tone from "tone";
 
 export default function Hud(props) {
   // const points = useStore((state) => state.points);
   // const health = useStore((state) => state.health);
-
-  const [player] = useState(() =>
-    new Tone.Player({
-      url: "Song.mp3",
-      autostart: false,
-      volume: -15,
-    }).toMaster()
-  );
+  const { player } = props;
   const [music, setMusic] = useState(false);
 
   useEffect(() => {

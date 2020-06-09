@@ -10,7 +10,7 @@ export default function Obstacles(props) {
   const [objects, setObjects] = useState([]);
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
-  const { playerPosition, setShapePositions } = props;
+  const { soundEffect, playerPosition } = props;
 
   const randomX =
     Math.abs(Math.random() * ROAD_WIDTH - RADIUS) - (ROAD_WIDTH - RADIUS) / 2;
@@ -18,10 +18,6 @@ export default function Obstacles(props) {
   useFrame(() => {
     const destroyShape = function (key) {
       setObjects((all) => all.slice(1));
-      setShapePositions((positions) => {
-        delete positions[key];
-        return positions;
-      });
     };
 
     const now = Date.now();
@@ -34,7 +30,7 @@ export default function Obstacles(props) {
             shapeId={key}
             position={[randomX, 15, 600]}
             destroyShape={destroyShape}
-            setPositions={setShapePositions}
+            soundEffect={soundEffect}
             playerPosition={playerPosition}
           />,
         ];
