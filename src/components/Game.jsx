@@ -7,8 +7,10 @@ import "./Game.scss";
 import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
-import PalmTrees from "./PalmTrees";
 import Obstacles from "./Obstacles";
+import Sun from "./Sun";
+import Hud from "./Hud";
+import PalmTrees from "./PalmTrees";
 import Song from "./Song";
 
 // Import hooks
@@ -30,32 +32,35 @@ export default function Game() {
   useEffect(() => {});
 
   return (
-    <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
-      <ambientLight />
-      <pointLight position={[100, 100, 100]} />
-      <Ground position={[0, 0, 175]} />
+    <>
+      <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
+        <ambientLight />
+        <pointLight position={[100, 100, 100]} />
+        <Ground position={[0, 0, 175]} />
 
-      <Road speed={speed} />
+        <Road speed={speed} />
 
-      <Obstacles
-        playerPosition={playerPosition}
-        shapePositions={objectPositions}
-        setShapePositions={setObjectPositions}
-      />
+        <Obstacles
+          playerPosition={playerPosition}
+          shapePositions={objectPositions}
+          setShapePositions={setObjectPositions}
+        />
+        <Sun />
+        <Car
+          color={"white"}
+          avgSpeed={SPEED}
+          setSpeed={setSpeed}
+          position={playerPosition}
+          setPosition={setPlayerPosition}
+        />
 
-      <Car
-        color={"white"}
-        avgSpeed={SPEED}
-        setSpeed={setSpeed}
-        position={playerPosition}
-        setPosition={setPlayerPosition}
-      />
-
-      {/* <OrbitControl /> */}
-      <Suspense fallback={null}>
-        <PalmTrees />
-        {/* <Zuckerberg/> */}
-      </Suspense>
-    </Canvas>
+        {/* <OrbitControl /> */}
+        <Suspense fallback={null}>
+          <PalmTrees />
+          {/* <Zuckerberg/> */}
+        </Suspense>
+      </Canvas>
+      <Hud />
+    </>
   );
 }
