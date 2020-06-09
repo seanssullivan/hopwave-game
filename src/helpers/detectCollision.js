@@ -24,6 +24,7 @@ export default function detectCollision(
     shapeZ >= carBack &&
     shapeZ <= carFront
   ) {
+    console.log("Ding!");
     callback();
   }
 }

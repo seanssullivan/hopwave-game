@@ -23,7 +23,6 @@ export default function Obstacles(props) {
         return positions;
       });
     };
-
     const now = Date.now();
     if (Date.now() - time >= 2500) {
       setObjects((all) => {

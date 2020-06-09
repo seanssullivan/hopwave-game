@@ -15,7 +15,7 @@ import Song from "./Song";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
-import OrbitControl from "./OrbitControls";
+// import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
 // Import settings
