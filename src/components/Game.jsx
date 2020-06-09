@@ -8,7 +8,8 @@ import Ground from "./Ground";
 import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
-import Song from "./Song";
+import Sun from "./Sun";
+import Hud from "./Hud";
 
 // Optional components
 import OrbitControl from "./OrbitControls";
@@ -40,7 +41,7 @@ export default function Game() {
         {/* {showObstacle && <Obstacle destroyObstacle={destroyObstacle}/>}
          */}
         <Obstacles />
-        <Song />
+        <Sun />
         <Car
           position={[0, 1, -70]}
           color={"white"}
@@ -48,8 +49,11 @@ export default function Game() {
           setSpeed={setSpeed}
         />
         {/* <OrbitControl /> */}
-        <Suspense fallback={null}>{/* <Zuckerberg /> */}</Suspense>
+        <Suspense fallback={null}>
+          <Zuckerberg />
+        </Suspense>
       </Canvas>
+      <Hud />
     </>
   );
 }
