@@ -39,7 +39,7 @@ export default function PalmTree(props) {
         <group rotation={[Math.PI / 2, 0, 0]}>
           <primitive object={nodes._rootJoint} />
           <mesh material={materials.Material1} geometry={nodes["0"].geometry} />
-          <skinnedMesh
+          <mesh
             material={materials.Material}
             geometry={nodes["1"].geometry}
             skeleton={nodes["1"].skeleton}
