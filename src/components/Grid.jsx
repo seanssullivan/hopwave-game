@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 const WIDTH = 3200;
 const LENGTH = 900;
-const COLOR = "black";
+const COLOR = "darkorchid";
 
 export default function Ground(props) {
   // This reference will give us direct access to the mesh
@@ -16,7 +16,14 @@ export default function Ground(props) {
       scale={[1, 1, 1]}
     >
       <planeGeometry attach="geometry" args={[WIDTH, LENGTH, 100, 30]} />
-      <meshBasicMaterial attach="material" color={COLOR} />
+      <meshBasicMaterial
+        attach="material"
+        color={COLOR}
+        wireframe={true}
+        wireframeLinewidth={5}
+        wireframeLinejoin={"round"}
+        wireframeLinecap={"round"}
+      />
     </mesh>
   );
 }
