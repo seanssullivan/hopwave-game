@@ -25,7 +25,6 @@ export default function Road(props) {
       prevColor = "purple";
     }
     return (
-     
       <RoadSegment
         key={index}
         position={position}
@@ -33,9 +32,7 @@ export default function Road(props) {
         cutoff={CUTOFF}
         spawn={100 * (LENGTH - 1)}
         color={color}
-      >
-      </RoadSegment>
-      
+      ></RoadSegment>
     );
   });
 }

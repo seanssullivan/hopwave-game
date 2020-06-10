@@ -13,9 +13,10 @@ export default function Hud(props) {
       volume: -15,
     }).toMaster()
   );
-  const [music, setMusic] = useState(false);
 
-  console.log(music);
+  const [music, setMusic] = useState(false);
+  // console.log(music);
+
   useEffect(() => {
     if (music) {
       player.start();
@@ -23,7 +24,6 @@ export default function Hud(props) {
       player.stop();
     }
   }, [music, player]);
-
   const startMusic = function () {
     if (!music) {
       setMusic(true);
@@ -48,12 +48,14 @@ export default function Hud(props) {
   // );
   return (
     <>
+      <Global />
       <UpperLeft onClick={() => startMusic()}>
-        sound
-        <br />
-        {music ? "on" : "off"}
+        <h4>sound</h4>
+        <h4>{music ? "on" : "off"}</h4>
       </UpperLeft>
       <UpperRight>
+        <h2>HOPWAVE </h2>
+        <br />
         <a href="https://github.com/seanssullivan/hopwave-game">source</a>
         <br />
       </UpperRight>
@@ -61,8 +63,10 @@ export default function Hud(props) {
         <h2 ref={seconds}>0.0</h2>
         {/* <h1>{score}</h1> */}
       </LowerLeft>
-      <Global />
-      <LowerRight>{/* <div style={{ width: 100 + "%" }} /> */}</LowerRight>
+      <LowerRight>
+        <h2> </h2>
+        {/* <div style={{ width: 100 + "%" }} /> */}
+      </LowerRight>
     </>
   );
 }
@@ -75,11 +79,12 @@ const base = css`
   font-variant-numeric: slashed-zero tabular-nums;
   line-height: 1em;
   pointer-events: none;
-  color: indianred;
+  color: #ff9f61;
 `;
 
 const UpperLeft = styled.div`
   ${base}
+
   top: 40px;
   left: 50px;
   font-size: 2em;
@@ -88,6 +93,7 @@ const UpperLeft = styled.div`
   cursor: pointer;
   @media only screen and (max-width: 900px) {
     font-size: 1.5em;
+    font-family: "Press Start 2P";
   }
 `;
 
@@ -101,7 +107,10 @@ const UpperRight = styled.div`
   pointer-events: all;
   cursor: pointer;
   & > a {
-    color: indianred;
+    text-decoration: none;
+    font-family: "Press Start 2P", cursive;
+  }
+  & > h2 {
     text-decoration: none;
   }
   @media only screen and (max-width: 900px) {
@@ -143,10 +152,10 @@ const LowerRight = styled.div`
   transform: skew(5deg, 10deg);
   height: 60px;
   width: 200px;
-  background: black;
-  & > div {
+
+  & > h2 {
+    font-size: 3em !important;
     height: 100%;
-    background: indianred;
   }
 
   @media only screen and (max-width: 900px) {
@@ -157,10 +166,12 @@ const LowerRight = styled.div`
 `;
 
 const Global = createGlobalStyle`
+  @import url(https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap)
+  
   * {
     box-sizing: border-box;
   }
-
+  
   html,
   body,
   #root {
@@ -177,11 +188,23 @@ const Global = createGlobalStyle`
     padding: 0px;
   }
 
+  h1 {
+    font-family: "Press Start 2P"
+    
+  }
+  h2 {
+    font-family: "Press Start 2P"
+    
+  }
+  h4 {
+    font-family: "Press Start 2P"
+    
+  }
   body {
     position: fixed;
     overflow: hidden;
     overscroll-behavior-y: none;
-    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+    font-family: "Press Start 2P"
     color: black;
     background: white;
   }
