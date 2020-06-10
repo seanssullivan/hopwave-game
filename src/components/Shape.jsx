@@ -6,17 +6,13 @@ import Square from "./Shapes/Square";
 import Triangle from "./Shapes/Triangle";
 
 export default function Shape(props) {
-  const shapes = ["Hexagon", "Circle", "Square", "Triangle"];
-
-  const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-
-  if (randomShape === "Hexagon") {
+  if (props.shapeName === "Hexagon") {
     return <Hexagon key={props.shapeId} {...props} />;
-  } else if (randomShape === "Circle") {
+  } else if (props.shapeName === "Circle") {
     return <Circle key={props.shapeId} {...props} />;
-  } else if (randomShape === "Square") {
+  } else if (props.shapeName === "Square") {
     return <Square key={props.shapeId} {...props} />;
-  } else if (randomShape === "Triangle") {
+  } else if (props.shapeName === "Triangle") {
     return <Triangle key={props.shapeId} {...props} />;
   }
 }

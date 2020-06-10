@@ -1,4 +1,10 @@
-import React, { useState, Suspense, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useFrame,
+  Suspense,
+  useCallback,
+  useEffect,
+} from "react";
 import { Canvas } from "react-three-fiber";
 import "./Game.scss";
 
@@ -13,12 +19,14 @@ import PalmTrees from "./PalmTrees";
 import useMusic from "../hooks/useMusic";
 import useSoundEffects from "../hooks/useSoundEffects";
 import usePlayerPosition from "../hooks/usePlayerPosition";
+import useShapePositions from "../hooks/useShapePositions";
+
+// Import helpers
+import detectCollision from "../helpers/detectCollision";
 
 // Optional components
 // import OrbitControl from "./OrbitControls";
-
-import Zuckerberg from "./Zuckerberg";
-
+// import Zuckerberg from "./Zuckerberg";
 
 // Import settings
 import settings from "../settings";
@@ -26,32 +34,38 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
+  const [
+    shapes,
+    addShape,
+    setShapePosition,
+    setTriggered,
+    destroyShape,
+  ] = useShapePositions();
   const [speed, setSpeed] = useState(SPEED);
   const [musicPlayer] = useMusic(speed);
   const [playSound] = useSoundEffects();
 
+  detectCollision(playerPosition, shapes, (key) => {
+    setTriggered(key);
+    playSound();
+  });
+
   return (
     <>
       <Road speed={speed} />
-      <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
+      <Obstacles
+        shapes={shapes}
+        addShape={addShape}
+        destroyShape={destroyShape}
+        setShapePosition={setShapePosition}
+      />
       {/* <Sun /> */}
-
-      {/* <Car
-        color={"white"}
-        avgSpeed={SPEED}
-        setSpeed={setSpeed}
-        position={playerPosition}
-        setPosition={setPlayerPosition}
-      /> */}
-
       {/* <OrbitControl /> */}
 
       <Suspense fallback={null}>
         <PalmTrees />
 
-
         <Car
-
           color={"white"}
           avgSpeed={SPEED}
           setSpeed={setSpeed}
@@ -60,7 +74,6 @@ export default function Game() {
         />
 
         {/* <Zuckerberg/> */}
-
       </Suspense>
     </>
   );

@@ -3,7 +3,7 @@ import * as Tone from "tone";
 const musicPlayer = new Tone.Player({
   url: "sounds/loops/Organ.wav",
   playbackRate: 1,
-  autostart: false,
+  autostart: true,
   loop: true,
   volume: -15,
 }).toMaster();
