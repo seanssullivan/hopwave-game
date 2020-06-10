@@ -9,8 +9,7 @@ import { useState } from "react";
 export default function usePlayerPosition(initialPosition) {
   const [position, setPosition] = useState(initialPosition);
 
-  const setPlayerPosition = function (mesh) {
-    const { x, y, z } = mesh.current.position;
+  const setPlayerPosition = function ({ x, y, z }) {
     setPosition([x, y, z]);
   };
 
