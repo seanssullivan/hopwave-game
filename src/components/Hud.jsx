@@ -1,10 +1,12 @@
 import React, { useMemo, useRef, useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
+import { PointContext } from "../context/PointContext";
 
 export default function Hud(props) {
-  // const points = useStore((state) => state.points);
-  // const health = useStore((state) => state.health);
+  const { points, setPoints } = props;
+  // const { points, setPoints } = React.useContext(PointContext);
+  // let { points, setPoints } = React.useContext(PointContext);
 
   const [player] = useState(() =>
     new Tone.Player({
@@ -61,11 +63,11 @@ export default function Hud(props) {
       </UpperRight>
       <LowerLeft>
         <h2 ref={seconds}>0.0</h2>
-        {/* <h1>{score}</h1> */}
+
+        <button onClick={setPoints}>add a point</button>
       </LowerLeft>
       <LowerRight>
-        <h2> </h2>
-        {/* <div style={{ width: 100 + "%" }} /> */}
+        <h2>{points}</h2>
       </LowerRight>
     </>
   );
@@ -78,7 +80,6 @@ const base = css`
   font-weight: 900;
   font-variant-numeric: slashed-zero tabular-nums;
   line-height: 1em;
-  pointer-events: none;
   color: #ff9f61;
 `;
 
@@ -154,6 +155,11 @@ const LowerRight = styled.div`
   width: 200px;
 
   & > h2 {
+    font-size: 3em !important;
+    height: 100%;
+  }
+
+  & > h3 {
     font-size: 3em !important;
     height: 100%;
   }
