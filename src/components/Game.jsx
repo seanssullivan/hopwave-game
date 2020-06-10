@@ -41,6 +41,7 @@ export default function Game() {
         setPosition={setPlayerPosition}
       /> */}
       {/* <OrbitControl /> */}
+
       <Suspense fallback={null}>
         <PalmTrees />
         <Zuckerberg

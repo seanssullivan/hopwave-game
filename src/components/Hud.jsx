@@ -79,7 +79,7 @@ const base = css`
   font-variant-numeric: slashed-zero tabular-nums;
   line-height: 1em;
   pointer-events: none;
-  color: indianred;
+  color: #ff9f61;
 `;
 
 const UpperLeft = styled.div`
@@ -107,12 +107,10 @@ const UpperRight = styled.div`
   pointer-events: all;
   cursor: pointer;
   & > a {
-    color: indianred;
     text-decoration: none;
     font-family: "Press Start 2P", cursive;
   }
   & > h2 {
-    color: blue;
     text-decoration: none;
   }
   @media only screen and (max-width: 900px) {
@@ -173,7 +171,7 @@ const Global = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-
+  
   html,
   body,
   #root {
@@ -192,12 +190,15 @@ const Global = createGlobalStyle`
 
   h1 {
     font-family: "Press Start 2P"
+    
   }
   h2 {
     font-family: "Press Start 2P"
+    
   }
   h4 {
     font-family: "Press Start 2P"
+    
   }
   body {
     position: fixed;
