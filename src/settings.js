@@ -8,7 +8,7 @@ const GAME = {
 
 // Road component settings are defined here:
 const ROAD = {
-  LENGTH: 7,
+  LENGTH: 10,
   CUTOFF: -200,
 };
 
@@ -39,10 +39,10 @@ const CAR = {
   },
 };
 // PalmTrees component setting are defined here:
-  const PALM = {
-    CUTOFF: -200,
-    SPAWN: 100
-  }
+const PALM = {
+  CUTOFF: -200,
+  SPAWN: 100,
+};
 
 // Combine settings for export
 const settings = { GAME, ROAD, ROAD_SEGMENT, SHAPE, CAR, PALM };

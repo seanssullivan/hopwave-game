@@ -7,6 +7,7 @@ import Ground from "./Ground";
 import Grid from "./Grid";
 import Hud from "./Hud";
 import Background from "./Background";
+import SpotifyPlayer from "./SpotifyPlayer";
 
 export default function App() {
   const [gameMode, setGameMode] = useState(true);
@@ -21,6 +22,7 @@ export default function App() {
         <Game />
       </Canvas>
       <Hud />
+      <SpotifyPlayer />
     </>
   );
 }

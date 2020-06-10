@@ -6,7 +6,7 @@ import "./Game.scss";
 import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
-// import Sun from "./Sun";
+//import Sun from "./Sun";
 import PalmTrees from "./PalmTrees";
 
 // Import hooks
@@ -18,7 +18,6 @@ import usePlayerPosition from "../hooks/usePlayerPosition";
 // import OrbitControl from "./OrbitControls";
 
 import Zuckerberg from "./Zuckerberg";
-
 
 // Import settings
 import settings from "../settings";
@@ -49,9 +48,7 @@ export default function Game() {
       <Suspense fallback={null}>
         <PalmTrees />
 
-
         <Car
-
           color={"white"}
           avgSpeed={SPEED}
           setSpeed={setSpeed}
@@ -60,7 +57,6 @@ export default function Game() {
         />
 
         {/* <Zuckerberg/> */}
-
       </Suspense>
     </>
   );
