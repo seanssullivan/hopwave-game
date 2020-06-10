@@ -13,6 +13,7 @@ import PalmTrees from "./PalmTrees";
 import useMusic from "../hooks/useMusic";
 import useSoundEffects from "../hooks/useSoundEffects";
 import usePlayerPosition from "../hooks/usePlayerPosition";
+import useShapePositions from "../hooks/useShapePositions";
 
 // Optional components
 // import OrbitControl from "./OrbitControls";
@@ -24,6 +25,7 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
+  const [shapePositions, setShapePositions] = useShapePositions();
   const [speed, setSpeed] = useState(SPEED);
   const [musicPlayer] = useMusic(speed);
   const [playSound] = useSoundEffects();
