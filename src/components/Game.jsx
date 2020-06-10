@@ -16,6 +16,7 @@ import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
 // import OrbitControl from "./OrbitControls";
+
 import Zuckerberg from "./Zuckerberg";
 
 // Import settings
@@ -44,13 +45,16 @@ export default function Game() {
 
       <Suspense fallback={null}>
         <PalmTrees />
-        <Zuckerberg
+
+        <Car
           color={"white"}
           avgSpeed={SPEED}
           setSpeed={setSpeed}
           position={playerPosition}
           setPosition={setPlayerPosition}
         />
+
+        {/* <Zuckerberg/> */}
       </Suspense>
     </>
   );
