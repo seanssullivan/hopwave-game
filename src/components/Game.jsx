@@ -15,7 +15,7 @@ import useSoundEffects from "../hooks/useSoundEffects";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
-import OrbitControl from "./OrbitControls";
+// import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
 
 // Import settings
@@ -34,7 +34,7 @@ export default function Game() {
       <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
       {/* <Sun /> */}
 
-      <OrbitControl />
+      {/* <OrbitControl /> */}
       <Suspense fallback={null}>
         <PalmTrees />
         <Car

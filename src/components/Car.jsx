@@ -83,8 +83,8 @@ export default function Car(props) {
   return (
     // <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
     // {/* <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
-    <group ref={group} {...props} dispose={null} scale={[4, 4, 4]}>
-      <group rotation={[-Math.PI / 2, 0, 1.55]}>
+    <group ref={group} {...props} dispose={null} scale={[3.5, 3.5, 3.5]}>
+      <group rotation={[-Math.PI / 2, 0, 1.57]}>
         <group position={[0, -12, 0]}>
           <group rotation={[Math.PI / 2, 0, 0]}>
             <mesh
