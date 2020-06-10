@@ -1,12 +1,9 @@
-import React, { useMemo, useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
-import { PointContext } from "../context/PointContext";
 
 export default function Hud(props) {
-  const { points, setPoints } = props;
-  // const { points, setPoints } = React.useContext(PointContext);
-  // let { points, setPoints } = React.useContext(PointContext);
+  const { points } = props;
 
   const [player] = useState(() =>
     new Tone.Player({
@@ -17,7 +14,6 @@ export default function Hud(props) {
   );
 
   const [music, setMusic] = useState(false);
-  // console.log(music);
 
   useEffect(() => {
     if (music) {
@@ -62,9 +58,7 @@ export default function Hud(props) {
         <br />
       </UpperRight>
       <LowerLeft>
-        <h2 ref={seconds}>0.0</h2>
-
-        <button onClick={setPoints}>add a point</button>
+        <h3 ref={seconds}>0.0</h3>
       </LowerLeft>
       <LowerRight>
         <h2>{points}</h2>
@@ -74,7 +68,7 @@ export default function Hud(props) {
 }
 
 const base = css`
-  font-family: "Teko", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   position: absolute;
   text-transform: uppercase;
   font-weight: 900;
@@ -133,6 +127,11 @@ const LowerLeft = styled.div`
   & > h2 {
     margin: 0;
     font-size: 4em;
+    line-height: 1em;
+  }
+  & > h3 {
+    margin: 0;
+    font-size: 3em;
     line-height: 1em;
   }
   @media only screen and (max-width: 900px) {

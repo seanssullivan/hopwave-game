@@ -19,14 +19,14 @@ import settings from "../settings";
 const { ACCELERATION, TURN_SPEED, ROTATION, BOUNDARY } = settings.CAR;
 
 export default function Model(props) {
-  const { avgSpeed, setPosition, position, setSpeed } = props;
+  const { avgSpeed, setPosition, setSpeed } = props;
   const group = useRef();
   const { nodes, materials, animations } = useLoader(
     GLTFLoader,
     "/Elon/scene.gltf"
   );
 
-  const actions = useRef();
+  // const actions = useRef();
   const [mixer] = useState(() => new THREE.AnimationMixer());
   useFrame((state, delta) => mixer.update(delta));
   useEffect(
