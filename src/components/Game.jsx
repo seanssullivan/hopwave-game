@@ -1,4 +1,10 @@
-import React, { useState, Suspense, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useFrame,
+  Suspense,
+  useCallback,
+  useEffect,
+} from "react";
 import { Canvas } from "react-three-fiber";
 import "./Game.scss";
 
@@ -15,6 +21,9 @@ import useSoundEffects from "../hooks/useSoundEffects";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 import useShapePositions from "../hooks/useShapePositions";
 
+// Import helpers
+import detectCollision from "../helpers/detectCollision";
+
 // Optional components
 // import OrbitControl from "./OrbitControls";
 // import Zuckerberg from "./Zuckerberg";
@@ -25,25 +34,32 @@ const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game() {
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
-  const [shapePositions, setShapePositions] = useShapePositions();
+  const [
+    shapes,
+    addShape,
+    setShapePosition,
+    setTriggered,
+    destroyShape,
+  ] = useShapePositions();
   const [speed, setSpeed] = useState(SPEED);
   const [musicPlayer] = useMusic(speed);
   const [playSound] = useSoundEffects();
 
+  detectCollision(playerPosition, shapes, (key) => {
+    setTriggered(key);
+    playSound();
+  });
+
   return (
     <>
       <Road speed={speed} />
-      <Obstacles soundEffect={playSound} playerPosition={playerPosition} />
+      <Obstacles
+        shapes={shapes}
+        addShape={addShape}
+        destroyShape={destroyShape}
+        setShapePosition={setShapePosition}
+      />
       {/* <Sun /> */}
-
-      {/* <Car
-        color={"white"}
-        avgSpeed={SPEED}
-        setSpeed={setSpeed}
-        position={playerPosition}
-        setPosition={setPlayerPosition}
-      /> */}
-
       {/* <OrbitControl /> */}
 
       <Suspense fallback={null}>
