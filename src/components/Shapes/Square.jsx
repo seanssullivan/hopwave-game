@@ -1,12 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 
-// Import hooks
-import useMovement from "../../hooks/useMovement";
-
-// Import helpers
-import detectCollision from "../../helpers/detectCollision";
-
 // Import settings
 import settings from "../../settings";
 const { SPEED } = settings.GAME;
@@ -17,7 +11,6 @@ export default function Square(props) {
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
-  const move = useMovement(mesh, "z", setPosition);
 
   useFrame(() => {
     const position = mesh.current.position;

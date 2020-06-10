@@ -1,9 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 
-// Import hooks
-import useMovement from "../../hooks/useMovement";
-
 // Import settings
 import settings from "../../settings";
 
@@ -15,7 +12,6 @@ export default function Circle(props) {
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
-  const move = useMovement("z", setPosition);
 
   useFrame(() => {
     const position = mesh.current.position;

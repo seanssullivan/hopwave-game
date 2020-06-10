@@ -18,7 +18,6 @@ export default function Hexagon(props) {
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
-  const move = useMovement(mesh, "z", setPosition);
 
   useFrame(() => {
     const position = mesh.current.position;

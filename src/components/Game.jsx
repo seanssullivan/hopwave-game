@@ -32,7 +32,9 @@ import detectCollision from "../helpers/detectCollision";
 import settings from "../settings";
 const { SPEED, START_POSITION } = settings.GAME;
 
-export default function Game() {
+export default function Game(props) {
+  const { points, setPoints } = props;
+
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
   const [
     shapes,
@@ -48,6 +50,7 @@ export default function Game() {
   detectCollision(playerPosition, shapes, (key) => {
     setTriggered(key);
     playSound();
+    setPoints(points);
   });
 
   return (

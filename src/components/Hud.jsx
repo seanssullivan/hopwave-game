@@ -1,10 +1,9 @@
-import React, { useMemo, useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
 
 export default function Hud(props) {
-  // const points = useStore((state) => state.points);
-  // const health = useStore((state) => state.health);
+  const { points } = props;
 
   const [player] = useState(() =>
     new Tone.Player({
@@ -15,7 +14,6 @@ export default function Hud(props) {
   );
 
   const [music, setMusic] = useState(false);
-  // console.log(music);
 
   useEffect(() => {
     if (music) {
@@ -60,25 +58,22 @@ export default function Hud(props) {
         <br />
       </UpperRight>
       <LowerLeft>
-        <h2 ref={seconds}>0.0</h2>
-        {/* <h1>{score}</h1> */}
+        <h3 ref={seconds}>0.0</h3>
       </LowerLeft>
       <LowerRight>
-        <h2> </h2>
-        {/* <div style={{ width: 100 + "%" }} /> */}
+        <h2>{points}</h2>
       </LowerRight>
     </>
   );
 }
 
 const base = css`
-  font-family: "Teko", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   position: absolute;
   text-transform: uppercase;
   font-weight: 900;
   font-variant-numeric: slashed-zero tabular-nums;
   line-height: 1em;
-  pointer-events: none;
   color: #ff9f61;
 `;
 
@@ -134,6 +129,11 @@ const LowerLeft = styled.div`
     font-size: 4em;
     line-height: 1em;
   }
+  & > h3 {
+    margin: 0;
+    font-size: 3em;
+    line-height: 1em;
+  }
   @media only screen and (max-width: 900px) {
     bottom: 30px;
     & > h1 {
@@ -154,6 +154,11 @@ const LowerRight = styled.div`
   width: 200px;
 
   & > h2 {
+    font-size: 3em !important;
+    height: 100%;
+  }
+
+  & > h3 {
     font-size: 3em !important;
     height: 100%;
   }
