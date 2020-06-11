@@ -22,6 +22,7 @@ const ROAD_SEGMENT = {
 
 // Shape component settings are defined here:
 const SHAPE = {
+  SPAWN: 1500,
   RADIUS: 30,
 };
 
