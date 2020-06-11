@@ -8,7 +8,7 @@ const GAME = {
 
 // Road component settings are defined here:
 const ROAD = {
-  LENGTH: 7,
+  LENGTH: 10,
   CUTOFF: -200,
 };
 
@@ -39,11 +39,17 @@ const CAR = {
   },
 };
 // PalmTrees component setting are defined here:
-  const PALM = {
-    CUTOFF: -200,
-    SPAWN: 100
-  }
+const PALM = {
+  CUTOFF: -200,
+  SPAWN: 100,
+};
+
+//Spotify component settings are defined here:
+const SPOTIFY = {
+  TOKEN:
+    "BQCroovvXtr4F1eJpQQgp9cQK5TvDiCVWlG7avEKr0qq8ix04kLH4mPWFVOTfhHSQv-mbotfa8vTTSzboF_i8ebcj_-BnKPGzrzQiCYYI3s58rchxjIvl803MX9s8rXOTHZ9AB7X7wcDPVOOAx-SDQaOhJWDh0C2I2J_99pYcXqLTOr6EovfOWw",
+};
 
 // Combine settings for export
-const settings = { GAME, ROAD, ROAD_SEGMENT, SHAPE, CAR, PALM };
+const settings = { GAME, ROAD, ROAD_SEGMENT, SHAPE, CAR, PALM, SPOTIFY };
 export default settings;
