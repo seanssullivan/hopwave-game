@@ -6,7 +6,6 @@ source: https://sketchfab.com/3d-models/uxrzone-lofi-palm-tree-ea2cd882db41471fa
 title: UXR.zone LOFI Palm Tree
 */
 
-import * as THREE from "three";
 import React, { useRef } from "react";
 import { useLoader, useFrame } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
