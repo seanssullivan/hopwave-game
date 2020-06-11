@@ -13,6 +13,7 @@ import Number from "./Logo/Number";
 export default function App() {
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
+  const [difficulty, setDifficulty] = useState("easy");
   return (
     <>
       <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
@@ -35,6 +36,8 @@ export default function App() {
         points={points}
         gameMode={gameMode}
         setGameMode={() => setGameMode(!gameMode)}
+        difficulty={difficulty}
+        setDifficulty={setDifficulty}
       />
     </>
   );
