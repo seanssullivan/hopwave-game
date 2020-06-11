@@ -12,7 +12,7 @@ import "./Game.scss";
 import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
-// import Sun from "./Sun";
+//import Sun from "./Sun";
 import PalmTrees from "./PalmTrees";
 
 // Import hooks
