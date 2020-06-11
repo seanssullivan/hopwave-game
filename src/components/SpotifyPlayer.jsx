@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 // Import settings
 import settings from "../settings";
@@ -63,12 +62,3 @@ export default function SpotifyPlayer() {
     </>
   );
 }
-
-// return axios.get("https://accounts.spotify.com/authorize").then((res) => {});
-// axios
-//     .get(
-//       "https://open.spotify.com/playlist/1APbMkLxJGgWT88wpKyCIA?si=5NMAGjFgQemtXc3E22BfDA"
-//     )
-//     .then((res) => {
-//       console.log(res);
-//     });
