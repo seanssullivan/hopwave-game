@@ -57,7 +57,7 @@ export default function Hud(props) {
             <iframe
               src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
               width="300"
-              height="380"
+              height="220"
               frameborder="0"
               allowtransparency="true"
               allow="encrypted-media"
