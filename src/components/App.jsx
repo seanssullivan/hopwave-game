@@ -9,6 +9,7 @@ import Hud from "./Hud";
 import Background from "./Background";
 import SpotifyPlayer from "./SpotifyPlayer";
 import Number from "./Logo/Number";
+import Effects from "./Effects";
 
 export default function App() {
   const [gameMode, setGameMode] = useState(false);
@@ -30,9 +31,12 @@ export default function App() {
           />
         )}
         {!gameMode && (
-          <Suspense>
-            <Number />
-          </Suspense>
+          <>
+            <Suspense>
+              <Number />
+            </Suspense>
+            <Effects />
+          </>
         )}
       </Canvas>
       {gameMode && <SpotifyPlayer />}

@@ -137,6 +137,7 @@ const UpperRight = styled.div`
   & > a {
     text-decoration: none;
     font-family: "Press Start 2P", cursive;
+    color: #ff9f61;
   }
   & > h2 {
     text-decoration: none;
@@ -148,9 +149,10 @@ const UpperRight = styled.div`
 
 const LowerLeft = styled.li`
   ${base}
-  bottom: 30px;
+  bottom: 50px;
   left: 50px;
-  // display:inline
+  cursor: pointer;
+  pointer-events: all;
   transform: skew(-5deg, -10deg);
   width: 200px;
 

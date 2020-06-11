@@ -15,7 +15,7 @@ export default function Obstacles(props) {
   let difficultySpeed;
 
   if (difficulty === "hard") {
-    difficultySpeed = 1500;
+    difficultySpeed = 500;
   } else if (difficulty === "medium") {
     difficultySpeed = 2000;
   } else {
