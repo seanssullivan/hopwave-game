@@ -33,7 +33,7 @@ import settings from "../settings";
 const { SPEED, START_POSITION } = settings.GAME;
 
 export default function Game(props) {
-  const { points, setPoints } = props;
+  const { points, setPoints, difficulty } = props;
 
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
   const [
@@ -61,6 +61,7 @@ export default function Game(props) {
         addShape={addShape}
         destroyShape={destroyShape}
         setShapePosition={setShapePosition}
+        difficulty={difficulty}
       />
       {/* <Sun /> */}
       {/* <OrbitControl /> */}

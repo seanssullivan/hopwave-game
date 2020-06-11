@@ -23,7 +23,11 @@ export default function App() {
         <Grid position={[0, -0.8, 200]} />
         <Ground position={[0, -1, 200]} />
         {gameMode && (
-          <Game points={points} setPoints={(prev) => setPoints(prev + 1)} />
+          <Game
+            points={points}
+            setPoints={(prev) => setPoints(prev + 1)}
+            difficulty={difficulty}
+          />
         )}
         {!gameMode && (
           <Suspense>
