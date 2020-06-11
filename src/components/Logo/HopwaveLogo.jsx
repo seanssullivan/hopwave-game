@@ -14,21 +14,17 @@ const Text = forwardRef(
     },
     ref
   ) => {
-    const font = useLoader(
-      THREE.FontLoader,
-      "https://threejsfundamentals.org/threejs/resources/threejs/fonts/helvetiker_regular.typeface.json"
-    );
-    const config = useMemo(() => ({ font, size: 10, height: 50 }), [font]);
+    const font = useLoader(THREE.FontLoader, "fonts/PressStart.json");
+    const config = useMemo(() => ({ font, size: 7, height: 50 }), [font]);
     const mesh = useUpdate(
       (self) => {
         const size = new THREE.Vector3();
         self.geometry.computeBoundingBox();
         self.geometry.boundingBox.getSize(size);
-        self.position.x = 25;
+        self.position.x = 29;
         self.position.y = 0;
         self.position.z = 500;
         self.rotation.y = 3.14;
-        // vAlign === "center" ? -size.y / 2 : vAlign === "top" ? 0 : -size.y;
       },
       [children]
     );
