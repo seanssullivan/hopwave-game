@@ -49,8 +49,22 @@ export default function Hud(props) {
   return (
     <>
       <Global />
-      <UpperLeft onClick={() => startMusic()}>
-        <h4>sound</h4>
+      <UpperLeft>
+        <h4>
+          {music ? (
+            "Spotify"
+          ) : (
+            <iframe
+              src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
+              width="300"
+              height="380"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          )}
+        </h4>
+        <h4 onClick={() => startMusic()}>sound</h4>
         <h4>{music ? "on" : "off"}</h4>
       </UpperLeft>
       <UpperRight>
@@ -63,10 +77,7 @@ export default function Hud(props) {
         <h2 ref={seconds}>0.0</h2>
         {/* <h1>{score}</h1> */}
       </LowerLeft>
-      <LowerRight>
-        <h2> </h2>
-        {/* <div style={{ width: 100 + "%" }} /> */}
-      </LowerRight>
+      <LowerRight></LowerRight>
     </>
   );
 }

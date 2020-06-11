@@ -1,17 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
-import { render } from "react-three-fiber";
 
+// Import settings
+import settings from "../settings";
+const { TOKEN } = settings.SPOTIFY;
 const clientId = process.env.REACT_APP_CLIENT_ID;
 
-export default function SpotifyPlayer(props) {
+export default function SpotifyPlayer() {
   return (
     <>
       <script>
         {
           (window.onSpotifyWebPlaybackSDKReady = () => {
-            const token =
-              "BQAYIhnJE13fILI0564rmptq9ssH7zhiZgGgSBZXu0g5EsIstLOdGKIqFRw3NfV4k8mz7PRxeE8OfI0NHvrAdOf7CT3bZXrRSz-hvCR0Hmy6pKEqf6KT88IjdseGU46P_PHjeksZT1Cuw7jqfaqiq1Dlk2vGtI_A8I5gZ_MwBsbnzF56WwApfnU";
+            const token = TOKEN;
             const player = new window.Spotify.Player({
               name: "Web Playback SDK Quick Start Player",
               getOAuthToken: (cb) => {
@@ -35,7 +36,7 @@ export default function SpotifyPlayer(props) {
 
             // Playback status updates
             player.addListener("player_state_changed", (state) => {
-              console.log(state);
+              console.log(state.item);
             });
 
             // Ready
