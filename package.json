@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lerp": "^1.0.3",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -13,7 +14,8 @@
     "sass": "^1.26.8",
     "styled-components": "^5.1.1",
     "three": "^0.117.1",
-    "tone": "^13.8.25"
+    "tone": "^13.8.25",
+    "troika-3d-text": "^0.28.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
