@@ -3,7 +3,9 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
 
 export default function Hud(props) {
-  const { points } = props;
+
+  const { points, gameMode, setGameMode } = props;
+
 
   const [player] = useState(() =>
     new Tone.Player({
@@ -40,10 +42,6 @@ export default function Hud(props) {
     return () => clearInterval(i);
   }, []);
 
-  // const score = useMemo(
-  //   () => (points >= 1000 ? (points / 1000).toFixed(1) + "K" : points),
-  //   [points]
-  // );
   return (
     <>
       <Global />
@@ -56,6 +54,7 @@ export default function Hud(props) {
         <br />
         <a href="https://github.com/seanssullivan/hopwave-game">source</a>
         <br />
+        <h2 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h2>
       </UpperRight>
       <LowerLeft>
         <h3 ref={seconds}>0.0</h3>
