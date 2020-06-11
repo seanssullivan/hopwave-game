@@ -149,10 +149,12 @@ const UpperRight = styled.div`
 
 const LowerLeft = styled.li`
   ${base}
+
   bottom: 50px;
   left: 50px;
   cursor: pointer;
   pointer-events: all;
+
   transform: skew(-5deg, -10deg);
   width: 200px;
 
