@@ -7,9 +7,11 @@ import Ground from "./Ground";
 import Grid from "./Grid";
 import Hud from "./Hud";
 import Background from "./Background";
+import SpotifyPlayer from "./SpotifyPlayer";
 import Number from "./Logo/Number";
 
 export default function App() {
+
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
   if (!gameMode) {
@@ -43,6 +45,7 @@ export default function App() {
         <Ground position={[0, -1, 200]} />
         <Game points={points} setPoints={(prev) => setPoints(prev + 1)} />
       </Canvas>
+      <SpotifyPlayer />
       <Hud
         points={points}
         gameMode={gameMode}

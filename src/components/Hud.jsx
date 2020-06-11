@@ -3,7 +3,9 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
 
 export default function Hud(props) {
+
   const { points, gameMode, setGameMode } = props;
+
 
   const [player] = useState(() =>
     new Tone.Player({
@@ -43,8 +45,22 @@ export default function Hud(props) {
   return (
     <>
       <Global />
-      <UpperLeft onClick={() => startMusic()}>
-        <h4>sound</h4>
+      <UpperLeft>
+        <h4>
+          {music ? (
+            "Spotify"
+          ) : (
+            <iframe
+              src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
+              width="300"
+              height="220"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          )}
+        </h4>
+        <h4 onClick={() => startMusic()}>sound</h4>
         <h4>{music ? "on" : "off"}</h4>
       </UpperLeft>
       <UpperRight>
