@@ -10,6 +10,7 @@ import Background from "./Background";
 import Number from "./Logo/Number";
 
 export default function App() {
+
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
   if (!gameMode) {
@@ -33,6 +34,7 @@ export default function App() {
       </>
     );
   }
+
   return (
     <>
       <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
@@ -43,11 +45,13 @@ export default function App() {
         <Ground position={[0, -1, 200]} />
         <Game points={points} setPoints={(prev) => setPoints(prev + 1)} />
       </Canvas>
+
       <Hud
         points={points}
         gameMode={gameMode}
         setGameMode={() => setGameMode(!gameMode)}
       />
+
     </>
   );
 }

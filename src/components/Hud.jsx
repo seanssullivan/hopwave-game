@@ -3,7 +3,9 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
 
 export default function Hud(props) {
+
   const { points, gameMode, setGameMode } = props;
+
 
   const [player] = useState(() =>
     new Tone.Player({
