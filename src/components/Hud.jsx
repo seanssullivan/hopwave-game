@@ -37,15 +37,13 @@ export default function Hud(props) {
       <Global />
       <UpperLeft>
         <h4>
-          {music ? (
+          {music || !gameMode ? (
             "Spotify"
           ) : (
             <iframe
               title="Spotify"
               src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
-              width="300"
-              height="220"
-              frameBorder="0"
+              frameborder="0"
               allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
@@ -55,11 +53,13 @@ export default function Hud(props) {
         <h4>{music ? "on" : "off"}</h4>
       </UpperLeft>
       <UpperRight>
-        <h2>HOPWAVE </h2>
-        {/* <br /> */}
-        <h2 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h2>
-        {/* <br /> */}
-        <a href="https://github.com/seanssullivan/hopwave-game">source</a>
+        <div className="rightHud">
+          <h4>HOPWAVE </h4>
+          {/* <br /> */}
+          <h4 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h4>
+          {/* <br /> */}
+          <a href="https://github.com/seanssullivan/hopwave-game">source</a>
+        </div>
       </UpperRight>
       <LowerLeft>
         <ul>
