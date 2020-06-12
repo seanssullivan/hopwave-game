@@ -47,4 +47,38 @@ iframe {
   top: -13%;
   left: 0;
   opacity: 0.8;
+  width: 300px;
+  height: 220px;
+}
+
+@media only screen and (max-width: 624px) {
+  h4 {
+    font-size: 20px;
+  }
+  a {
+    opacity: 0;
+  }
+  ul {
+    font-size: 10px;
+    padding-left: 0px;
+  }
+  div.sc-AxirZ.iWmfPZ {
+    right: 22px;
+    top: 15px;
+  }
+
+  div.sc-AxjAm.fFBPyW {
+    left: 22px;
+    top: 15px;
+
+    iframe {
+      width: 230px;
+      height: 80px;
+    }
+  }
+
+  div.sc-AxhCb.kfRrsa {
+    right: 0px;
+    width: 100px;
+  }
 }
