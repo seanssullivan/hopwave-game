@@ -1,42 +1,33 @@
-import * as THREE from "three";
-import React, { forwardRef, useMemo } from "react";
-import { useLoader, useUpdate } from "react-three-fiber";
+import React, { Suspense, useRef } from "react";
+import { useFrame, useThree } from "react-three-fiber";
+import lerp from "lerp";
+import Text from "./Text";
 
-const Text = forwardRef(
-  (
-    {
-      children,
-      vAlign = "center",
-      hAlign = "center",
-      size = 1,
-      color = "#000000",
-      ...props
-    },
-    ref
-  ) => {
-    const font = useLoader(THREE.FontLoader, "fonts/PressStart.json");
-    const config = useMemo(() => ({ font, size: 7, height: 50 }), [font]);
-    const mesh = useUpdate(
-      (self) => {
-        const size = new THREE.Vector3();
-        self.geometry.computeBoundingBox();
-        self.geometry.boundingBox.getSize(size);
-        self.position.x = 29;
-        self.position.y = 0;
-        self.position.z = 500;
-        self.rotation.y = 3.14;
-      },
-      [children]
-    );
-    return (
-      <group ref={ref} {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
-        <mesh ref={mesh}>
-          <textGeometry attach="geometry" args={[children, config]} />
-          <meshNormalMaterial attach="material" />
-        </mesh>
-      </group>
-    );
-  }
-);
+export default function HopwaveLogo({ mouse }) {
+  const ref = useRef();
 
-export default Text;
+  const { size, viewport } = useThree();
+  const aspect = size.width / viewport.width;
+  useFrame(() => {
+    if (ref.current === true) {
+      ref.current.position.x = lerp(
+        ref.current.position.x,
+        mouse.current[0] / aspect / 10,
+        0.1
+      );
+      ref.current.rotation.x = lerp(
+        ref.current.rotation.x,
+        0 + mouse.current[1] / aspect / 50,
+        0.1
+      );
+      ref.current.rotation.y = 0.8;
+    }
+  });
+  return (
+    <Suspense fallback={null}>
+      <mesh ref={ref}>
+        <Text size={40}>hopwave</Text>
+      </mesh>
+    </Suspense>
+  );
+}

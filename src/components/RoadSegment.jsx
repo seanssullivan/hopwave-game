@@ -7,7 +7,7 @@ import useReposition from "../hooks/useReposition";
 
 // Import settings
 import settings from "../settings";
-const { WIDTH, HEIGHT, LENGTH, COLOR } = settings.ROAD_SEGMENT;
+const { WIDTH, HEIGHT, LENGTH } = settings.ROAD_SEGMENT;
 
 export default function RoadSegment(props) {
   const { speed, cutoff, spawn, color } = props;

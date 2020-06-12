@@ -1,11 +1,5 @@
-import React, {
-  useState,
-  useFrame,
-  Suspense,
-  useCallback,
-  useEffect,
-} from "react";
-import { Canvas } from "react-three-fiber";
+import React, { useState, Suspense } from "react";
+
 import "./Game.scss";
 
 // Import components
@@ -16,7 +10,8 @@ import Obstacles from "./Obstacles";
 import PalmTrees from "./PalmTrees";
 
 // Import hooks
-import useMusic from "../hooks/useMusic";
+
+// import useMusic from "../hooks/useMusic";
 import useSoundEffects from "../hooks/useSoundEffects";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 import useShapePositions from "../hooks/useShapePositions";
@@ -44,7 +39,7 @@ export default function Game(props) {
     destroyShape,
   ] = useShapePositions();
   const [speed, setSpeed] = useState(SPEED);
-  const [musicPlayer] = useMusic(speed);
+  // const [musicPlayer] = useMusic(speed);
   const [playSound] = useSoundEffects();
 
   detectCollision(playerPosition, shapes, (key) => {

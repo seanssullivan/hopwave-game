@@ -45,7 +45,7 @@ export default function Hud(props) {
               src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
               width="300"
               height="220"
-              frameborder="0"
+              frameBorder="0"
               allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
@@ -172,7 +172,6 @@ const LowerLeft = styled.li`
     // font-size: 1.4em;
     font-size: ${(props) => {
       const test = props;
-      console.log(test);
 
       if (test === "easy") {
         return "2.0";

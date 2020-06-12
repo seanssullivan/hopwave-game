@@ -1,24 +1,26 @@
-import React, { Suspense, useState, useRef } from "react";
-import { Canvas, useFrame, useThree } from "react-three-fiber";
+import React, { Suspense, useState } from "react";
+import { Canvas } from "react-three-fiber";
 
 // Import components
 import Game from "./Game";
 import Ground from "./Ground";
 import Grid from "./Grid";
 import Hud from "./Hud";
-import Background from "./Background";
-import SpotifyPlayer from "./SpotifyPlayer";
-import Number from "./Logo/Number";
+import HopwaveLogo from "./Logo/HopwaveLogo";
 import Effects from "./Effects";
 
 export default function App() {
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
   const [difficulty, setDifficulty] = useState("easy");
+
   return (
     <>
-      <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
-        <Background className={"background"} />
+      <Canvas
+        id={"canvas"}
+        colorManagement
+        camera={{ position: [0, 25, -100] }}
+      >
         <ambientLight />
         <pointLight position={[100, 100, 100]} />
         <Grid position={[0, -0.8, 200]} />
@@ -33,13 +35,13 @@ export default function App() {
         {!gameMode && (
           <>
             <Suspense>
-              <Number />
+              <HopwaveLogo />
             </Suspense>
             <Effects />
           </>
         )}
       </Canvas>
-      {gameMode && <SpotifyPlayer />}
+      {gameMode}
       <Hud
         points={points}
         gameMode={gameMode}
