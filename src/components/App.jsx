@@ -13,7 +13,6 @@ export default function App() {
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
   const [difficulty, setDifficulty] = useState("easy");
-
   return (
     <>
       <Canvas
