@@ -21,7 +21,7 @@ import detectCollision from "../helpers/detectCollision";
 
 // Optional components
 // import OrbitControl from "./OrbitControls";
-// import Zuckerberg from "./Zuckerberg";
+import Zuckerberg from "./Zuckerberg";
 
 // Import settings
 import settings from "../settings";
@@ -72,7 +72,13 @@ export default function Game(props) {
           setPosition={setPlayerPosition}
         />
 
-        {/* <Zuckerberg/> */}
+        {/* <Zuckerberg
+          color={"white"}
+          avgSpeed={SPEED}
+          setSpeed={setSpeed}
+          position={playerPosition}
+          setPosition={setPlayerPosition}
+        /> */}
       </Suspense>
     </>
   );

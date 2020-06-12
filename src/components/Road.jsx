@@ -31,7 +31,7 @@ export default function Road(props) {
         speed={props.speed}
         cutoff={CUTOFF}
         spawn={100 * (LENGTH - 1)}
-        color={color}
+        color={"#4deeea"}
       ></RoadSegment>
     );
   });

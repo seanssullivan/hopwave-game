@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
+import RoadEffects from "./RoadEffects";
 
 // Import hooks
 import useMovement from "../hooks/useMovement";
@@ -28,8 +29,16 @@ export default function RoadSegment(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
+      {/* <RoadEffects /> */}
       <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
-      <meshLambertMaterial roughness={0.5} attach="material" color={color} />
+      <pointsMaterial
+        transparent={true}
+        opacity={0.2}
+        roughness={1}
+        attach="material"
+        // wireframe={true}
+        color={color}
+      />
     </mesh>
   );
 }
