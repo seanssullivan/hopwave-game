@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
 
 export default function Hud(props) {
+  const { points, gameMode, setGameMode, setDifficulty } = props;
 
-  const { points, gameMode, setGameMode } = props;
-
+  let [active, setActive] = useState("easy");
 
   const [player] = useState(() =>
     new Tone.Player({
@@ -32,16 +32,6 @@ export default function Hud(props) {
     }
   };
 
-  const seconds = useRef();
-  useEffect(() => {
-    const t = Date.now();
-    const i = setInterval(
-      () => (seconds.current.innerText = ((Date.now() - t) / 1000).toFixed(1)),
-      100
-    );
-    return () => clearInterval(i);
-  }, []);
-
   return (
     <>
       <Global />
@@ -51,6 +41,7 @@ export default function Hud(props) {
             "Spotify"
           ) : (
             <iframe
+              title="Spotify"
               src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
               width="300"
               height="220"
@@ -65,13 +56,42 @@ export default function Hud(props) {
       </UpperLeft>
       <UpperRight>
         <h2>HOPWAVE </h2>
-        <br />
-        <a href="https://github.com/seanssullivan/hopwave-game">source</a>
-        <br />
+        {/* <br /> */}
         <h2 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h2>
+        {/* <br /> */}
+        <a href="https://github.com/seanssullivan/hopwave-game">source</a>
       </UpperRight>
       <LowerLeft>
-        <h3 ref={seconds}>0.0</h3>
+        <ul>
+          <li
+            className={`easy ${"easy" === active ? "bigText" : ""}`}
+            onClick={() => {
+              setDifficulty("easy");
+              setActive("easy");
+            }}
+          >
+            easy
+          </li>
+          <li
+            id={"medium"}
+            className={`"medium" ${"medium" === active ? "bigText" : ""}`}
+            onClick={() => {
+              setDifficulty("medium");
+              setActive("medium");
+            }}
+          >
+            medium
+          </li>
+          <li
+            className={`"hard" ${"hard" === active ? "bigText" : ""}`}
+            onClick={() => {
+              setDifficulty("hard");
+              setActive("hard");
+            }}
+          >
+            hard
+          </li>
+        </ul>
       </LowerLeft>
       <LowerRight>
         <h2>{points}</h2>
@@ -117,6 +137,7 @@ const UpperRight = styled.div`
   & > a {
     text-decoration: none;
     font-family: "Press Start 2P", cursive;
+    color: #ff9f61;
   }
   & > h2 {
     text-decoration: none;
@@ -126,27 +147,47 @@ const UpperRight = styled.div`
   }
 `;
 
-const LowerLeft = styled.div`
+const LowerLeft = styled.li`
   ${base}
-  bottom: 5px;
+
+  bottom: 50px;
   left: 50px;
+  cursor: pointer;
+  pointer-events: all;
+
   transform: skew(-5deg, -10deg);
   width: 200px;
-  & > h1 {
-    margin: 0;
-    font-size: 14em;
-    line-height: 1em;
+
+  #medium {
+    margin-left: 10px;
+    margin-right: 10px;
   }
-  & > h2 {
-    margin: 0;
-    font-size: 4em;
-    line-height: 1em;
+
+  .bigText {
+    font-size: 2em;
   }
-  & > h3 {
+
+  & > ul {
     margin: 0;
-    font-size: 3em;
     line-height: 1em;
+    display: inline;
+    // font-size: 1.4em;
+    font-size: ${(props) => {
+      const test = props;
+      console.log(test);
+
+      if (test === "easy") {
+        return "2.0";
+      } else if (test === "medium") {
+        return "2.0";
+      } else if (test === "hard") {
+        return "2.0";
+      } else {
+        return "1.4";
+      }
+    }};
   }
+
   @media only screen and (max-width: 900px) {
     bottom: 30px;
     & > h1 {
@@ -217,6 +258,17 @@ const Global = createGlobalStyle`
   h4 {
     font-family: "Press Start 2P"
     
+  }
+
+  li {
+    display: inline
+  }
+ 
+
+  .medium {
+    margin-left: 10px;
+    margin-right: 10px;
+}
   }
   body {
     position: fixed;
