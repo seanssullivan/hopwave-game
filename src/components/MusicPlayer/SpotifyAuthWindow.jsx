@@ -5,6 +5,11 @@ import ReactDOM from "react-dom";
 
 import { getSpotifyAccess } from "../../helpers/spotifyAccess";
 
+// Import settings
+import settings from "../../settings";
+const { CLIENT_ID } = settings.SPOTIFY;
+
+// Define constants
 const SpotifyAccess = {
   ALLOWED: "allowed",
   DENIED: "denied",
@@ -13,7 +18,7 @@ const SpotifyAccess = {
 };
 
 export default function SpotifyLogin(props) {
-  const { clientId, setStatus, setToken, setMessage } = props;
+  const { setStatus, setToken, setMessage } = props;
   const container = document.createElement("div");
 
   const authorizeSpotifyFromStorage = useCallback(
@@ -40,7 +45,7 @@ export default function SpotifyLogin(props) {
     const urlPath = [
       "https://accounts.spotify.com/authorize",
       [
-        `client_id=${clientId}`,
+        `client_id=${CLIENT_ID}`,
         "response_type=token",
         `redirect_uri=${window.location.origin}`,
         "show_dialog=true",
@@ -51,7 +56,7 @@ export default function SpotifyLogin(props) {
     ].join("?");
     window.open(urlPath, "width=600, height=500");
     window.addEventListener("storage", authorizeSpotifyFromStorage);
-  }, [clientId, authorizeSpotifyFromStorage]);
+  }, [authorizeSpotifyFromStorage]);
 
   return ReactDOM.createPortal(props.children, container);
 }

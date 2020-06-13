@@ -7,9 +7,6 @@ import SpotifyAuthWindow from "./SpotifyAuthWindow";
 // Import hooks
 import useSpotifyControls from "../../hooks/useSpotifyControls";
 
-import settings from "../../settings";
-const { CLIENT_ID, SPOTIFY_URI } = settings.SPOTIFY;
-
 export default function SpotifyPlayer(props) {
   const [accessStatus, setAccessStatus] = useState();
   const [accessToken, setAccessToken] = useState();
@@ -28,7 +25,6 @@ export default function SpotifyPlayer(props) {
       <h3>Spotify</h3>
       {!accessToken && (
         <SpotifyAuthWindow
-          clientId={CLIENT_ID}
           setStatus={setAccessStatus}
           setToken={setAccessToken}
           setMessage={setStatusMessage}

@@ -1,6 +1,9 @@
 import React, { useCallback } from "react";
 import Script from "react-load-script";
 
+import settings from "../../settings";
+const { SPOTIFY_URI } = settings.SPOTIFY;
+
 /*
  * Spotify's Web Playback SDK creates a connection between the app and a user's Spotify account.
  */
@@ -97,7 +100,7 @@ export default function SpotifySDK(props) {
               {
                 method: "PUT",
                 body: JSON.stringify({
-                  context_uri: "spotify:playlist:3PPbbsJhktmX5Cp6syx7gR",
+                  context_uri: SPOTIFY_URI,
                 }),
                 headers: {
                   "Content-Type": "application/json",
