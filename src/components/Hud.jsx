@@ -254,7 +254,7 @@ const Global = createGlobalStyle`
   a:visited {color: #ff9f61;} /* Visited link    */
   a:hover {color: #ff9f61;}   /* Mouse over link */
   a:active {color: #ff9f61;}  /* Selected link   */
- 
+
 
   .medium {
     margin-left: 10px;
