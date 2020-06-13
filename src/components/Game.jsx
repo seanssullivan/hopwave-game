@@ -20,8 +20,8 @@ import useShapePositions from "../hooks/useShapePositions";
 import detectCollision from "../helpers/detectCollision";
 
 // Optional components
-import OrbitControl from "./Controls/OrbitControls";
-import Zuckerberg from "./3d_Models/Zuckerberg";
+// import OrbitControl from "./Controls/OrbitControls";
+// import Zuckerberg from "./3d_Models/Zuckerberg";
 
 // Import settings
 import settings from "../settings";
@@ -58,7 +58,7 @@ export default function Game(props) {
         setShapePosition={setShapePosition}
         difficulty={difficulty}
       />
-      {/* <Sun /> */}
+
       {/* <OrbitControl /> */}
 
       <Suspense fallback={null}>

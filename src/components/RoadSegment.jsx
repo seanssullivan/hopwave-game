@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
-import RoadEffects from "./RoadEffects";
+// import RoadEffects from "./RoadEffects";
 
 // Import hooks
 import useMovement from "../hooks/useMovement";

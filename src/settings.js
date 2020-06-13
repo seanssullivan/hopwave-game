@@ -11,6 +11,7 @@ const GAME = {
 const ROAD = {
   LENGTH: 10,
   CUTOFF: -200,
+  COLOR: "#4deeea",
 };
 
 // Road Segment component settings are defined here:
@@ -18,7 +19,7 @@ const ROAD_SEGMENT = {
   WIDTH: 100,
   HEIGHT: 1,
   LENGTH: 100,
-  COLOR: "cyan",
+  COLOR: "#4deeea",
 };
 
 // Shape component settings are defined here:
