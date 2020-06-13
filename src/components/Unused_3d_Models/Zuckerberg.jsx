@@ -11,11 +11,11 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLoader, useFrame } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // Import hooks
-import useKeyPress from "../hooks/useKeyPress";
-import useMovement from "../hooks/useMovement";
+import useKeyPress from "../../hooks/useKeyPress";
+import useMovement from "../../hooks/useMovement";
 
 // Import settings
-import settings from "../settings";
+import settings from "../../settings";
 const { ACCELERATION, TURN_SPEED, ROTATION, BOUNDARY } = settings.CAR;
 
 export default function Model(props) {
