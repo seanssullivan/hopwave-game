@@ -15,7 +15,7 @@ const Text = forwardRef(
     ref
   ) => {
     const font = useLoader(THREE.FontLoader, "fonts/PressStart.json");
-    const config = useMemo(() => ({ font, size: 7, height: 50 }), [font]);
+    const config = useMemo(() => ({ font, size: 6, height: 50 }), [font]);
     const mesh = useUpdate(
       (self) => {
         const size = new THREE.Vector3();
@@ -23,7 +23,7 @@ const Text = forwardRef(
         self.geometry.boundingBox.getSize(size);
         self.position.x = 29;
         self.position.y = 0;
-        self.position.z = 500;
+        self.position.z = 200;
         self.rotation.y = 3.14;
       },
       [children]

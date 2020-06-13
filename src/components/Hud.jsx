@@ -62,40 +62,40 @@ export default function Hud(props) {
         </div>
       </UpperRight>
       <LowerLeft>
-        <ul>
-          <li
-            className={`easy ${"easy" === active ? "bigText" : ""}`}
-            onClick={() => {
-              setDifficulty("easy");
-              setActive("easy");
-            }}
-          >
-            easy
-          </li>
-          <li
-            id={"medium"}
-            className={`"medium" ${"medium" === active ? "bigText" : ""}`}
-            onClick={() => {
-              setDifficulty("medium");
-              setActive("medium");
-            }}
-          >
-            medium
-          </li>
-          <li
-            className={`"hard" ${"hard" === active ? "bigText" : ""}`}
-            onClick={() => {
-              setDifficulty("hard");
-              setActive("hard");
-            }}
-          >
-            hard
-          </li>
-        </ul>
+        {gameMode && (
+          <ul>
+            <li
+              className={`easy ${"easy" === active ? "bigText" : ""}`}
+              onClick={() => {
+                setDifficulty("easy");
+                setActive("easy");
+              }}
+            >
+              easy
+            </li>
+            <li
+              id={"medium"}
+              className={`"medium" ${"medium" === active ? "bigText" : ""}`}
+              onClick={() => {
+                setDifficulty("medium");
+                setActive("medium");
+              }}
+            >
+              medium
+            </li>
+            <li
+              className={`"hard" ${"hard" === active ? "bigText" : ""}`}
+              onClick={() => {
+                setDifficulty("hard");
+                setActive("hard");
+              }}
+            >
+              hard
+            </li>
+          </ul>
+        )}
       </LowerLeft>
-      <LowerRight>
-        <h2>{points}</h2>
-      </LowerRight>
+      <LowerRight>{gameMode && <h2>{points}</h2>}</LowerRight>
     </>
   );
 }
@@ -260,6 +260,11 @@ const Global = createGlobalStyle`
   li {
     display: inline
   }
+
+  a {color: #ff9f61;}         /* Unvisited link  */
+  a:visited {color: #ff9f61;} /* Visited link    */
+  a:hover {color: #ff9f61;}   /* Mouse over link */
+  a:active {color: #ff9f61;}  /* Selected link   */
  
 
   .medium {
