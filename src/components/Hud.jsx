@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
+import Iframe from "./Iframe";
 
 export default function Hud(props) {
   const { points, gameMode, setGameMode, setDifficulty } = props;
@@ -36,19 +37,7 @@ export default function Hud(props) {
     <>
       <Global />
       <UpperLeft>
-        <h4>
-          {music || !gameMode ? (
-            "Spotify"
-          ) : (
-            <iframe
-              title="Spotify"
-              src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
-          )}
-        </h4>
+        <h4>{music || !gameMode ? "Spotify" : <Iframe />}</h4>
         <h4 onClick={() => startMusic()}>sound</h4>
         <h4>{music ? "on" : "off"}</h4>
       </UpperLeft>
@@ -265,6 +254,11 @@ const Global = createGlobalStyle`
   a:visited {color: #ff9f61;} /* Visited link    */
   a:hover {color: #ff9f61;}   /* Mouse over link */
   a:active {color: #ff9f61;}  /* Selected link   */
+
+  #iframe {
+    background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">PLACEHOLDER</text></svg>') 0px 0px no-repeat;
+   }
+
  
 
   .medium {

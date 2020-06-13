@@ -1,7 +1,5 @@
 import React, { useState, Suspense } from "react";
 
-import "./Game.scss";
-
 // Import components
 import Road from "./Road";
 import Car from "./Car";
