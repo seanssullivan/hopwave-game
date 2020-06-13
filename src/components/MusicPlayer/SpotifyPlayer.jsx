@@ -39,6 +39,7 @@ export default function SpotifyPlayer(props) {
           setSpotifyPlayer={setSpotifyPlayer}
         />
       )}
+      <p>{statusMessage}</p>
       <div>
         {/* Refactor these buttons into the parent MusicPlayer component */}
         <div
@@ -62,8 +63,6 @@ export default function SpotifyPlayer(props) {
           <h1>Pause</h1>
         </div>
       </div>
-
-      <p>{statusMessage}</p>
     </div>
   );
 }
