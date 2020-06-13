@@ -20,8 +20,8 @@ import useShapePositions from "../hooks/useShapePositions";
 import detectCollision from "../helpers/detectCollision";
 
 // Optional components
-// import OrbitControl from "./OrbitControls";
-import Zuckerberg from "./Zuckerberg";
+import OrbitControl from "./Controls/OrbitControls";
+import Zuckerberg from "./3d_Models/Zuckerberg";
 
 // Import settings
 import settings from "../settings";
