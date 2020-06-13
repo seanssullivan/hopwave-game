@@ -1,45 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
-import * as Tone from "tone";
-import Iframe from "./Iframe";
+
+import MusicPlayer from "./MusicPlayer/index";
 
 export default function Hud(props) {
   const { points, gameMode, setGameMode, setDifficulty } = props;
-
   let [active, setActive] = useState("easy");
-
-  const [player] = useState(() =>
-    new Tone.Player({
-      url: "Song.mp3",
-      autostart: false,
-      volume: -15,
-    }).toMaster()
-  );
-
-  const [music, setMusic] = useState(false);
-
-  useEffect(() => {
-    if (music) {
-      player.start();
-    } else {
-      player.stop();
-    }
-  }, [music, player]);
-  const startMusic = function () {
-    if (!music) {
-      setMusic(true);
-    } else {
-      setMusic(false);
-    }
-  };
 
   return (
     <>
       <Global />
       <UpperLeft>
-        <h4>{music || !gameMode ? "Spotify" : <Iframe />}</h4>
-        <h4 onClick={() => startMusic()}>sound</h4>
-        <h4>{music ? "on" : "off"}</h4>
+        <MusicPlayer mode={gameMode} />
       </UpperLeft>
       <UpperRight>
         <div className="rightHud">
