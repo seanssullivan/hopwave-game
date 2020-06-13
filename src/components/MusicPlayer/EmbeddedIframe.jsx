@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { CircularProgress } from "@material-ui/core";
 import "./Iframe.scss";
 
-export default function Iframe() {
+export default function EmbeddedIframe() {
   let [loading, setLoading] = useState(true);
 
   // returns a boolean
