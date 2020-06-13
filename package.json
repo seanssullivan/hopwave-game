@@ -9,6 +9,7 @@
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-load-script": "0.0.6",
     "react-postprocessing": "^1.0.0-beta21",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
