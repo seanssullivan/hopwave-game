@@ -254,11 +254,6 @@ const Global = createGlobalStyle`
   a:visited {color: #ff9f61;} /* Visited link    */
   a:hover {color: #ff9f61;}   /* Mouse over link */
   a:active {color: #ff9f61;}  /* Selected link   */
-
-  #iframe {
-    background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">PLACEHOLDER</text></svg>') 0px 0px no-repeat;
-   }
-
  
 
   .medium {
