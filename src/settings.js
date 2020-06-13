@@ -4,12 +4,14 @@
 const GAME = {
   SPEED: 5,
   START_POSITION: [0, 3, -70],
+  DIFFICULTY_SPEED: 2500,
 };
 
 // Road component settings are defined here:
 const ROAD = {
   LENGTH: 10,
   CUTOFF: -200,
+  COLOR: "#4deeea",
 };
 
 // Road Segment component settings are defined here:
@@ -17,7 +19,7 @@ const ROAD_SEGMENT = {
   WIDTH: 100,
   HEIGHT: 1,
   LENGTH: 100,
-  COLOR: "cyan",
+  COLOR: "#4deeea",
 };
 
 // Shape component settings are defined here:

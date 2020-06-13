@@ -1,12 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 
-// Import hooks
-import useMovement from "../../hooks/useMovement";
-
-// Import helpers
-import detectCollision from "../../helpers/detectCollision";
-
 // Import settings
 import settings from "../../settings";
 

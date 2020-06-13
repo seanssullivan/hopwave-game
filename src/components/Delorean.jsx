@@ -6,7 +6,6 @@ source: https://sketchfab.com/3d-models/delorean-time-machine-low-poly-a36c5afa1
 title: Delorean - time machine - low poly
 */
 
-import * as THREE from "three";
 import React, { useRef } from "react";
 import { useLoader } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";

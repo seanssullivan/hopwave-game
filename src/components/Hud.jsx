@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import * as Tone from "tone";
+import Iframe from "./Iframe";
 
 export default function Hud(props) {
   const { points, gameMode, setGameMode, setDifficulty } = props;
@@ -36,19 +37,7 @@ export default function Hud(props) {
     <>
       <Global />
       <UpperLeft>
-        <h4>
-          {music || !gameMode ? (
-            "Spotify"
-          ) : (
-            <iframe
-              title="Spotify"
-              src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            ></iframe>
-          )}
-        </h4>
+        <h4>{music || !gameMode ? "Spotify" : <Iframe />}</h4>
         <h4 onClick={() => startMusic()}>sound</h4>
         <h4>{music ? "on" : "off"}</h4>
       </UpperLeft>
@@ -62,40 +51,40 @@ export default function Hud(props) {
         </div>
       </UpperRight>
       <LowerLeft>
-        <ul>
-          <li
-            className={`easy ${"easy" === active ? "bigText" : ""}`}
-            onClick={() => {
-              setDifficulty("easy");
-              setActive("easy");
-            }}
-          >
-            easy
-          </li>
-          <li
-            id={"medium"}
-            className={`"medium" ${"medium" === active ? "bigText" : ""}`}
-            onClick={() => {
-              setDifficulty("medium");
-              setActive("medium");
-            }}
-          >
-            medium
-          </li>
-          <li
-            className={`"hard" ${"hard" === active ? "bigText" : ""}`}
-            onClick={() => {
-              setDifficulty("hard");
-              setActive("hard");
-            }}
-          >
-            hard
-          </li>
-        </ul>
+        {gameMode && (
+          <ul>
+            <li
+              className={`easy ${"easy" === active ? "bigText" : ""}`}
+              onClick={() => {
+                setDifficulty("easy");
+                setActive("easy");
+              }}
+            >
+              easy
+            </li>
+            <li
+              id={"medium"}
+              className={`"medium" ${"medium" === active ? "bigText" : ""}`}
+              onClick={() => {
+                setDifficulty("medium");
+                setActive("medium");
+              }}
+            >
+              medium
+            </li>
+            <li
+              className={`"hard" ${"hard" === active ? "bigText" : ""}`}
+              onClick={() => {
+                setDifficulty("hard");
+                setActive("hard");
+              }}
+            >
+              hard
+            </li>
+          </ul>
+        )}
       </LowerLeft>
-      <LowerRight>
-        <h2>{points}</h2>
-      </LowerRight>
+      <LowerRight>{gameMode && <h2>{points}</h2>}</LowerRight>
     </>
   );
 }
@@ -149,12 +138,10 @@ const UpperRight = styled.div`
 
 const LowerLeft = styled.li`
   ${base}
-
   bottom: 50px;
   left: 50px;
   cursor: pointer;
   pointer-events: all;
-
   transform: skew(-5deg, -10deg);
   width: 200px;
 
@@ -262,7 +249,12 @@ const Global = createGlobalStyle`
   li {
     display: inline
   }
- 
+
+  a {color: #ff9f61;}         /* Unvisited link  */
+  a:visited {color: #ff9f61;} /* Visited link    */
+  a:hover {color: #ff9f61;}   /* Mouse over link */
+  a:active {color: #ff9f61;}  /* Selected link   */
+
 
   .medium {
     margin-left: 10px;
@@ -278,3 +270,5 @@ const Global = createGlobalStyle`
     background: white;
   }
 `;
+
+//test

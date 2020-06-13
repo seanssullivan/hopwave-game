@@ -8,19 +8,10 @@ import useMovement from "../hooks/useMovement";
 
 // Import settings
 import settings from "../settings";
-const {
-  WIDTH,
-  HEIGHT,
-  LENGTH,
-  COLOR,
-  ACCELERATION,
-  TURN_SPEED,
-  ROTATION,
-  BOUNDARY,
-} = settings.CAR;
+const { ACCELERATION, TURN_SPEED, ROTATION, BOUNDARY } = settings.CAR;
 
 export default function Car(props) {
-  const { avgSpeed, setPosition, position, setSpeed } = props;
+  const { avgSpeed, setPosition, setSpeed } = props;
   // This reference will give us direct access to the mesh
   const group = useRef();
   const move = useMovement(group, "x", setPosition);
@@ -81,8 +72,6 @@ export default function Car(props) {
   });
 
   return (
-    // <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-    // {/* <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
     <group ref={group} {...props} dispose={null} scale={[3, 3, 3]}>
       <group rotation={[-Math.PI / 2, 0, 1.57]}>
         <group position={[0, -12, 0]}>

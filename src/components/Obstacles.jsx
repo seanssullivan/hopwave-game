@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useFrame } from "react-three-fiber";
 import Shape from "./Shape";
 
+// Import settings
+import settings from "../settings";
+let { DIFFICULTY_SPEED } = settings.GAME;
+
 export default function Obstacles(props) {
   const [time, setTime] = useState(Date.now());
   const {
@@ -12,19 +16,17 @@ export default function Obstacles(props) {
     difficulty,
   } = props;
 
-  let difficultySpeed;
-
   if (difficulty === "hard") {
-    difficultySpeed = 500;
+    DIFFICULTY_SPEED = 500;
   } else if (difficulty === "medium") {
-    difficultySpeed = 2000;
+    DIFFICULTY_SPEED = 2000;
   } else {
-    difficultySpeed = 2500;
+    DIFFICULTY_SPEED = 2500;
   }
 
   useFrame(() => {
     const now = Date.now();
-    if (Date.now() - time >= difficultySpeed) {
+    if (Date.now() - time >= DIFFICULTY_SPEED) {
       addShape();
       setTime(() => now);
     }
