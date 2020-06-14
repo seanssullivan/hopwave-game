@@ -3,11 +3,11 @@ import { useFrame } from "react-three-fiber";
 // import RoadEffects from "./RoadEffects";
 
 // Import hooks
-import useMovement from "../hooks/useMovement";
-import useReposition from "../hooks/useReposition";
+import useMovement from "../../hooks/useMovement";
+import useReposition from "../../hooks/useReposition";
 
 // Import settings
-import settings from "../settings";
+import settings from "../../settings";
 const { WIDTH, HEIGHT, LENGTH } = settings.ROAD_SEGMENT;
 
 export default function RoadSegment(props) {

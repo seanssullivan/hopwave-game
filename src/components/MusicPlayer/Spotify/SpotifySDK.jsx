@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import Script from "react-load-script";
 
-import settings from "../../settings";
+import settings from "../../../settings";
 const { SPOTIFY_URI } = settings.SPOTIFY;
 
 /*
@@ -94,6 +94,8 @@ export default function SpotifySDK(props) {
           });
 
           // Begin playback on current device
+          // FIX: Unable to use .then() to handle 403 PREMIUM REQUIRED responses without a getOAuthToken undefined error.
+          // TODO: Move all API requests into a separate hook.
           await getOAuthToken((access_token) => {
             fetch(
               `https://api.spotify.com/v1/me/player/play?device_id=${device_id}`,

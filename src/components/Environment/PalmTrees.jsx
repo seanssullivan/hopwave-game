@@ -3,7 +3,7 @@ import { useFrame } from "react-three-fiber";
 import PalmTree from "./PalmTree";
 
 //Import settings
-import settings from "../settings";
+import settings from "../../settings";
 const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
 
 export default function PalmTrees(props) {

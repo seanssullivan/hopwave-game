@@ -10,7 +10,6 @@ export default function useSpotifyControls() {
     },
   }) {
     getOAuthToken((access_token) => {
-      console.log(access_token);
       fetch(`https://api.spotify.com/v1/me/player/play`, {
         method: "PUT",
         body: JSON.stringify({ context_uri: spotifyUri }),
@@ -21,7 +20,6 @@ export default function useSpotifyControls() {
       });
     })
       .then((event) => {
-        console.log(event);
         if (event.status === 403) {
           console.log("you need to upgrade to premium for playback");
           // setState((prev) => {
