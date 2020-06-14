@@ -85,7 +85,6 @@ export default function SpotifyPlayer(props) {
         >
           <h4>now playing</h4>
         </div>
-
         <div>
           {songData && (
             <Casette
