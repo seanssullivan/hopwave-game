@@ -11,10 +11,10 @@ import { useLoader, useFrame } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // Import hooks
-import useMovement from "../hooks/useMovement";
+import useMovement from "../../hooks/useMovement";
 
 //Import settings
-import settings from "../settings";
+import settings from "../../settings";
 const { SPEED } = settings.GAME;
 
 export default function PalmTree(props) {

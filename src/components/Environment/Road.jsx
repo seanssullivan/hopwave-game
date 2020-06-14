@@ -4,7 +4,7 @@ import React from "react";
 import RoadSegment from "./RoadSegment";
 
 // Import settings
-import settings from "../settings";
+import settings from "../../settings";
 const { LENGTH, CUTOFF, COLOR } = settings.ROAD;
 
 export default function Road(props) {

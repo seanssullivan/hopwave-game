@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CircularProgress } from "@material-ui/core";
 import "./Iframe.scss";
 
-export default function EmbeddedIframe() {
+export default function SpotifyIframe() {
   let [loading, setLoading] = useState(true);
 
   // returns a boolean
