@@ -28,7 +28,7 @@ export default function Hud(props) {
             <li
               className={`easy ${"easy" === active ? "bigText" : ""}`}
               onClick={() => {
-                setDifficulty("easy");
+                setDifficulty("EASY");
                 setActive("easy");
               }}
             >
@@ -38,7 +38,7 @@ export default function Hud(props) {
               id={"medium"}
               className={`"medium" ${"medium" === active ? "bigText" : ""}`}
               onClick={() => {
-                setDifficulty("medium");
+                setDifficulty("MEDIUM");
                 setActive("medium");
               }}
             >
@@ -47,7 +47,7 @@ export default function Hud(props) {
             <li
               className={`"hard" ${"hard" === active ? "bigText" : ""}`}
               onClick={() => {
-                setDifficulty("hard");
+                setDifficulty("HARD");
                 setActive("hard");
               }}
             >

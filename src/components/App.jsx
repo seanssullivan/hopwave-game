@@ -19,7 +19,7 @@ export default function App() {
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
   const [speed, setSpeed] = useState(SPEED);
-  const [difficulty, setDifficulty] = useState("easy");
+  const [difficulty, setDifficulty] = useState("EASY");
   // const [musicPlayer] = useMusic(speed);
 
   return (

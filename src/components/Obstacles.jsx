@@ -13,7 +13,7 @@ import detectCollision from "../helpers/detectCollision";
 
 // Import settings
 import settings from "../settings";
-let { DIFFICULTY_SPEED } = settings.GAME;
+let { DIFFICULTY } = settings.GAME;
 
 export default function Obstacles(props) {
   const [time, setTime] = useState(Date.now());
@@ -34,17 +34,9 @@ export default function Obstacles(props) {
     setPoints(points);
   });
 
-  if (difficulty === "hard") {
-    DIFFICULTY_SPEED = 500;
-  } else if (difficulty === "medium") {
-    DIFFICULTY_SPEED = 2000;
-  } else {
-    DIFFICULTY_SPEED = 2500;
-  }
-
   useFrame(() => {
     const now = Date.now();
-    if (Date.now() - time >= DIFFICULTY_SPEED) {
+    if (Date.now() - time >= DIFFICULTY[difficulty]) {
       addShape();
       setTime(() => now);
     }
