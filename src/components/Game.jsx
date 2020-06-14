@@ -1,70 +1,38 @@
-import React, { useState, Suspense } from "react";
+import React, { Suspense } from "react";
 
 // Import components
-import Road from "./Road";
 import Car from "./Car";
 import Obstacles from "./Obstacles";
-//import Sun from "./Sun";
-import PalmTrees from "./PalmTrees";
+import Background from "./Background";
+import Environment from "./Environment";
 
 // Import hooks
-
-// import useMusic from "../hooks/useMusic";
-import useSoundEffects from "../hooks/useSoundEffects";
 import usePlayerPosition from "../hooks/usePlayerPosition";
-import useShapePositions from "../hooks/useShapePositions";
-
-// Import helpers
-import detectCollision from "../helpers/detectCollision";
 
 // Optional components
-// import OrbitControl from "./Controls/OrbitControls";
 // import Zuckerberg from "./3d_Models/Zuckerberg";
 
 // Import settings
 import settings from "../settings";
-const { SPEED, START_POSITION } = settings.GAME;
+const { START_POSITION } = settings.GAME;
 
 export default function Game(props) {
-  const { points, setPoints, difficulty } = props;
-
+  const { points, speed, setSpeed, setPoints, difficulty } = props;
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
-  const [
-    shapes,
-    addShape,
-    setShapePosition,
-    setTriggered,
-    destroyShape,
-  ] = useShapePositions();
-  const [speed, setSpeed] = useState(SPEED);
-  // const [musicPlayer] = useMusic(speed);
-  const [playSound] = useSoundEffects();
-
-  detectCollision(playerPosition, shapes, (key) => {
-    setTriggered(key);
-    playSound();
-    setPoints(points);
-  });
 
   return (
     <>
-      <Road speed={speed} />
+      <Background />
+      <Environment speed={speed} />
       <Obstacles
-        shapes={shapes}
-        addShape={addShape}
-        destroyShape={destroyShape}
-        setShapePosition={setShapePosition}
+        playerPosition={playerPosition}
         difficulty={difficulty}
+        points={points}
+        setPoints={setPoints}
       />
-
-      {/* <OrbitControl /> */}
-
       <Suspense fallback={null}>
-        <PalmTrees />
-
         <Car
-          color={"white"}
-          avgSpeed={SPEED}
+          avgSpeed={speed}
           setSpeed={setSpeed}
           position={playerPosition}
           setPosition={setPlayerPosition}

@@ -4,7 +4,7 @@ const WIDTH = 3200;
 const LENGTH = 900;
 const COLOR = "darkorchid";
 
-export default function Ground(props) {
+export default function Grid(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef();
 
