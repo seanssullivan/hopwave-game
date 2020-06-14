@@ -7,6 +7,9 @@ import SpotifyAuthWindow from "./SpotifyAuthWindow";
 // Import hooks
 import useSpotifyControls from "../../hooks/useSpotifyControls";
 
+/*
+ * Component to manage requests to the Spotify Web Player SDK and Web API.
+ */
 export default function SpotifyPlayer(props) {
   const [accessStatus, setAccessStatus] = useState();
   const [accessToken, setAccessToken] = useState();
@@ -66,16 +69,3 @@ export default function SpotifyPlayer(props) {
     </div>
   );
 }
-
-//   return (
-//     <iframe
-//       title="Spotify Player"
-//       src="https://open.spotify.com/embed/playlist/3PPbbsJhktmX5Cp6syx7gR"
-//       width="300"
-//       height="220"
-//       frameborder="0"
-//       allowtransparency="true"
-//       allow="encrypted-media"
-//     ></iframe>
-//   );
-// }

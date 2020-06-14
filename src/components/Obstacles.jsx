@@ -2,19 +2,35 @@ import React, { useState } from "react";
 import { useFrame } from "react-three-fiber";
 import Shape from "./Shape";
 
+// Import hooks
+import useSoundEffects from "../hooks/useSoundEffects";
+import useShapePositions from "../hooks/useShapePositions";
+
+// Import helpers
+import detectCollision from "../helpers/detectCollision";
+
 // Import settings
 import settings from "../settings";
 let { DIFFICULTY_SPEED } = settings.GAME;
 
 export default function Obstacles(props) {
   const [time, setTime] = useState(Date.now());
-  const {
+  const { playerPosition, difficulty, points, setPoints } = props;
+
+  const [
     shapes,
     addShape,
     setShapePosition,
+    setTriggered,
     destroyShape,
-    difficulty,
-  } = props;
+  ] = useShapePositions();
+  const [playSound] = useSoundEffects();
+
+  detectCollision(playerPosition, shapes, (key) => {
+    setTriggered(key);
+    playSound();
+    setPoints(points);
+  });
 
   if (difficulty === "hard") {
     DIFFICULTY_SPEED = 500;
