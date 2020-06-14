@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function useSpotifyControls() {
+  let [songData, setSongData] = useState();
+
   const startPlaybackController = function ({
     spotifyUri,
     playerInstance: {
@@ -92,13 +96,78 @@ export default function useSpotifyControls() {
     });
   };
 
+  const nextSongTrackController = function ({
+    playerInstance: {
+      _options: { getOAuthToken, id },
+    },
+  }) {
+    getOAuthToken((access_token) => {
+      fetch(`https://api.spotify.com/v1/me/player/next`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`,
+        },
+      }).then((event) => {
+        console.log("next song");
+        // setState((prev) => {
+        //   return { ...prev, playbackPaused: true };
+        // });
+      });
+    });
+  };
+
+  const currentlyPlayingTrackController = function ({
+    playerInstance: {
+      _options: { getOAuthToken, id },
+    },
+  }) {
+    getOAuthToken((access_token) => {
+      fetch(`https://api.spotify.com/v1/me/player/currently-playing`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`,
+        },
+      }).then((response) => {
+        response
+          .json()
+          .then((response) => {
+            console.log(response.item);
+            setSongData({
+              songName: response.item.name,
+              artistName: response.item.artists[0].name,
+              artwork: response.item.album.images[0].url,
+            });
+          })
+          .then(() => {
+            return songData;
+          });
+        // setState((prev) => {
+        //   return { ...prev, playbackPaused: true };
+        // });
+      });
+    });
+  };
+
   const startPlayback = (playerInstance, spotifyUri) =>
     startPlaybackController({ spotifyUri, playerInstance });
   const resumePlayback = (playerInstance) =>
     resumePlaybackController({ playerInstance });
   const pauseTrack = (playerInstance) =>
     pauseTrackController({ playerInstance });
-  return [startPlayback, resumePlayback, pauseTrack];
+  const nextSong = (playerInstance) =>
+    nextSongTrackController({ playerInstance });
+  const currentlyPlaying = (playerInstance) =>
+    currentlyPlayingTrackController({ playerInstance });
+  return [
+    startPlayback,
+    resumePlayback,
+    pauseTrack,
+    nextSong,
+    currentlyPlaying,
+  ];
 }
 
 // const connectToPlayer = function () {

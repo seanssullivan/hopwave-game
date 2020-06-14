@@ -13,10 +13,13 @@ export default function SpotifyPlayer(props) {
   const [statusMessage, setStatusMessage] = useState();
   const [deviceId, setDeviceId] = useState();
   const [spotifyPlayer, setSpotifyPlayer] = useState();
-  const [startPlayback, resumePlayback, pauseTrack] = useSpotifyControls(
-    accessToken,
-    deviceId
-  );
+  const [
+    startPlayback,
+    resumePlayback,
+    pauseTrack,
+    nextSong,
+    currentlyPlaying,
+  ] = useSpotifyControls(accessToken, deviceId);
 
   const [playbackPaused, setPlaybackPaused] = useState(false);
 
@@ -50,7 +53,7 @@ export default function SpotifyPlayer(props) {
             }
           }}
         >
-          <h1>Play</h1>
+          <h4>Play</h4>
         </div>
         <div
           onClick={() => {
@@ -60,7 +63,21 @@ export default function SpotifyPlayer(props) {
             }
           }}
         >
-          <h1>Pause</h1>
+          <h4>Pause</h4>
+        </div>
+        <div
+          onClick={() => {
+            nextSong(spotifyPlayer);
+          }}
+        >
+          <h4>Next</h4>
+        </div>
+        <div
+          onClick={() => {
+            console.log(currentlyPlaying(spotifyPlayer));
+          }}
+        >
+          <h4>nowPlaying</h4>
         </div>
       </div>
     </div>

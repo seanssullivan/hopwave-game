@@ -22,7 +22,7 @@ export default function MusicPlayer(props) {
       {playMusic && !spotifyMusicOn && (
         <h4 onClick={() => setSpotifyMusicOn(true)}>Spotify login</h4>
       )}
-      {/* <h4>{playMusic || !gameMode ? "Spotify" : <EmbeddedIframe />}</h4> */}
+      <h4>{playMusic || !gameMode ? "Spotify" : <EmbeddedIframe />}</h4>
       <h4 onClick={() => setPlayMusic((prev) => !prev)}>
         sound:{playMusic ? "on" : "off"}
       </h4>

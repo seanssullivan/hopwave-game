@@ -242,5 +242,3 @@ const Global = createGlobalStyle`
     background: white;
   }
 `;
-
-//test
