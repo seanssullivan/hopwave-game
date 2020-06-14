@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // Import components
 import EmbeddedIframe from "./EmbeddedIframe";
-import SpotifyPlayer from "./SpotifyPlayer";
+import { SpotifyPlayer } from "./Spotify";
 
 // Import hooks
 import useTone from "../../hooks/useTone";

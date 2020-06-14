@@ -3,10 +3,10 @@
 import { useEffect, useCallback } from "react";
 import ReactDOM from "react-dom";
 
-import { getSpotifyAccess } from "../../helpers/spotifyAccess";
+import { getSpotifyAccess } from "../../../helpers/spotifyAccess";
 
 // Import settings
-import settings from "../../settings";
+import settings from "../../../settings";
 const { CLIENT_ID } = settings.SPOTIFY;
 
 // Define constants

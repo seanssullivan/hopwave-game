@@ -5,7 +5,7 @@ import SpotifySDK from "./SpotifySDK";
 import SpotifyAuthWindow from "./SpotifyAuthWindow";
 
 // Import hooks
-import useSpotifyControls from "../../hooks/useSpotifyControls";
+import useSpotifyControls from "../../../hooks/useSpotifyControls";
 
 /*
  * Component to manage requests to the Spotify Web Player SDK and Web API.
