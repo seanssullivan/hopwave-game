@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 
+import Difficulty from "./Difficulty";
 import MusicPlayer from "./MusicPlayer/index";
 
 export default function Hud(props) {
   const { points, gameMode, setGameMode, setDifficulty } = props;
-  let [active, setActive] = useState("easy");
 
   return (
     <>
@@ -23,38 +23,7 @@ export default function Hud(props) {
         </div>
       </UpperRight>
       <LowerLeft>
-        {gameMode && (
-          <ul>
-            <li
-              className={`easy ${"easy" === active ? "bigText" : ""}`}
-              onClick={() => {
-                setDifficulty("EASY");
-                setActive("easy");
-              }}
-            >
-              easy
-            </li>
-            <li
-              id={"medium"}
-              className={`"medium" ${"medium" === active ? "bigText" : ""}`}
-              onClick={() => {
-                setDifficulty("MEDIUM");
-                setActive("medium");
-              }}
-            >
-              medium
-            </li>
-            <li
-              className={`"hard" ${"hard" === active ? "bigText" : ""}`}
-              onClick={() => {
-                setDifficulty("HARD");
-                setActive("hard");
-              }}
-            >
-              hard
-            </li>
-          </ul>
-        )}
+        {gameMode && <Difficulty setDifficulty={setDifficulty} />}
       </LowerLeft>
       <LowerRight>{gameMode && <h2>{points}</h2>}</LowerRight>
     </>

@@ -6,7 +6,7 @@ const GAME = {
   START_POSITION: [0, 3, -70],
   DIFFICULTY: {
     HARD: 500,
-    MEDIUM: 2000,
+    MEDIUM: 1500,
     EASY: 2500,
   },
 };
