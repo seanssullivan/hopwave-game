@@ -3,8 +3,8 @@ import React, { Suspense } from "react";
 // Import components
 import Car from "./Car";
 import Obstacles from "./Obstacles";
-import Background from "./Background/index";
-import Environment from "./Environment/index";
+import Background from "./Background";
+import Environment from "./Environment";
 
 // Import hooks
 import usePlayerPosition from "../hooks/usePlayerPosition";

@@ -4,7 +4,7 @@ import { Canvas } from "react-three-fiber";
 // Import components
 import Game from "./Game";
 import Hud from "./Hud";
-import MainMenu from "./MainMenu/index";
+import MainMenu from "./MainMenu";
 
 // import OrbitControl from "./OrbitControls";
 

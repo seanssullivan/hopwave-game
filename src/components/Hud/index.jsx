@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 
 import Difficulty from "./Difficulty";
-import MusicPlayer from "./MusicPlayer/index";
+import MusicPlayer from "../MusicPlayer";
 
 export default function Hud(props) {
   const { points, gameMode, setGameMode, setDifficulty } = props;
