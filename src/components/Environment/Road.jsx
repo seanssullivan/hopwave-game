@@ -4,8 +4,8 @@ import React from "react";
 import RoadSegment from "./RoadSegment";
 
 // Import settings
-import settings from "../settings";
-const { LENGTH, CUTOFF } = settings.ROAD;
+import settings from "../../settings";
+const { LENGTH, CUTOFF, COLOR } = settings.ROAD;
 
 export default function Road(props) {
   const roadPositions = [];
@@ -14,16 +14,16 @@ export default function Road(props) {
     roadPositions.push([0, 0, zPosition]);
   }
 
-  let prevColor = "cyan";
+  // let prevColor = "cyan";
   return roadPositions.map((position, index) => {
-    let color;
-    if (prevColor === "purple") {
-      color = "cyan";
-      prevColor = "cyan";
-    } else {
-      color = "purple";
-      prevColor = "purple";
-    }
+    // let color;
+    // if (prevColor === "purple") {
+    //   color = "cyan";
+    //   prevColor = "cyan";
+    // } else {
+    //   color = "purple";
+    //   prevColor = "purple";
+    // }
     return (
       <RoadSegment
         key={index}
@@ -31,7 +31,7 @@ export default function Road(props) {
         speed={props.speed}
         cutoff={CUTOFF}
         spawn={100 * (LENGTH - 1)}
-        color={color}
+        color={COLOR}
       ></RoadSegment>
     );
   });

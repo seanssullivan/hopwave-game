@@ -4,12 +4,18 @@
 const GAME = {
   SPEED: 5,
   START_POSITION: [0, 3, -70],
+  DIFFICULTY: {
+    HARD: 500,
+    MEDIUM: 1500,
+    EASY: 2500,
+  },
 };
 
 // Road component settings are defined here:
 const ROAD = {
   LENGTH: 10,
   CUTOFF: -200,
+  COLOR: "#4deeea",
 };
 
 // Road Segment component settings are defined here:
@@ -17,7 +23,7 @@ const ROAD_SEGMENT = {
   WIDTH: 100,
   HEIGHT: 1,
   LENGTH: 100,
-  COLOR: "cyan",
+  COLOR: "#4deeea",
 };
 
 // Shape component settings are defined here:
@@ -45,10 +51,10 @@ const PALM = {
   SPAWN: 100,
 };
 
-//Spotify component settings are defined here:
+// Spotify component settings are defined here:
 const SPOTIFY = {
-  TOKEN:
-    "BQCroovvXtr4F1eJpQQgp9cQK5TvDiCVWlG7avEKr0qq8ix04kLH4mPWFVOTfhHSQv-mbotfa8vTTSzboF_i8ebcj_-BnKPGzrzQiCYYI3s58rchxjIvl803MX9s8rXOTHZ9AB7X7wcDPVOOAx-SDQaOhJWDh0C2I2J_99pYcXqLTOr6EovfOWw",
+  CLIENT_ID: process.env.REACT_APP_CLIENT_ID,
+  SPOTIFY_URI: "spotify:playlist:3PPbbsJhktmX5Cp6syx7gR", // Sample Vaporwave playlist
 };
 
 // Combine settings for export

@@ -1,45 +1,48 @@
-import React, { Suspense, useState, useRef } from "react";
-import { Canvas, useFrame, useThree } from "react-three-fiber";
+import React, { useState } from "react";
+import { Canvas } from "react-three-fiber";
 
 // Import components
 import Game from "./Game";
-import Ground from "./Ground";
-import Grid from "./Grid";
 import Hud from "./Hud";
-import Background from "./Background";
-import SpotifyPlayer from "./SpotifyPlayer";
-import Number from "./Logo/Number";
-import Effects from "./Effects";
+import MainMenu from "./MainMenu";
+
+// import OrbitControl from "./OrbitControls";
+
+// Import hooks
+// import useMusic from "../hooks/useMusic";
+
+// Import settings
+import settings from "../settings";
+const { SPEED } = settings.GAME;
 
 export default function App() {
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
-  const [difficulty, setDifficulty] = useState("easy");
+  const [speed, setSpeed] = useState(SPEED);
+  const [difficulty, setDifficulty] = useState("EASY");
+  // const [musicPlayer] = useMusic(speed);
+
   return (
     <>
-      <Canvas colorManagement camera={{ position: [0, 25, -100] }}>
-        <Background className={"background"} />
+      <Canvas
+        id={"canvas"}
+        colorManagement
+        camera={{ position: [0, 25, -100] }}
+      >
         <ambientLight />
         <pointLight position={[100, 100, 100]} />
-        <Grid position={[0, -0.8, 200]} />
-        <Ground position={[0, -1, 200]} />
+        {/* <OrbitControl /> */}
         {gameMode && (
           <Game
             points={points}
+            speed={speed}
+            setSpeed={setSpeed}
             setPoints={(prev) => setPoints(prev + 1)}
             difficulty={difficulty}
           />
         )}
-        {!gameMode && (
-          <>
-            <Suspense>
-              <Number />
-            </Suspense>
-            <Effects />
-          </>
-        )}
+        {!gameMode && <MainMenu />}
       </Canvas>
-      {gameMode && <SpotifyPlayer />}
       <Hud
         points={points}
         gameMode={gameMode}

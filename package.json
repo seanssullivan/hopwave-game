@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.10.2",
     "axios": "^0.19.2",
     "lerp": "^1.0.3",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-load-script": "0.0.6",
     "react-postprocessing": "^1.0.0-beta21",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
