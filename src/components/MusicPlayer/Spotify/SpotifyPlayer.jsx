@@ -16,10 +16,15 @@ export default function SpotifyPlayer(props) {
   const [statusMessage, setStatusMessage] = useState();
   const [deviceId, setDeviceId] = useState();
   const [spotifyPlayer, setSpotifyPlayer] = useState();
-  const [startPlayback, resumePlayback, pauseTrack] = useSpotifyControls(
-    accessToken,
-    deviceId
-  );
+  const [songData, setSongData] = useState();
+  const [data, setData] = useState(false);
+  const [
+    startPlayback,
+    resumePlayback,
+    pauseTrack,
+    nextSong,
+    currentlyPlaying,
+  ] = useSpotifyControls(accessToken, deviceId);
 
   const [playbackPaused, setPlaybackPaused] = useState(false);
 
@@ -53,7 +58,7 @@ export default function SpotifyPlayer(props) {
             }
           }}
         >
-          <h1>Play</h1>
+          <h4>Play</h4>
         </div>
         <div
           onClick={() => {
@@ -63,7 +68,31 @@ export default function SpotifyPlayer(props) {
             }
           }}
         >
-          <h1>Pause</h1>
+          <h4>Pause</h4>
+        </div>
+        <div
+          onClick={() => {
+            nextSong(spotifyPlayer);
+          }}
+        >
+          <h4>Next</h4>
+        </div>
+        <div
+          onClick={() => {
+            currentlyPlaying(spotifyPlayer, setSongData, setData);
+          }}
+        >
+          <h4>now playing</h4>
+        </div>
+        <div>
+          {data && (
+            <>
+              <h4>nowPlaying</h4>
+              <h4> artistname: {songData[0]}</h4>
+              <h4>album name: {songData[1]}</h4>
+              <img src={songData[2]} alt="" />
+            </>
+          )}
         </div>
       </div>
     </div>
