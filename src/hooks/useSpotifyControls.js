@@ -115,11 +115,15 @@ export default function useSpotifyControls() {
     });
   };
 
-  const currentlyPlayingTrackController = function ({
-    playerInstance: {
-      _options: { getOAuthToken, id },
+  const currentlyPlayingTrackController = function (
+    {
+      playerInstance: {
+        _options: { getOAuthToken, id },
+      },
     },
-  }) {
+    setSongData,
+    setData
+  ) {
     getOAuthToken((access_token) => {
       fetch(`https://api.spotify.com/v1/me/player/currently-playing`, {
         method: "GET",
@@ -129,19 +133,17 @@ export default function useSpotifyControls() {
           Authorization: `Bearer ${access_token}`,
         },
       }).then((response) => {
-        response
-          .json()
-          .then((response) => {
-            console.log(response.item);
-            setSongData({
-              songName: response.item.name,
-              artistName: response.item.artists[0].name,
-              artwork: response.item.album.images[0].url,
-            });
-          })
-          .then(() => {
-            return songData;
-          });
+        response.json().then((response) => {
+          console.log(response.item);
+          setSongData([
+            response.item.name,
+            response.item.artists[0].name,
+            response.item.album.images[0].url,
+          ]);
+          setData(true);
+        });
+
+        // .then(() => songData);
         // setState((prev) => {
         //   return { ...prev, playbackPaused: true };
         // });
@@ -157,8 +159,8 @@ export default function useSpotifyControls() {
     pauseTrackController({ playerInstance });
   const nextSong = (playerInstance) =>
     nextSongTrackController({ playerInstance });
-  const currentlyPlaying = (playerInstance) =>
-    currentlyPlayingTrackController({ playerInstance });
+  const currentlyPlaying = (playerInstance, setSongData, setData) =>
+    currentlyPlayingTrackController({ playerInstance }, setSongData, setData);
   return [
     startPlayback,
     resumePlayback,

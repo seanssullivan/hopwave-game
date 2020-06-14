@@ -16,6 +16,8 @@ export default function SpotifyPlayer(props) {
   const [statusMessage, setStatusMessage] = useState();
   const [deviceId, setDeviceId] = useState();
   const [spotifyPlayer, setSpotifyPlayer] = useState();
+  const [songData, setSongData] = useState();
+  const [data, setData] = useState(false);
   const [
     startPlayback,
     resumePlayback,
@@ -77,10 +79,20 @@ export default function SpotifyPlayer(props) {
         </div>
         <div
           onClick={() => {
-            console.log(currentlyPlaying(spotifyPlayer));
+            currentlyPlaying(spotifyPlayer, setSongData, setData);
           }}
         >
-          <h4>nowPlaying</h4>
+          <h4>now playing</h4>
+        </div>
+        <div>
+          {data && (
+            <>
+              <h4>nowPlaying</h4>
+              <h4> artistname: {songData[0]}</h4>
+              <h4>album name: {songData[1]}</h4>
+              <img src={songData[2]} alt="" />
+            </>
+          )}
         </div>
       </div>
     </div>
