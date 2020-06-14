@@ -1,9 +1,9 @@
 import React from "react";
 
-import Hexagon from "./Shapes/Hexagon";
-import Circle from "./Shapes/Circle";
-import Square from "./Shapes/Square";
-import Triangle from "./Shapes/Triangle";
+import Hexagon from "./Hexagon";
+import Circle from "./Circle";
+import Square from "./Square";
+import Triangle from "./Triangle";
 
 export default function Shape(props) {
   if (props.shapeName === "Hexagon") {

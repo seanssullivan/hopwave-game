@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useFrame } from "react-three-fiber";
-import Shape from "./Shape";
+
+// Import components
+import Shape from "./Shapes/index";
 
 // Import hooks
 import useSoundEffects from "../hooks/useSoundEffects";
