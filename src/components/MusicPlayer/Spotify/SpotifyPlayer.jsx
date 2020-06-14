@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // Import components
 import SpotifySDK from "./SpotifySDK";
 import SpotifyAuthWindow from "./SpotifyAuthWindow";
+import Casette from "./Casette";
 
 // Import hooks
 import useSpotifyControls from "../../../hooks/useSpotifyControls";
@@ -47,10 +48,10 @@ export default function SpotifyPlayer(props) {
           setSpotifyPlayer={setSpotifyPlayer}
         />
       )}
-      <p>{statusMessage}</p>
+      {/* <p>{statusMessage}</p> */}
       <div>
         {/* Refactor these buttons into the parent MusicPlayer component */}
-        <div
+        {/* <div
           onClick={() => {
             if (playbackPaused) {
               resumePlayback(spotifyPlayer);
@@ -76,7 +77,7 @@ export default function SpotifyPlayer(props) {
           }}
         >
           <h4>Next</h4>
-        </div>
+        </div> */}
         <div
           onClick={() => {
             currentlyPlaying(spotifyPlayer, setSongData, setData);
@@ -84,14 +85,31 @@ export default function SpotifyPlayer(props) {
         >
           <h4>now playing</h4>
         </div>
+
         <div>
-          {data && (
-            <>
-              <h4>nowPlaying</h4>
-              <h4> artistname: {songData[0]}</h4>
-              <h4>album name: {songData[1]}</h4>
-              <img src={songData[2]} alt="" />
-            </>
+          {songData && (
+            <Casette
+              artist={songData[0]}
+              album={songData[1]}
+              play={() => {
+                if (playbackPaused) {
+                  resumePlayback(spotifyPlayer);
+                  setPlaybackPaused(false);
+                }
+              }}
+              pause={() => {
+                if (!playbackPaused) {
+                  pauseTrack(spotifyPlayer);
+                  setPlaybackPaused(true);
+                }
+              }}
+              next={() => {
+                nextSong(spotifyPlayer);
+              }}
+              currentlyPlaying={() => {
+                currentlyPlaying(spotifyPlayer, setSongData, setData);
+              }}
+            />
           )}
         </div>
       </div>
