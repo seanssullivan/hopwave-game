@@ -6,7 +6,7 @@ import Game from "./Game";
 import Hud from "./Hud";
 import MainMenu from "./MainMenu/index";
 
-// import OrbitControl from "./Controls/OrbitControls";
+// import OrbitControl from "./OrbitControls";
 
 // Import hooks
 // import useMusic from "../hooks/useMusic";
@@ -43,7 +43,6 @@ export default function App() {
         )}
         {!gameMode && <MainMenu />}
       </Canvas>
-      {gameMode}
       <Hud
         points={points}
         gameMode={gameMode}
