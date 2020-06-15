@@ -2,59 +2,43 @@ import React, { useState } from "react";
 import "./Casette.scss";
 
 export default function Cassette(props) {
-  const { album, artist, pause, play, next, currentlyPlaying } = props;
+  const { album, artist, pause, play, next, artwork } = props;
 
   return (
-    <div class="body-wrapper">
-      <div class="casette-box">
-        <div class="speaker"></div>
-        <div class="tape">
-          <div class="bg-circles">
-            <span class="circles">
-              <i class="cog fa fa-cog fa-4x"></i>
-            </span>
-            <span class="circles">
-              <i class="cog fa fa-cog fa-4x"></i>
-            </span>
-          </div>
+    <div className="body-wrapper">
+      <div className="casette-box">
+        <div className="speaker"></div>
+        <div className="artwork">
+          <img
+            className={"artwork"}
+            src={artwork}
+            onError={"this.onError = null"}
+            alt=""
+          ></img>
         </div>
-        <div class="branding">
+        <div className="branding">
           <h2>{artist}</h2>
-          <div class="label-group">
-            <p id="record-text">{album}</p>
-            <p>Play</p>
-            <p>Rew</p>
-            <p>For</p>
-            <p>Stop</p>
-            <p>Pause</p>
+          <p id="record-text">{album}</p>
+          <div className="label-group">
+            <p onClick={play}>Play</p>
+            <p onClick={next}>Next</p>
+            <p onClick={pause}>Pause</p>
           </div>
         </div>
-        <div class="button-group">
-          <button type="button" class="btn btn-play">
-            <i class="fa fa-circle fa-2x" style={{ color: "#fff" }}></i>
+        {/* <div className="button-group">
+          <button onClick={play} type="button" className="btn btn-play">
+            <i className="fa fa-play fa-2x" style={{ color: "#fff" }}></i>
           </button>
-          <button onClick={play} type="button" class="btn btn-play">
-            <i class="fa fa-play fa-2x" style={{ color: "#fff" }}></i>
-          </button>
-          <button type="button" class="btn">
+          <button onClick={next} type="button" className="btn btn-forward">
             <i
-              class="fa fa-angle-double-left fa-2x"
+              className="fa fa-angle-double-right fa-2x"
               style={{ color: "#fff" }}
             ></i>
           </button>
-          <button onClick={next} type="button" class="btn btn-forward">
-            <i
-              class="fa fa-angle-double-right fa-2x"
-              style={{ color: "#fff" }}
-            ></i>
+          <button onClick={pause} type="button" className="btn btn-stop">
+            <i className="fa fa-stop fa-2x" style={{ color: "#fff" }}></i>
           </button>
-          <button onClick={pause} type="button" class="btn btn-stop">
-            <i class="fa fa-stop fa-2x" style={{ color: "#fff" }}></i>
-          </button>
-          <button type="button" class="btn btn-stop">
-            <i class="fa fa-pause fa-2x" style={{ color: "#fff" }}></i>
-          </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

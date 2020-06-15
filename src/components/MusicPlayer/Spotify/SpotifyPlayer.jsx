@@ -60,6 +60,7 @@ export default function SpotifyPlayer(props) {
           <Casette
             artist={songData[0]}
             album={songData[1]}
+            artwork={songData[2]}
             play={() => {
               if (playbackPaused) {
                 resumePlayback(spotifyPlayer);
