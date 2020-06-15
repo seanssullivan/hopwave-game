@@ -94,11 +94,14 @@ export default function useSpotifyControls() {
     });
   };
 
-  const nextSongTrackController = function ({
-    playerInstance: {
-      _options: { getOAuthToken, id },
+  const nextSongTrackController = function (
+    {
+      playerInstance: {
+        _options: { getOAuthToken, id },
+      },
     },
-  }) {
+    setSongData
+  ) {
     getOAuthToken((access_token) => {
       fetch(`https://api.spotify.com/v1/me/player/next`, {
         method: "POST",
@@ -108,47 +111,46 @@ export default function useSpotifyControls() {
         },
       }).then((event) => {
         console.log("next song");
-        // setState((prev) => {
-        //   return { ...prev, playbackPaused: true };
-        // });
+        setSongData([]);
       });
     });
   };
 
   const currentlyPlayingTrackController = function (
-    {
-      playerInstance: {
-        _options: { getOAuthToken, id },
-      },
-    },
+    spotifyPlayer,
     setSongData,
     setData
   ) {
-    getOAuthToken((access_token) => {
-      fetch(`https://api.spotify.com/v1/me/player/currently-playing`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${access_token}`,
-        },
-      }).then((response) => {
-        response.json().then((response) => {
-          console.log(response.item);
-          setSongData([
-            response.item.name,
-            response.item.artists[0].name,
-            response.item.album.images[0].url,
-          ]);
-          setData(true);
-        });
+    const { _options } = spotifyPlayer;
+    console.log("player instance outside", spotifyPlayer);
+    if (_options) {
+      console.log("player instance inside", _options);
 
-        // .then(() => songData);
-        // setState((prev) => {
-        //   return { ...prev, playbackPaused: true };
-        // });
+      const { getOAuthToken } = _options;
+      getOAuthToken((access_token) => {
+        fetch(`https://api.spotify.com/v1/me/player/currently-playing`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${access_token}`,
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            console.log(response.item);
+            setSongData([
+              response.item.name,
+              response.item.artists[0].name,
+              response.item.album.images[0].url,
+            ]);
+            setData(true);
+          })
+          .catch(() => {});
       });
-    });
+    }
   };
 
   const startPlayback = (playerInstance, spotifyUri) =>
@@ -157,10 +159,10 @@ export default function useSpotifyControls() {
     resumePlaybackController({ playerInstance });
   const pauseTrack = (playerInstance) =>
     pauseTrackController({ playerInstance });
-  const nextSong = (playerInstance) =>
-    nextSongTrackController({ playerInstance });
-  const currentlyPlaying = (playerInstance, setSongData, setData) =>
-    currentlyPlayingTrackController({ playerInstance }, setSongData, setData);
+  const nextSong = (playerInstance, setSongData) =>
+    nextSongTrackController({ playerInstance }, setSongData);
+  const currentlyPlaying = (spotifyPlayer, setSongData, setData) =>
+    currentlyPlayingTrackController(spotifyPlayer, setSongData, setData);
   return [
     startPlayback,
     resumePlayback,
