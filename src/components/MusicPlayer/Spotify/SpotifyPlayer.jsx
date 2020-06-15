@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Import components
 import SpotifySDK from "./SpotifySDK";
 import SpotifyAuthWindow from "./SpotifyAuthWindow";
+import Casette from "./Casette";
 
 // Import hooks
 import useSpotifyControls from "../../../hooks/useSpotifyControls";
@@ -15,17 +16,28 @@ export default function SpotifyPlayer(props) {
   const [accessToken, setAccessToken] = useState();
   const [statusMessage, setStatusMessage] = useState();
   const [deviceId, setDeviceId] = useState();
-  const [spotifyPlayer, setSpotifyPlayer] = useState();
-  const [startPlayback, resumePlayback, pauseTrack] = useSpotifyControls(
-    accessToken,
-    deviceId
-  );
+  const [spotifyPlayer, setSpotifyPlayer] = useState({});
+  const [songData, setSongData] = useState([]);
+  const [data, setData] = useState(false);
+  const [
+    startPlayback,
+    resumePlayback,
+    pauseTrack,
+    nextSong,
+    currentlyPlaying,
+  ] = useSpotifyControls(accessToken, deviceId);
 
   const [playbackPaused, setPlaybackPaused] = useState(false);
 
+  useEffect(() => {
+    if (!songData.length) {
+      currentlyPlaying(spotifyPlayer, setSongData, setData);
+    }
+  }, [songData, currentlyPlaying, spotifyPlayer]);
+
   return (
     <div>
-      <h3>Spotify</h3>
+      {/* <h3>Spotify</h3> */}
       {!accessToken && (
         <SpotifyAuthWindow
           setStatus={setAccessStatus}
@@ -42,28 +54,32 @@ export default function SpotifyPlayer(props) {
           setSpotifyPlayer={setSpotifyPlayer}
         />
       )}
-      <p>{statusMessage}</p>
+      {/* <p>{statusMessage}</p> */}
       <div>
-        {/* Refactor these buttons into the parent MusicPlayer component */}
-        <div
-          onClick={() => {
-            if (playbackPaused) {
-              resumePlayback(spotifyPlayer);
-              setPlaybackPaused(false);
-            }
-          }}
-        >
-          <h1>Play</h1>
-        </div>
-        <div
-          onClick={() => {
-            if (!playbackPaused) {
-              pauseTrack(spotifyPlayer);
-              setPlaybackPaused(true);
-            }
-          }}
-        >
-          <h1>Pause</h1>
+        <div>
+          <Casette
+            artist={songData[0]}
+            album={songData[1]}
+            artwork={songData[2]}
+            play={() => {
+              if (playbackPaused) {
+                resumePlayback(spotifyPlayer);
+                setPlaybackPaused(false);
+              }
+            }}
+            pause={() => {
+              if (!playbackPaused) {
+                pauseTrack(spotifyPlayer);
+                setPlaybackPaused(true);
+              }
+            }}
+            next={() => {
+              nextSong(spotifyPlayer, setSongData);
+            }}
+            currentlyPlaying={() => {
+              currentlyPlaying(spotifyPlayer, setSongData, setData);
+            }}
+          />
         </div>
       </div>
     </div>
