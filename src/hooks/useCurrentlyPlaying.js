@@ -1,9 +1,28 @@
+import { useState } from "react";
+
 export default function useCurrentlyPlaying() {
-  const currentlyPlayingTrackController = function (spotifyPlayer) {
+  const getCurrentTrackFromPlayerState = async (spotifyPlayer) => {
+    const playerState = spotifyPlayer.getCurrentState();
+    const trackState = playerState.track_window
+      ? playerState.track_window.current_track
+      : null;
+    return trackState
+      ? {
+          track: trackState.name,
+          artist: trackState.artists[0].name,
+          album: trackState.album.name,
+          artwork: trackState.album.images[0].url,
+        }
+      : null;
+  };
+
+  const currentlyPlayingTrackFromAPIController = async function (
+    spotifyPlayer
+  ) {
     const { _options } = spotifyPlayer;
-    console.log("player instance outside", spotifyPlayer);
+    // console.log("player instance outside", spotifyPlayer);
     if (_options) {
-      console.log("player instance inside", _options);
+      // console.log("player instance inside", _options);
 
       const { getOAuthToken } = _options;
       getOAuthToken((access_token) => {
@@ -16,29 +35,32 @@ export default function useCurrentlyPlaying() {
           },
         })
           .then((response) => {
-            if (response.status === 204) {
-              return null;
-            }
+            // if (response.status === 204) {
+            //   return null;
+            // }
             return response.json();
           })
           .then((response) => {
-            return response
-              ? {
-                  track: response.item.name,
-                  artist: response.item.artists[0].name,
-                  album: response.item.album.name,
-                  artwork: response.item.album.images[0].url,
-                  progress: response.progress_ms,
-                }
-              : null;
+            console.log(response);
+            return {
+              track: response.item.name,
+              artist: response.item.artists[0].name,
+              album: response.item.album.name,
+              artwork: response.item.album.images[0].url,
+              progress: response.progress_ms,
+            };
           })
           .catch(() => {});
       });
     }
   };
 
-  const getCurrentTrack = (spotifyPlayer) => {
-    currentlyPlayingTrackController(spotifyPlayer);
+  const getCurrentTrack = async (spotifyPlayer) => {
+    const stateTrackInfo = getCurrentTrackFromPlayerState(spotifyPlayer);
+    console.log(stateTrackInfo);
+    return stateTrackInfo
+      ? stateTrackInfo
+      : currentlyPlayingTrackFromAPIController(spotifyPlayer);
   };
 
   return getCurrentTrack;

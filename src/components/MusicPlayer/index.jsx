@@ -16,6 +16,7 @@ export default function MusicPlayer(props) {
   const [deviceId, setDeviceId] = useState();
   const [statusMessage, setStatusMessage] = useState();
   const [spotifyPlayer, setSpotifyPlayer] = useState();
+  const [trackInfo, setTrackInfo] = useState();
   const [tonePlayer, isLoaded, setPlaybackRate] = useTonePlayer();
 
   useEffect(() => {
@@ -24,9 +25,19 @@ export default function MusicPlayer(props) {
     }
   }, [spotifyOn, setPlaybackRate, speed]);
 
+  useEffect(() => {
+    console.log(spotifyPlayer);
+  }, [spotifyPlayer]);
+
   return (
     <div className={"music-player"}>
-      <PlaybackDisplay spotifyPlayer={spotifyPlayer} />
+      <PlaybackDisplay
+        playMusic={playMusic}
+        toneLoaded={isLoaded}
+        spotifyOn={spotifyOn}
+        spotifyPlayer={spotifyPlayer}
+        trackInfo={trackInfo}
+      />
       <PlaybackControls
         playMusic={playMusic}
         setPlayMusic={setPlayMusic}
@@ -43,37 +54,10 @@ export default function MusicPlayer(props) {
           setAccessToken={setAccessToken}
           setDeviceId={setDeviceId}
           setSpotifyPlayer={setSpotifyPlayer}
+          setTrackInfo={setTrackInfo}
           setStatusMessage={setStatusMessage}
         />
       )}
-      {playMusic && !spotifyOn && (
-        <h1>{isLoaded ? "Tone.js!" : "Buffering..."}</h1>
-      )}
-      {playMusic && !spotifyOn && (
-        <h4
-          onClick={() => {
-            setSpotifyOn(true);
-            tonePlayer.stop();
-          }}
-        >
-          Spotify login
-        </h4>
-      )}
-      {/* <h4>{playMusic || !gameMode ? "Spotify" : <SpotifyIframe />}</h4> */}
-      <h4
-        onClick={() => {
-          setPlayMusic((prev) => {
-            if (!spotifyOn && prev === false) {
-              tonePlayer.start();
-            } else if (!spotifyOn && prev === true) {
-              tonePlayer.stop();
-            }
-            return !prev;
-          });
-        }}
-      >
-        sound:{playMusic ? "on" : "off"}
-      </h4>
     </div>
   );
 }
