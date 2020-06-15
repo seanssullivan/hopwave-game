@@ -26,7 +26,7 @@ export default function MusicPlayer(props) {
 
   return (
     <div className={"music-player"}>
-      {/* <PlaybackDisplay spotifyPlayer={spotifyPlayer} /> */}
+      <PlaybackDisplay spotifyPlayer={spotifyPlayer} />
       <PlaybackControls
         playMusic={playMusic}
         setPlayMusic={setPlayMusic}

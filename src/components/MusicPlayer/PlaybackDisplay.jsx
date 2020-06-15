@@ -10,13 +10,15 @@ export default function PlaybackDisplay(props) {
   const getCurrentTrack = useCurrentlyPlaying();
 
   const updateDisplayInfo = useCallback(() => {
-    const response = getCurrentTrack(spotifyPlayer);
-    if (response) {
-      const { progress, ...rest } = response;
-      setRefreshIn(progress + 500);
-      setDisplayInfo(...rest);
-    } else {
-      setRefreshIn(1000);
+    if (spotifyPlayer) {
+      const response = getCurrentTrack(spotifyPlayer);
+      if (response) {
+        const { progress, ...rest } = response;
+        setRefreshIn(progress + 500);
+        setDisplayInfo(...rest);
+      } else {
+        setRefreshIn(1000);
+      }
     }
   }, [getCurrentTrack, spotifyPlayer]);
 
@@ -25,20 +27,24 @@ export default function PlaybackDisplay(props) {
   }, [refreshIn, updateDisplayInfo]);
 
   return (
-    <div className={"playback-display"}>
-      <div className={"display-artwork"}>
-        <img
-          className={"album-artwork"}
-          src={displayInfo.artwork}
-          onError={"this.onError = null"}
-          alt=""
-        ></img>
-      </div>
-      <div className={"display-info"}>
-        <span className={"display-track"}>{displayInfo.track}</span>
-        <span className={"display-album"}>{displayInfo.album}</span>
-        <span className={"display-artist"}>{displayInfo.artist}</span>
-      </div>
-    </div>
+    <>
+      {displayInfo && (
+        <div className={"playback-display"}>
+          <div className={"display-artwork"}>
+            <img
+              className={"album-artwork"}
+              src={displayInfo.artwork}
+              onError={"this.onError = null"}
+              alt=""
+            ></img>
+          </div>
+          <div className={"display-info"}>
+            <span className={"display-track"}>{displayInfo.track}</span>
+            <span className={"display-album"}>{displayInfo.album}</span>
+            <span className={"display-artist"}>{displayInfo.artist}</span>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
