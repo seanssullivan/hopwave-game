@@ -26,11 +26,13 @@ export default function Obstacles(props) {
     setTriggered,
     destroyShape,
   ] = useShapePositions();
-  const [playSound] = useSoundEffects();
+  const [playSound, setPlaySound] = useSoundEffects();
 
   detectCollision(playerPosition, shapes, (key) => {
     setTriggered(key);
-    playSound();
+
+    playSound(shapes[key].type);
+
     setPoints(points);
   });
 
