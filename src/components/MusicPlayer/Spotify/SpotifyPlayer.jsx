@@ -13,6 +13,7 @@ export default function SpotifyPlayer(props) {
     setAccessToken,
     setDeviceId,
     setSpotifyPlayer,
+    setTrackInfo,
     setStatusMessage,
   } = props;
   const [accessStatus, setAccessStatus] = useState();
@@ -34,6 +35,7 @@ export default function SpotifyPlayer(props) {
           setMessage={setStatusMessage}
           setDeviceId={setDeviceId}
           setSpotifyPlayer={setSpotifyPlayer}
+          setTrackInfo={setTrackInfo}
         />
       )}
     </div>

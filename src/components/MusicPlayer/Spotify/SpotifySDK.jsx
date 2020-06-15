@@ -14,6 +14,7 @@ export default function SpotifySDK(props) {
     setMessage,
     setDeviceId,
     setSpotifyPlayer,
+    setTrackInfo,
   } = props;
 
   /*
@@ -55,6 +56,13 @@ export default function SpotifySDK(props) {
       // Playback status updates
       spotifyPlayer.addListener("player_state_changed", (state) => {
         setStatus("player_state_changed");
+        const trackState = state.track_window.current_track;
+        setTrackInfo({
+          track: trackState.name,
+          artist: trackState.artists[0].name,
+          album: trackState.album.name,
+          artwork: trackState.album.images[0].url,
+        });
         console.log(state);
       });
 
