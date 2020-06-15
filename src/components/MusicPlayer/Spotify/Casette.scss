@@ -9,20 +9,19 @@ h2 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 40%;
 }
 .body-wrapper {
   display: flex;
   justify-content: center;
-  padding: 4vh;
 }
 .casette-box {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2vh;
+  padding: 1.5vh;
   height: 300px;
-  width: 500px;
+  width: 360px;
   border-radius: 20px;
   background-color: #282828;
 }
