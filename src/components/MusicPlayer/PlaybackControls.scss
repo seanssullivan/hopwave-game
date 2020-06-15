@@ -1,0 +1,14 @@
+.playback-controls {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: auto;
+  margin-top: 1vh;
+}
+
+.playback-controls .button {
+  text-align: center;
+  text-transform: uppercase;
+  flex-grow: 1;
+  margin: 0;
+  flex-basis: 15%;
+}
