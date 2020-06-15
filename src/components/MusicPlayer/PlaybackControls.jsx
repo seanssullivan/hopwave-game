@@ -54,8 +54,10 @@ export default function PlaybackControls(props) {
     } else if (!playMusic && !spotifyOn) {
       setPlayMusic(true);
       setSpotifyOn(true);
-    } else {
+    } else if (spotifyOn) {
+      pauseTrack(spotifyPlayer);
       setSpotifyOn(false);
+      tonePlayer.start();
     }
   };
 
