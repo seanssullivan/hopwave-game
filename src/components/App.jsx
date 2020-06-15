@@ -46,6 +46,7 @@ export default function App() {
       <Hud
         points={points}
         gameMode={gameMode}
+        speed={speed}
         setGameMode={() => setGameMode(!gameMode)}
         difficulty={difficulty}
         setDifficulty={setDifficulty}

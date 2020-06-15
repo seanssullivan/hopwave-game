@@ -5,13 +5,13 @@ import Difficulty from "./Difficulty";
 import MusicPlayer from "../MusicPlayer";
 
 export default function Hud(props) {
-  const { points, gameMode, setGameMode, setDifficulty } = props;
+  const { points, gameMode, speed, setGameMode, setDifficulty } = props;
 
   return (
     <>
       <Global />
       <UpperLeft>
-        <MusicPlayer mode={gameMode} />
+        <MusicPlayer mode={gameMode} speed={speed} />
       </UpperLeft>
       <UpperRight>
         <div className="rightHud">

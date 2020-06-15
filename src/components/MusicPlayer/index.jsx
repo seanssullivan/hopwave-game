@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Import components
 import { SpotifyPlayer, SpotifyIframe } from "./Spotify";
@@ -7,10 +7,16 @@ import { SpotifyPlayer, SpotifyIframe } from "./Spotify";
 import useTonePlayer from "../../hooks/useTonePlayer";
 
 export default function MusicPlayer(props) {
-  const { gameMode } = props;
+  const { gameMode, speed } = props;
   const [playMusic, setPlayMusic] = useState(true);
   const [spotifyMusicOn, setSpotifyMusicOn] = useState(false);
-  const [tonePlayer, isLoaded] = useTonePlayer();
+  const [tonePlayer, isLoaded, setPlaybackRate] = useTonePlayer();
+
+  useEffect(() => {
+    if (!spotifyMusicOn) {
+      setPlaybackRate(speed);
+    }
+  }, [spotifyMusicOn, setPlaybackRate, speed]);
 
   return (
     <>

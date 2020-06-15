@@ -10,6 +10,7 @@ let tonePlayer = null;
  */
 export default function useTonePlayer(speed) {
   const [isLoaded, setLoaded] = useState(false);
+  const [playbackRate, setRate] = useState(1);
   // const tonePlayer = useRef(null);
 
   const loadToneBuffer = function (filepath) {
@@ -38,11 +39,15 @@ export default function useTonePlayer(speed) {
     });
   }, []);
 
+  const setPlaybackRate = function (speed) {
+    setRate(1 + speed / 10 - 0.5);
+  };
+
   useEffect(() => {
     if (tonePlayer) {
-      tonePlayer.playbackRate = 1 + speed / 10 - 0.5;
+      tonePlayer.playbackRate = playbackRate;
     }
-  }, [speed]);
+  }, [playbackRate]);
 
   // const playTone = () => {
   //   if (tonePlayer) {
@@ -56,5 +61,5 @@ export default function useTonePlayer(speed) {
   //   }
   // };
 
-  return [tonePlayer, isLoaded];
+  return [tonePlayer, isLoaded, setPlaybackRate];
 }
