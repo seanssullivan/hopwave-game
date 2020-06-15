@@ -20,10 +20,10 @@ p {
   flex-direction: column;
   justify-content: space-between;
   padding: 1.5vh;
-  height: 300px;
-  width: 360px;
+  height: 331px;
+  width: 230px;
   border-radius: 20px;
-  background-color: #282828;
+  background-color: #35154b;
 }
 .speaker {
   flex-grow: 8;
@@ -44,6 +44,11 @@ p {
   display: flex;
   justify-content: center;
   box-shadow: inset 0px 0px 0px 50px #000;
+}
+
+.artwork {
+  height: 100%;
+  width: 100%;
 }
 .tape .bg-circles {
   background: #000;
@@ -78,6 +83,7 @@ p {
 }
 
 .branding {
+  margin-top: 6px;
   border-radius: 10px;
   flex-grow: 1;
   display: flex;
@@ -94,7 +100,7 @@ p {
   margin: 0;
 }
 .label-group {
-  background: #000;
+  background: #2f0543;
   color: #fff;
   display: flex;
 }
@@ -107,6 +113,10 @@ p {
 }
 #record-text {
   color: #f07654;
+  font-size: 14px;
+  align-self: center;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 .button-group {
   display: flex;
