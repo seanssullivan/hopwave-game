@@ -14,7 +14,7 @@ export default function usePlayerPosition() {
   const [shapes, setShapes] = useState({});
   const [key, setKey] = useState(1);
 
-  const addShape = function () {
+  const addShape = async function () {
     const randomX =
       Math.abs(Math.random() * ROAD_WIDTH - RADIUS) - (ROAD_WIDTH - RADIUS) / 2;
     setShapes((all) => {
@@ -29,7 +29,7 @@ export default function usePlayerPosition() {
     setKey((prev) => prev + 1);
   };
 
-  const setShapePosition = function (key, position) {
+  const setShapePosition = async function (key, position) {
     const { x, y, z } = position;
     setShapes((all) => {
       const allShapes = { ...all };
@@ -38,7 +38,7 @@ export default function usePlayerPosition() {
     });
   };
 
-  const setTriggered = function (key) {
+  const setTriggered = async function (key) {
     setShapes((all) => {
       const allShapes = { ...all };
       allShapes[key].triggered = true;
@@ -46,7 +46,7 @@ export default function usePlayerPosition() {
     });
   };
 
-  const destroyShape = function (key) {
+  const destroyShape = async function (key) {
     setShapes((all) => {
       const allShapes = { ...all };
       delete allShapes[key];

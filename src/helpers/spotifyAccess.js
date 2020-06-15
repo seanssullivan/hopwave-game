@@ -24,7 +24,7 @@ export function getSpotifyAccess() {
   }
 }
 
-export function setSpotifyAccess(access) {
+export async function setSpotifyAccess(access) {
   localStorage.setItem("SPOTIFY_ACCESS", access);
 }
 
@@ -32,11 +32,11 @@ export function getSpotifyAccessToken() {
   return localStorage.getItem("SPOTIFY_AUTH_TOKEN");
 }
 
-export function setSpotifyAccessToken(token) {
+export async function setSpotifyAccessToken(token) {
   localStorage.setItem("SPOTIFY_AUTH_TOKEN", token);
 }
 
-export function setSpotifyTokenExpirationTime(time) {
+export async function setSpotifyTokenExpirationTime(time) {
   const now = new Date();
   const expirationTime = now.getTime() + Number(time) * 1000;
   localStorage.setItem("SPOTIFY_TOKEN_EXPIRATION_TIME", expirationTime + "");
