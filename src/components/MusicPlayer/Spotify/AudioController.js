@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Casette.scss";
+import "./AudioController.scss";
 
-export default function Cassette(props) {
+export default function AudioController(props) {
   const { album, artist, pause, play, next, artwork } = props;
 
   return (
@@ -20,25 +20,12 @@ export default function Cassette(props) {
           <h2>{artist}</h2>
           <p id="record-text">{album}</p>
           <div className="label-group">
+            {/* {props.children} */}
             <p onClick={play}>Play</p>
             <p onClick={next}>Next</p>
             <p onClick={pause}>Pause</p>
           </div>
         </div>
-        {/* <div className="button-group">
-          <button onClick={play} type="button" className="btn btn-play">
-            <i className="fa fa-play fa-2x" style={{ color: "#fff" }}></i>
-          </button>
-          <button onClick={next} type="button" className="btn btn-forward">
-            <i
-              className="fa fa-angle-double-right fa-2x"
-              style={{ color: "#fff" }}
-            ></i>
-          </button>
-          <button onClick={pause} type="button" className="btn btn-stop">
-            <i className="fa fa-stop fa-2x" style={{ color: "#fff" }}></i>
-          </button>
-        </div> */}
       </div>
     </div>
   );
