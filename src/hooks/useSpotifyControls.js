@@ -90,14 +90,11 @@ export default function useSpotifyControls() {
     });
   };
 
-  const nextSongTrackController = function (
-    {
-      playerInstance: {
-        _options: { getOAuthToken, id },
-      },
+  const nextSongTrackController = function ({
+    playerInstance: {
+      _options: { getOAuthToken, id },
     },
-    setSongData
-  ) {
+  }) {
     getOAuthToken((access_token) => {
       fetch(`https://api.spotify.com/v1/me/player/next`, {
         method: "POST",
@@ -107,7 +104,6 @@ export default function useSpotifyControls() {
         },
       }).then((event) => {
         console.log("next song");
-        setSongData([]);
       });
     });
   };
