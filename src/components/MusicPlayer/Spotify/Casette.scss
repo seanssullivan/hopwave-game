@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: "Mukta", sans-serif;
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 40%;
+}
+.body-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.casette-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5vh;
+  height: 331px;
+  width: 230px;
+  border-radius: 20px;
+  background-color: #35154b;
+}
+.speaker {
+  flex-grow: 8;
+  border-radius: 10px;
+  align-item: center;
+  border: thin solid #333;
+  box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
+    -8px -8px 18px 0 rgba(31, 31, 31, 0.55);
+  background-color: #252525;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='26' 			viewBox='0 0 32 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 			0v3.994C14 7.864 10.858 11 7 11c-3.866 0-7-3.138-7-7.006V0h2v4.005C2 6.765 4.24 9 7 9c2.756 0 5-2.236 5-4.995V0h2zm0 26v-5.994C14 16.138 10.866 13 7 13c-3.858 0-7 3.137-7 7.006V26h2v-6.005C2 17.235 4.244 15 7 15c2.76 0 5 2.236 5 4.995V26h2zm2-18.994C16 3.136 19.142 0 23 0c3.866 0 7 3.138 7 7.006v9.988C30 20.864 26.858 24 23 24c-3.866 0-7-3.138-7-7.006V7.006zm2-.01C18 4.235 20.244 2 23 2c2.76 0 5 2.236 5 4.995v10.01C28 19.765 25.756 22 23 22c-2.76 0-5-2.236-5-4.995V6.995z' fill='%23678689' fill-opacity='0.21' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+.tape {
+  flex-grow: 2;
+  border-radius: 10px;
+  background-color: #f07654;
+  margin: 1vh 0;
+  padding: 3vh;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset 0px 0px 0px 50px #000;
+}
+
+.artwork {
+  height: 100%;
+  width: 100%;
+}
+.tape .bg-circles {
+  background: #000;
+  width: 55%;
+  height: 65px;
+  border-radius: 100px;
+  position: relative;
+  top: 25%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.5);
+}
+.tape .circles {
+  height: 65px;
+  width: 65px;
+  border-radius: 100px;
+  background-color: #d2d8d6;
+  display: flex;
+  justify-content: center;
+}
+
+.cog-animate {
+  animation: cog 2s infinite;
+  animation-timing-function: linear;
+  animation-name: cog-play;
+}
+@keyframes cog-play {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.branding {
+  margin-top: 6px;
+  border-radius: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #d2d8d6;
+  background-image: linear-gradient(315deg, #d2d8d6 0%, #dce8e0 74%);
+  box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.5);
+  border: thin solid #dce8e0;
+}
+.branding h2 {
+  color: #111;
+  text-align: center;
+  margin: 0;
+}
+.label-group {
+  background: #2f0543;
+  color: #fff;
+  display: flex;
+}
+.label-group p {
+  text-align: center;
+  text-transform: uppercase;
+  flex-grow: 1;
+  margin: 0;
+  flex-basis: 15%;
+}
+#record-text {
+  color: #f07654;
+  font-size: 14px;
+  align-self: center;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: auto;
+  margin-top: 1vh;
+}
+.btn {
+  text-align: center;
+  padding: 25px 0;
+  margin: 5px;
+  flex-basis: 15%;
+  border-radius: 6px;
+  background: rgb(21, 21, 21);
+  box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.5),
+    -5px -5px 10px -2px rgba(120, 120, 120, 0.5);
+}
+.btn:hover {
+  box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.5) inset,
+    -5px -5px 10px -2px rgba(120, 120, 120, 0.5) inset;
+  transition: 0.2s;
+}
+button {
+  border: none;
+  outline: none;
+}

@@ -35,6 +35,7 @@ export default function MusicPlayer(props) {
         </h4>
       )}
       {/* <h4>{playMusic || !gameMode ? "Spotify" : <SpotifyIframe />}</h4> */}
+<<<<<<< HEAD
       <h4
         onClick={() => {
           setPlayMusic((prev) => {
@@ -48,6 +49,10 @@ export default function MusicPlayer(props) {
         }}
       >
         sound:{playMusic ? "on" : "off"}
+=======
+      <h4 onClick={() => setPlayMusic((prev) => !prev)}>
+        music:{playMusic ? "on" : "off"}
+>>>>>>> origin/master
       </h4>
     </>
   );
