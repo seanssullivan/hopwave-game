@@ -8,21 +8,21 @@ import useTonePlayer from "../../hooks/useTonePlayer";
 
 export default function MusicPlayer(props) {
   const { gameMode } = props;
-  const [playMusic, setPlayMusic] = useState(false);
+  const [playMusic, setPlayMusic] = useState(true);
   const [spotifyMusicOn, setSpotifyMusicOn] = useState(false);
-  const [tonePlayer, startTone, stopTone] = useTonePlayer();
+  const [tonePlayer] = useTonePlayer();
 
   return (
     <>
       {playMusic && spotifyMusicOn && <SpotifyPlayer />}
       {playMusic && !spotifyMusicOn && (
-        <h1>{tonePlayer.loaded ? "Using Tone.js!" : "Buffering..."}</h1>
+        <h1>{tonePlayer.loaded ? "Tone.js!" : "Buffering..."}</h1>
       )}
       {playMusic && !spotifyMusicOn && (
         <h4
           onClick={() => {
             setSpotifyMusicOn(true);
-            stopTone();
+            // stopTone();
           }}
         >
           Spotify login
@@ -32,9 +32,9 @@ export default function MusicPlayer(props) {
       <h4
         onClick={() => {
           setPlayMusic((prev) => !prev);
-          if (!spotifyMusicOn) {
-            startTone();
-          }
+          // if (!spotifyMusicOn) {
+          //   startTone();
+          // }
         }}
       >
         sound:{playMusic ? "on" : "off"}

@@ -3,22 +3,22 @@ import * as Tone from "tone";
 
 const TONE_VOLUME = -15;
 
-const tonePlayer = new Tone.Player({
-  url: "sounds/loops/Organ.wav",
-  playbackRate: 1,
-  autostart: true,
-  loop: true,
-  volume: TONE_VOLUME,
-}).toMaster();
-
 /**
  * useTonePlayer is a hook to manage music playback with Tone.js
  */
 export default function useTonePlayer(speed) {
-  const [player, setPlayer] = useState(tonePlayer);
+  const [player, setPlayer] = useState(
+    new Tone.Player({
+      url: "sounds/loops/Organ.wav",
+      playbackRate: 1,
+      autostart: true,
+      loop: true,
+      volume: TONE_VOLUME,
+    }).toMaster()
+  );
 
-  if (tonePlayer) {
-    tonePlayer.playbackRate = 1 + speed / 10 - 0.5;
+  if (player) {
+    player.playbackRate = 1 + speed / 10 - 0.5;
   }
 
   // const playTone = () => {
@@ -33,5 +33,5 @@ export default function useTonePlayer(speed) {
   //   }
   // };
 
-  return [tonePlayer]; //, playTone, stopTone];
+  return [player]; //, playTone, stopTone];
 }
