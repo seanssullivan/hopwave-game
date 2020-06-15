@@ -1,0 +1,58 @@
+.music-player {
+  height: 180px;
+  width: 320px;
+  box-sizing: border-box;
+  background-image: linear-gradient(to right, #ff9f61, #ff9f61, #ba7df3);
+  border-radius: 15px;
+  border-style: outset;
+  border-width: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0.5;
+}
+
+.music-player:hover {
+  opacity: 1;
+}
+
+.playback-controls {
+  position: absolute;
+  bottom: 5px;
+  margin: 10px 10px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
+
+.playback-button {
+  color: white;
+  background-color: rgb(37, 37, 37);
+  font-size: 10px;
+  height: 45px;
+  box-sizing: border-box;
+  border-width: 2px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-color: rgb(59, 59, 59);
+  padding: 8px 8px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playback-button:hover {
+  color: rgb(143, 243, 250);
+}
+
+button:active {
+  padding: 10px 6px 6px 10px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.spotify-button {
+  grid-column: 4 / span 5;
+}
