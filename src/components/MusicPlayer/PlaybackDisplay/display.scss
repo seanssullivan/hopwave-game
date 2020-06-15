@@ -1,0 +1,63 @@
+.playback-display {
+  position: absolute;
+  top: 0px;
+  color: rgb(230, 230, 230);
+  background-color: #1c0040;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-style: inset;
+  border-color: #ff9f61;
+  border-width: 3px;
+  width: 92.5%;
+  height: 100px;
+  margin: 10px;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+.default-display {
+  padding: 10px;
+}
+
+.temp-display {
+  padding: 10px;
+}
+
+.tone-display {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.display-track-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+}
+
+.display-artwork img {
+  top: 0px;
+  left: 0px;
+  box-sizing: border-box;
+  height: 94px;
+  width: 94px;
+}
+
+.display-info {
+  position: relative;
+  top: -10px;
+  box-sizing: border-box;
+  padding: 10px;
+  line-height: 200%;
+  font-size: 10px;
+  height: 94px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.display-info span {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
