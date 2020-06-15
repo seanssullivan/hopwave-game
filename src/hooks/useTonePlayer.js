@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as Tone from "tone";
 
 const TONE_VOLUME = -15;
