@@ -10,7 +10,7 @@ import Environment from "./Environment";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 
 // Optional components
-// import Zuckerberg from "./3d_Models/Zuckerberg";
+import Zuckerberg from "./Unused_3d_Models/Zuckerberg";
 
 // Import settings
 import settings from "../settings";
@@ -31,20 +31,22 @@ export default function Game(props) {
         setPoints={setPoints}
       />
       <Suspense fallback={null}>
-        <Car
-          avgSpeed={speed}
-          setSpeed={setSpeed}
-          position={playerPosition}
-          setPosition={setPlayerPosition}
-        />
-
-        {/* <Zuckerberg
-          color={"white"}
-          avgSpeed={SPEED}
-          setSpeed={setSpeed}
-          position={playerPosition}
-          setPosition={setPlayerPosition}
-        /> */}
+        {points < 40 && (
+          <Car
+            avgSpeed={speed}
+            setSpeed={setSpeed}
+            position={playerPosition}
+            setPosition={setPlayerPosition}
+          />
+        )}
+        {points >= 40 && (
+          <Zuckerberg
+            avgSpeed={speed}
+            setSpeed={setSpeed}
+            position={playerPosition}
+            setPosition={setPlayerPosition}
+          />
+        )}
       </Suspense>
     </>
   );
