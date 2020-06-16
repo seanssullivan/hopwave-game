@@ -6,7 +6,7 @@ export default function Difficulty(props) {
   return (
     <ul>
       <li
-        className={`easy ${"easy" === active ? "bigText" : ""}`}
+        className={`easy ${"easy" === active ? "bigText" : ""} transparent`}
         onClick={() => {
           setDifficulty((prev) => {
             if (prev === "MEDIUM") {
@@ -24,7 +24,9 @@ export default function Difficulty(props) {
       </li>
       <li
         id={"medium"}
-        className={`"medium" ${"medium" === active ? "bigText" : ""}`}
+        className={`"medium" ${
+          "medium" === active ? "bigText" : ""
+        } transparent`}
         onClick={() => {
           setDifficulty((prev) => {
             if (prev === "EASY") {
@@ -41,7 +43,7 @@ export default function Difficulty(props) {
         medium
       </li>
       <li
-        className={`"hard" ${"hard" === active ? "bigText" : ""}`}
+        className={`"hard" ${"hard" === active ? "bigText" : ""} transparent`}
         onClick={() => {
           setDifficulty((prev) => {
             if (prev === "EASY") {

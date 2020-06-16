@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Import hooks
 import useSpotifyControls from "../../hooks/useSpotifyControls";
 
 export default function PlaybackControls(props) {
+  const [useSpotify, setUseSpotify] = useState(false);
+
   const {
     playMusic,
     setPlayMusic,
@@ -48,12 +50,19 @@ export default function PlaybackControls(props) {
   };
 
   const toggleSpotify = () => {
-    if (playMusic && !spotifyOn) {
+    if (!useSpotify) {
+      tonePlayer.stop();
+      setPlayMusic(true);
+      setUseSpotify(true);
+      setSpotifyOn(true);
+    } else if (playMusic && !spotifyOn) {
       tonePlayer.stop();
       setSpotifyOn(true);
+      resumePlayback(spotifyPlayer);
+    } else if (!playMusic && spotifyOn) {
+      setSpotifyOn(false);
     } else if (!playMusic && !spotifyOn) {
       setSpotifyOn(true);
-      setPlayMusic(true);
     } else if (spotifyOn) {
       pauseTrack(spotifyPlayer);
       setSpotifyOn(false);

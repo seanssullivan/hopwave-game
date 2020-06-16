@@ -3,7 +3,7 @@ import * as Tone from "tone";
 
 // const soundEffect = new Tone.Synth().toMaster();
 const soundEffect = new Tone.PolySynth(4, Tone.Synth).toMaster();
-soundEffect.volume.value = -16;
+soundEffect.volume.value = -25;
 // soundEffect.triggerAttackRelease("C4", "8n");
 
 export default function useSoundEffects() {
