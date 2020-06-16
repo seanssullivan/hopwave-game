@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import SpotifyDisplay from "./SpotifyDisplay";
 import ToneDisplay from "./ToneDisplay";
@@ -6,14 +6,7 @@ import ToneDisplay from "./ToneDisplay";
 import "./display.scss";
 
 export default function PlaybackDisplay(props) {
-  const {
-    playMusic,
-    toneLoaded,
-    spotifyOn,
-    spotifyPlayer,
-    trackInfo,
-    statusMessage,
-  } = props;
+  const { playMusic, toneLoaded, spotifyOn, spotifyPlayer, trackInfo } = props;
 
   return (
     <div className="playback-display">

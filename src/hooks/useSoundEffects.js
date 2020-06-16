@@ -1,5 +1,4 @@
 // src/hooks/useSoundEffect.js
-import { useState } from "react";
 import * as Tone from "tone";
 
 // const soundEffect = new Tone.Synth().toMaster();
@@ -23,13 +22,10 @@ export default function useSoundEffects() {
 
   const playSound = function (shapetype) {
     if (shapetype === "Circle") {
-      console.log("circle");
       circleSound();
     } else if (shapetype === "Square") {
-      console.log("square");
       squareSound();
     } else if (shapetype === "Triangle") {
-      console.log("triangle");
       triangleSound();
     } else {
       hexagonSound();
