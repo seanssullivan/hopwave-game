@@ -5,7 +5,7 @@ const GAME = {
   SPEED: 5,
   START_POSITION: [0, 3, -70],
   DIFFICULTY: {
-    HARD: 500,
+    HARD: 1000,
     MEDIUM: 1500,
     EASY: 2500,
   },
@@ -15,7 +15,7 @@ const GAME = {
 const ROAD = {
   LENGTH: 10,
   CUTOFF: -200,
-  COLOR: "#4deeea",
+  COLORS: ["#440dd5", "#04005e"],
 };
 
 // Road Segment component settings are defined here:
@@ -30,6 +30,11 @@ const ROAD_SEGMENT = {
 const SHAPE = {
   SPAWN: 1500,
   RADIUS: 30,
+  RESIZE: {
+    HARD: 10,
+    MEDIUM: 5,
+    EASY: 0,
+  },
 };
 
 // Car component settings are defined here:

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // Import components
 import PlaybackDisplay from "./PlaybackDisplay";
 import PlaybackControls from "./PlaybackControls";
-import { SpotifyPlayer, SpotifyIframe } from "./Spotify";
+import { SpotifyPlayer } from "./Spotify";
 
 // Import hooks
 import useTonePlayer from "../../hooks/useTonePlayer";
@@ -11,7 +11,7 @@ import useTonePlayer from "../../hooks/useTonePlayer";
 import "./MusicPlayer.scss";
 
 export default function MusicPlayer(props) {
-  const { gameMode, speed } = props;
+  const { speed } = props;
   const [playMusic, setPlayMusic] = useState(true);
   const [spotifyOn, setSpotifyOn] = useState(false);
   const [accessToken, setAccessToken] = useState();
@@ -26,10 +26,6 @@ export default function MusicPlayer(props) {
       setPlaybackRate(speed);
     }
   }, [spotifyOn, setPlaybackRate, speed]);
-
-  useEffect(() => {
-    console.log(spotifyPlayer);
-  }, [spotifyPlayer]);
 
   return (
     <div className={"music-player"}>

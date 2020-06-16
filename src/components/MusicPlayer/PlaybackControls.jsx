@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 
 // Import hooks
 import useSpotifyControls from "../../hooks/useSpotifyControls";
@@ -52,10 +52,12 @@ export default function PlaybackControls(props) {
       tonePlayer.stop();
       setSpotifyOn(true);
     } else if (!playMusic && !spotifyOn) {
-      setPlayMusic(true);
       setSpotifyOn(true);
-    } else {
+      setPlayMusic(true);
+    } else if (spotifyOn) {
+      pauseTrack(spotifyPlayer);
       setSpotifyOn(false);
+      tonePlayer.start();
     }
   };
 

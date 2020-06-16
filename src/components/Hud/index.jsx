@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import "./index.scss";
 
@@ -9,7 +9,14 @@ import MusicPlayer from "../MusicPlayer";
 // import pointsMessage from "../../helpers/pointsMessage";
 
 export default function Hud(props) {
-  const { points, gameMode, speed, setGameMode, setDifficulty } = props;
+  const {
+    points,
+    gameMode,
+    speed,
+    setSpeed,
+    setGameMode,
+    setDifficulty,
+  } = props;
 
   const pointsMessage = function () {
     if (points === 5 && gameMode) {
@@ -29,7 +36,7 @@ export default function Hud(props) {
       );
     }
 
-    if (points === 15 && gameMode) {
+    if (points % 15 === 0 && points !== 0 && gameMode) {
       return (
         <div class="sign">
           <span class="fast-flicker">In</span>sa<span class="flicker">n</span>e!
@@ -40,7 +47,7 @@ export default function Hud(props) {
     if (points === 20 && gameMode) {
       return (
         <div class="sign">
-          <span class="fast-flicker">Wu</span>u<span class="flicker">t</span>!
+          <span class="fast-flicker">Vi</span>b<span class="flicker">i</span>n!
         </div>
       );
     }
@@ -58,12 +65,10 @@ export default function Hud(props) {
     <>
       <Global />
       <UpperLeft>
-        <MusicPlayer mode={gameMode} speed={speed} />
+        <MusicPlayer speed={speed} />
       </UpperLeft>
       <UpperRight>
         <div className="rightHud">
-          <h4>HOPWAVE </h4>
-          {/* <br /> */}
           <h4 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h4>
           {/* <br /> */}
           <a href="https://github.com/seanssullivan/hopwave-game">source</a>
@@ -71,7 +76,9 @@ export default function Hud(props) {
         </div>
       </UpperRight>
       <LowerLeft>
-        {gameMode && <Difficulty setDifficulty={setDifficulty} />}
+        {gameMode && (
+          <Difficulty setDifficulty={setDifficulty} setSpeed={setSpeed} />
+        )}
       </LowerLeft>
       <LowerRight>{gameMode && <h2>{points}</h2>}</LowerRight>
       <Middle className={"middle"}>{pointsMessage(points, gameMode)}</Middle>
@@ -119,7 +126,7 @@ const UpperLeft = styled.div`
 const UpperRight = styled.div`
   ${base}
   text-align: right;
-  top: 43px;
+  top: 53px;
   right: 50px;
   font-size: 2em;
   transform: skew(-5deg, -10deg);
