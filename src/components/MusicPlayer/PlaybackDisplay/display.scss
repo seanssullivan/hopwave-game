@@ -1,5 +1,5 @@
 .playback-display {
-  position: absolute;
+  position: relative;
   top: 0px;
   color: rgb(230, 230, 230);
   background-color: #1c0040;
@@ -8,8 +8,8 @@
   border-style: inset;
   border-color: #ff9f61;
   border-width: 3px;
-  width: 92.5%;
   height: 100px;
+  width: 95%;
   margin: 10px;
   font-size: 16px;
   overflow: hidden;
@@ -54,7 +54,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 .display-info span {
   display: inline-block;
