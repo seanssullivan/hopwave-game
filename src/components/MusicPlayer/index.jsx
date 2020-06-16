@@ -27,10 +27,6 @@ export default function MusicPlayer(props) {
     }
   }, [spotifyOn, setPlaybackRate, speed]);
 
-  useEffect(() => {
-    console.log(spotifyPlayer);
-  }, [spotifyPlayer]);
-
   return (
     <div className={"music-player"}>
       <PlaybackDisplay
