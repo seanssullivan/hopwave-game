@@ -1,70 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hopwave - A chill driving game with a vaporwave aesthetic where you can relax and listen to music. Built using Express, React, Three.js and Tone.js.
 
-## Available Scripts
+You have the option to enjoy the default music provided or you can also connect to your Spotify premium account to listen to a vaporwave playlist.
 
-In the project directory, you can run:
+This project is hosted on https://lhl-hopwave.herokuapp.com/
 
-### `npm start`
+![HopWave - Homepage](https://gyazo.com/2601217e7c61f934747ed9cfed440c50.gif)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![HopWave - Game](https://gyazo.com/04b9878654b3777713670eb7e0f0ada0.gif)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Getting started
 
-### `npm test`
+1 - Fork this repository, then clone your fork of this repository.
+2 - Install dependencies by running the `npm install` command.
+3 - In order to take advantage of the included Spotify Web Player SDK you must have a Spotify premium account and register for a client ID in Spotify's developer dashboard.
+4 - Within the apps settings, on Spotify developer dashboard, you must add a redirect URI of `http://localhost:3000`.
+5 - Create an .env file from the .env.example given and insert your client ID from Spotify.
+6 - Start the web server using the `npm start` command. The app will be served at `http://localhost:3000`.
+7 - Go to `http://localhost:3000` in your browser.
+8 - Chill out.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependencies
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-
+- Express
+- lerp
+- react
+- react-postprocessing
+- react-three-fiber
+- sass
+- three
+- tone
