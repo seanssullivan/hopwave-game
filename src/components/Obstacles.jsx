@@ -30,9 +30,7 @@ export default function Obstacles(props) {
 
   detectCollision(playerPosition, shapes, (key) => {
     setTriggered(key);
-
     playSound(shapes[key].type);
-
     setPoints(points);
   });
 
@@ -55,6 +53,7 @@ export default function Obstacles(props) {
                 shapeId={key}
                 shapeName={shape.type}
                 position={shape.position}
+                difficulty={difficulty}
                 destroyShape={destroyShape}
                 setPosition={setShapePosition}
               />

@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 
 export default function Difficulty(props) {
-  const { setDifficulty } = props;
+  const { setDifficulty, setSpeed } = props;
   const [active, setActive] = useState("easy");
   return (
     <ul>
       <li
         className={`easy ${"easy" === active ? "bigText" : ""}`}
         onClick={() => {
-          setDifficulty("EASY");
+          setDifficulty((prev) => {
+            if (prev === "MEDIUM") {
+              setSpeed((prev) => prev - 2);
+            }
+            if (prev === "HARD") {
+              setSpeed((prev) => prev - 4);
+            }
+            return "EASY";
+          });
           setActive("easy");
         }}
       >
@@ -18,7 +26,15 @@ export default function Difficulty(props) {
         id={"medium"}
         className={`"medium" ${"medium" === active ? "bigText" : ""}`}
         onClick={() => {
-          setDifficulty("MEDIUM");
+          setDifficulty((prev) => {
+            if (prev === "EASY") {
+              setSpeed((prev) => prev + 2);
+            }
+            if (prev === "HARD") {
+              setSpeed((prev) => prev - 2);
+            }
+            return "MEDIUM";
+          });
           setActive("medium");
         }}
       >
@@ -27,7 +43,15 @@ export default function Difficulty(props) {
       <li
         className={`"hard" ${"hard" === active ? "bigText" : ""}`}
         onClick={() => {
-          setDifficulty("HARD");
+          setDifficulty((prev) => {
+            if (prev === "EASY") {
+              setSpeed((prev) => prev + 4);
+            }
+            if (prev === "MEDIUM") {
+              setSpeed((prev) => prev + 2);
+            }
+            return "HARD";
+          });
           setActive("hard");
         }}
       >
