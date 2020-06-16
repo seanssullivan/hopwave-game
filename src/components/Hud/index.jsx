@@ -36,7 +36,7 @@ export default function Hud(props) {
       );
     }
 
-    if (points === 15 && gameMode) {
+    if (points % 15 === 0 && points !== 0 && gameMode) {
       return (
         <div class="sign">
           <span class="fast-flicker">In</span>sa<span class="flicker">n</span>e!
@@ -47,7 +47,7 @@ export default function Hud(props) {
     if (points === 20 && gameMode) {
       return (
         <div class="sign">
-          <span class="fast-flicker">Wu</span>u<span class="flicker">t</span>!
+          <span class="fast-flicker">Vi</span>b<span class="flicker">i</span>n!
         </div>
       );
     }
@@ -69,8 +69,6 @@ export default function Hud(props) {
       </UpperLeft>
       <UpperRight>
         <div className="rightHud">
-          <h4>HOPWAVE </h4>
-          {/* <br /> */}
           <h4 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h4>
           {/* <br /> */}
           <a href="https://github.com/seanssullivan/hopwave-game">source</a>
@@ -128,7 +126,7 @@ const UpperLeft = styled.div`
 const UpperRight = styled.div`
   ${base}
   text-align: right;
-  top: 43px;
+  top: 53px;
   right: 50px;
   font-size: 2em;
   transform: skew(-5deg, -10deg);
