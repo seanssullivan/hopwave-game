@@ -5,10 +5,10 @@ import { useFrame } from "react-three-fiber";
 import settings from "../../settings";
 
 const { SPEED } = settings.GAME;
-const { RADIUS } = settings.SHAPE;
+const { RADIUS, RESIZE } = settings.SHAPE;
 
 export default function Circle(props) {
-  const { destroyShape, setPosition } = props;
+  const { difficulty, destroyShape, setPosition } = props;
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
@@ -25,7 +25,10 @@ export default function Circle(props) {
 
   return (
     <mesh {...props} ref={mesh} scale={[1, 1, 1]}>
-      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 30, 30]} />
+      <torusBufferGeometry
+        attach="geometry"
+        args={[RADIUS - RESIZE[difficulty], 1, 30, 30]}
+      />
       <meshToonMaterial attach="material" color={"red"} />
     </mesh>
   );

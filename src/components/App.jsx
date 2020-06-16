@@ -47,6 +47,7 @@ export default function App() {
         points={points}
         gameMode={gameMode}
         speed={speed}
+        setSpeed={setSpeed}
         setGameMode={() => setGameMode(!gameMode)}
         difficulty={difficulty}
         setDifficulty={setDifficulty}
