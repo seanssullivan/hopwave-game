@@ -8,6 +8,8 @@ import { SpotifyPlayer, SpotifyIframe } from "./Spotify";
 // Import hooks
 import useTonePlayer from "../../hooks/useTonePlayer";
 
+import "./MusicPlayer.scss";
+
 export default function MusicPlayer(props) {
   const { gameMode, speed } = props;
   const [playMusic, setPlayMusic] = useState(true);
@@ -24,10 +26,6 @@ export default function MusicPlayer(props) {
       setPlaybackRate(speed);
     }
   }, [spotifyOn, setPlaybackRate, speed]);
-
-  useEffect(() => {
-    console.log(spotifyPlayer);
-  }, [spotifyPlayer]);
 
   return (
     <div className={"music-player"}>
