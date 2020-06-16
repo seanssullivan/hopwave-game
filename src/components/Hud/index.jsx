@@ -29,7 +29,7 @@ export default function Hud(props) {
       );
     }
 
-    if (points === 15 && gameMode) {
+    if (points % 15 === 0 && points !== 0 && gameMode) {
       return (
         <div class="sign">
           <span class="fast-flicker">In</span>sa<span class="flicker">n</span>e!
@@ -40,7 +40,7 @@ export default function Hud(props) {
     if (points === 20 && gameMode) {
       return (
         <div class="sign">
-          <span class="fast-flicker">Wu</span>u<span class="flicker">t</span>!
+          <span class="fast-flicker">Vi</span>b<span class="flicker">i</span>n!
         </div>
       );
     }
