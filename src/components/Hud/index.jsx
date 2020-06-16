@@ -9,7 +9,14 @@ import MusicPlayer from "../MusicPlayer";
 // import pointsMessage from "../../helpers/pointsMessage";
 
 export default function Hud(props) {
-  const { points, gameMode, speed, setGameMode, setDifficulty } = props;
+  const {
+    points,
+    gameMode,
+    speed,
+    setSpeed,
+    setGameMode,
+    setDifficulty,
+  } = props;
 
   const pointsMessage = function () {
     if (points === 5 && gameMode) {
@@ -71,7 +78,9 @@ export default function Hud(props) {
         </div>
       </UpperRight>
       <LowerLeft>
-        {gameMode && <Difficulty setDifficulty={setDifficulty} />}
+        {gameMode && (
+          <Difficulty setDifficulty={setDifficulty} setSpeed={setSpeed} />
+        )}
       </LowerLeft>
       <LowerRight>{gameMode && <h2>{points}</h2>}</LowerRight>
       <Middle className={"middle"}>{pointsMessage(points, gameMode)}</Middle>
