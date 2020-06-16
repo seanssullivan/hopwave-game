@@ -37,6 +37,7 @@ body {
     -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
     0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
   animation: shine 2s forwards, flicker 3s infinite;
+  animation: fadeinout 4s linear forwards;
 }
 
 @keyframes blink {
