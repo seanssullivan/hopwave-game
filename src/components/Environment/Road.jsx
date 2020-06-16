@@ -14,16 +14,16 @@ export default function Road(props) {
     roadPositions.push([0, 0, zPosition]);
   }
 
-  // let prevColor = "cyan";
+  let prevColor;
   return roadPositions.map((position, index) => {
-    // let color;
-    // if (prevColor === "purple") {
-    //   color = "cyan";
-    //   prevColor = "cyan";
-    // } else {
-    //   color = "purple";
-    //   prevColor = "purple";
-    // }
+    let color;
+    if (prevColor === "#04005e") {
+      color = "#440dd5";
+      prevColor = "#440dd5";
+    } else {
+      color = "#04005e";
+      prevColor = "#04005e";
+    }
     return (
       <RoadSegment
         key={index}
@@ -31,7 +31,7 @@ export default function Road(props) {
         speed={props.speed}
         cutoff={CUTOFF}
         spawn={100 * (LENGTH - 1)}
-        color={COLOR}
+        color={color}
       ></RoadSegment>
     );
   });
