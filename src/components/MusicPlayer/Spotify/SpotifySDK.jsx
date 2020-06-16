@@ -28,7 +28,7 @@ export default function SpotifySDK(props) {
         getOAuthToken: (cb) => {
           cb(accessToken);
         },
-        volume: 0.05,
+        volume: 0.25,
       });
 
       // Error handling
