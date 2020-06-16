@@ -21,16 +21,18 @@ export default function Hud(props) {
   const pointsMessage = function () {
     if (points === 5 && gameMode) {
       return (
-        <div class="sign">
-          <span class="fast-flicker">N</span>i<span class="flicker"> c</span>e!
+        <div className="sign">
+          <span className="fast-flicker">N</span>i
+          <span className="flicker"> c</span>e!
         </div>
       );
     }
 
     if (points === 10 && gameMode) {
       return (
-        <div class="sign">
-          <span class="fast-flicker">Am</span>a<span class="flicker">zi</span>
+        <div className="sign">
+          <span className="fast-flicker">Am</span>a
+          <span className="flicker">zi</span>
           ng!
         </div>
       );
@@ -38,24 +40,27 @@ export default function Hud(props) {
 
     if (points % 15 === 0 && points !== 0 && gameMode) {
       return (
-        <div class="sign">
-          <span class="fast-flicker">In</span>sa<span class="flicker">n</span>e!
+        <div className="sign">
+          <span className="fast-flicker">In</span>sa
+          <span className="flicker">n</span>e!
         </div>
       );
     }
 
     if (points === 20 && gameMode) {
       return (
-        <div class="sign">
-          <span class="fast-flicker">Vi</span>b<span class="flicker">i</span>n!
+        <div className="sign">
+          <span className="fast-flicker">Vi</span>b
+          <span className="flicker">i</span>n!
         </div>
       );
     }
 
     if (points === 40 && gameMode) {
       return (
-        <div class="sign">
-          <span class="fast-flicker">Mu</span>s<span class="flicker">ky</span>!
+        <div className="sign">
+          <span className="fast-flicker">Mu</span>s
+          <span className="flicker">ky</span>!
         </div>
       );
     }

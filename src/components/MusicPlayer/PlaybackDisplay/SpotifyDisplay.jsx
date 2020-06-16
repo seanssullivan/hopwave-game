@@ -20,7 +20,6 @@ export default function SpotifyDisplay(props) {
             <img
               className={"album-artwork"}
               src={trackInfo.artwork}
-              onError={"this.onError = null"}
               alt=""
             ></img>
           </div>
