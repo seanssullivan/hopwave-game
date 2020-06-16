@@ -4,10 +4,10 @@ import { useFrame } from "react-three-fiber";
 // Import settings
 import settings from "../../settings";
 const { SPEED } = settings.GAME;
-const { RADIUS } = settings.SHAPE;
+const { RADIUS, RESIZE } = settings.SHAPE;
 
 export default function Square(props) {
-  const { destroyShape, setPosition } = props;
+  const { difficulty, destroyShape, setPosition } = props;
 
   // This reference will give us direct access to the mesh
   const mesh = useRef();
@@ -29,7 +29,10 @@ export default function Square(props) {
       scale={[1, 1, 1]}
       rotation={[0, 0, -Math.PI / 6]}
     >
-      <torusBufferGeometry attach="geometry" args={[RADIUS, 1, 3, 3]} />
+      <torusBufferGeometry
+        attach="geometry"
+        args={[RADIUS - RESIZE[difficulty], 1, 3, 3]}
+      />
       <meshToonMaterial attach="material" color={"green"} />
     </mesh>
   );

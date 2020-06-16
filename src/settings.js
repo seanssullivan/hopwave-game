@@ -30,6 +30,11 @@ const ROAD_SEGMENT = {
 const SHAPE = {
   SPAWN: 1500,
   RADIUS: 30,
+  RESIZE: {
+    HARD: 10,
+    MEDIUM: 5,
+    EASY: 0,
+  },
 };
 
 // Car component settings are defined here:
