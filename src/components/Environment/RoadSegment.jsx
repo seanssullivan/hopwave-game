@@ -33,7 +33,7 @@ export default function RoadSegment(props) {
       <boxBufferGeometry attach="geometry" args={[WIDTH, HEIGHT, LENGTH]} />
       <pointsMaterial
         transparent={true}
-        opacity={0.2}
+        opacity={0.95}
         roughness={1}
         attach="material"
         // wireframe={true}
