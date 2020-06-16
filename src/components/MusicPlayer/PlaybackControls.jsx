@@ -54,25 +54,30 @@ export default function PlaybackControls(props) {
     } else if (!playMusic && !spotifyOn) {
       setPlayMusic(true);
       setSpotifyOn(true);
-    } else {
+    } else if (spotifyOn) {
+      pauseTrack(spotifyPlayer);
       setSpotifyOn(false);
+      tonePlayer.start();
     }
   };
 
   return (
     <div className={"playback-controls"}>
-      <div className={"button play-button"} onClick={togglePlay}>
+      <button className={"playback-button play-button"} onClick={togglePlay}>
         <span>Play</span>
-      </div>
-      <div className={"button pause-button"} onClick={togglePause}>
+      </button>
+      <button className={"playback-button pause-button"} onClick={togglePause}>
         <span>Pause</span>
-      </div>
-      <div className={"button next-button"} onClick={playNext}>
+      </button>
+      <button className={"playback-button next-button"} onClick={playNext}>
         <span>Next</span>
-      </div>
-      <div className={"button spotify-button"} onClick={toggleSpotify}>
+      </button>
+      <button
+        className={"playback-button spotify-button"}
+        onClick={toggleSpotify}
+      >
         <span>Spotify</span>
-      </div>
+      </button>
     </div>
   );
 }

@@ -1,11 +1,58 @@
 import React, { useState } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
+import "./index.scss";
 
 import Difficulty from "./Difficulty";
 import MusicPlayer from "../MusicPlayer";
 
+// helpers
+// import pointsMessage from "../../helpers/pointsMessage";
+
 export default function Hud(props) {
   const { points, gameMode, speed, setGameMode, setDifficulty } = props;
+
+  const pointsMessage = function () {
+    if (points === 5 && gameMode) {
+      return (
+        <div class="sign">
+          <span class="fast-flicker">N</span>i<span class="flicker"> c</span>e!
+        </div>
+      );
+    }
+
+    if (points === 10 && gameMode) {
+      return (
+        <div class="sign">
+          <span class="fast-flicker">Am</span>a<span class="flicker">zi</span>
+          ng!
+        </div>
+      );
+    }
+
+    if (points === 15 && gameMode) {
+      return (
+        <div class="sign">
+          <span class="fast-flicker">In</span>sa<span class="flicker">n</span>e!
+        </div>
+      );
+    }
+
+    if (points === 20 && gameMode) {
+      return (
+        <div class="sign">
+          <span class="fast-flicker">Wu</span>u<span class="flicker">t</span>!
+        </div>
+      );
+    }
+
+    if (points === 40 && gameMode) {
+      return (
+        <div class="sign">
+          <span class="fast-flicker">Mu</span>s<span class="flicker">ky</span>!
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -20,12 +67,14 @@ export default function Hud(props) {
           <h4 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h4>
           {/* <br /> */}
           <a href="https://github.com/seanssullivan/hopwave-game">source</a>
+          <br />
         </div>
       </UpperRight>
       <LowerLeft>
         {gameMode && <Difficulty setDifficulty={setDifficulty} />}
       </LowerLeft>
       <LowerRight>{gameMode && <h2>{points}</h2>}</LowerRight>
+      <Middle className={"middle"}>{pointsMessage(points, gameMode)}</Middle>
     </>
   );
 }
@@ -38,6 +87,18 @@ const base = css`
   font-variant-numeric: slashed-zero tabular-nums;
   line-height: 1em;
   color: #ff9f61;
+`;
+
+const Middle = styled.div`
+  ${base}
+  left: 50%;
+  top: 42%;
+  font-size: 0.6em;
+  position: absolute;
+  @media only screen and (max-width: 900px) {
+    font-size: 1.5em;
+    font-family: "Press Start 2P";
+  }
 `;
 
 const UpperLeft = styled.div`
@@ -58,7 +119,7 @@ const UpperLeft = styled.div`
 const UpperRight = styled.div`
   ${base}
   text-align: right;
-  top: 40px;
+  top: 43px;
   right: 50px;
   font-size: 2em;
   transform: skew(-5deg, -10deg);
