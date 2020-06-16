@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 // Import hooks
 // import useCurrentlyPlaying from "../../../hooks/useCurrentlyPlaying";

@@ -23,7 +23,7 @@ const Text = forwardRef(
         self.geometry.boundingBox.getSize(size);
         self.position.x = 29;
         self.position.y = 0;
-        self.position.z = 200;
+        self.position.z = 350;
         self.rotation.y = 3.14;
       },
       [children]
