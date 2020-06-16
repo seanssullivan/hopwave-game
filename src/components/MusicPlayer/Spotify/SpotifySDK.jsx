@@ -145,7 +145,14 @@ export default function SpotifySDK(props) {
       // Store Spotify player in local state
       setSpotifyPlayer(spotifyPlayer);
     };
-  }, [accessToken, setDeviceId, setSpotifyPlayer, setStatus, setMessage]);
+  }, [
+    accessToken,
+    setDeviceId,
+    setSpotifyPlayer,
+    setTrackInfo,
+    setStatus,
+    setMessage,
+  ]);
 
   return (
     <>

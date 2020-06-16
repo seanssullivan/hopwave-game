@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import "./index.scss";
 
@@ -65,7 +65,7 @@ export default function Hud(props) {
     <>
       <Global />
       <UpperLeft>
-        <MusicPlayer mode={gameMode} speed={speed} />
+        <MusicPlayer speed={speed} />
       </UpperLeft>
       <UpperRight>
         <div className="rightHud">

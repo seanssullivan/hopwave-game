@@ -10,6 +10,7 @@ import * as THREE from "three";
 import React, { useRef, useState, useEffect } from "react";
 import { useLoader, useFrame } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
 // Import hooks
 import useKeyPress from "../../hooks/useKeyPress";
 import useMovement from "../../hooks/useMovement";
@@ -29,10 +30,10 @@ export default function Model(props) {
   // const actions = useRef();
   const [mixer] = useState(() => new THREE.AnimationMixer());
   useFrame((state, delta) => mixer.update(delta));
-  useEffect(
-    () => void mixer.clipAction(animations[0], group.current).play(),
-    []
-  );
+  useEffect(() => void mixer.clipAction(animations[0], group.current).play(), [
+    animations,
+    mixer,
+  ]);
 
   const move = useMovement(group, "x", setPosition);
 

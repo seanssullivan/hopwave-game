@@ -5,7 +5,7 @@ import RoadSegment from "./RoadSegment";
 
 // Import settings
 import settings from "../../settings";
-const { LENGTH, CUTOFF, COLOR } = settings.ROAD;
+const { LENGTH, CUTOFF, COLORS } = settings.ROAD;
 
 export default function Road(props) {
   const roadPositions = [];
@@ -17,12 +17,12 @@ export default function Road(props) {
   let prevColor;
   return roadPositions.map((position, index) => {
     let color;
-    if (prevColor === "#04005e") {
-      color = "#440dd5";
-      prevColor = "#440dd5";
+    if (prevColor === COLORS[1]) {
+      color = COLORS[0];
+      prevColor = COLORS[0];
     } else {
-      color = "#04005e";
-      prevColor = "#04005e";
+      color = COLORS[1];
+      prevColor = COLORS[1];
     }
     return (
       <RoadSegment
