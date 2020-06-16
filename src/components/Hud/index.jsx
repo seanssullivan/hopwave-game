@@ -49,14 +49,9 @@ export default function Hud(props) {
 
     if (points === 20 && gameMode) {
       return (
-<<<<<<< HEAD
         <div className="sign">
           <span className="fast-flicker">Vi</span>b
           <span className="flicker">i</span>n!
-=======
-        <div class="sign">
-          <span class="fast-flicker">Vi</span>b<span class="flicker">i</span>n!
->>>>>>> origin/master
         </div>
       );
     }
