@@ -4,9 +4,9 @@ You have the option to enjoy the default music provided or you can also connect 
 
 This project is hosted on https://lhl-hopwave.herokuapp.com/
 
-![HopWave - Homepage](https://gyazo.com/2601217e7c61f934747ed9cfed440c50.gif)
+![HopWave - Homepage](https://github.com/seanssullivan/hopwave-game/blob/master/docs/screenshots/HopwaveLogo.gif?raw=true)
 
-![HopWave - Game](https://gyazo.com/04b9878654b3777713670eb7e0f0ada0.gif)
+![HopWave - Game](https://github.com/seanssullivan/hopwave-game/blob/master/docs/screenshots/driving.gif?raw=true)
 
 ## Getting started
 
