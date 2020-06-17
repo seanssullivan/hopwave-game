@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 
-//import Game from "./components/Game";
+// Import components
 import App from "./components/App";
 import "./index.scss";
 
@@ -21,23 +21,23 @@ const SpotifyAccess = {
   NO_PREMIUM: "no_premium",
 };
 
+// Check url for parameters
 const hashStr = window.location.hash;
 const searchStr = window.location.search;
+
+// Separate parameter strings into key-value pairs
 const hashParams = decodeParams(hashStr.slice(1, hashStr.length));
 const searchParams = decodeParams(searchStr.slice(1, searchStr.length));
 
 if (hashParams.access_token) {
-  // window.opener.postMessage(hashParams, "*");
+  // Set values in local storage
   setSpotifyAccess(SpotifyAccess.ALLOWED);
   setSpotifyAccessToken(hashParams.access_token);
   setSpotifyTokenExpirationTime(hashParams.expires_in);
   window.close();
-  // ReactDOM.render(<h1>Message posted...</h1>, document.getElementById("root"));
 } else if (searchParams.error) {
-  // window.opener.postMessage(searchParams, "*");
   setSpotifyAccess(SpotifyAccess.DENIED);
   window.close();
-  // ReactDOM.render(<h1>An error occurred.</h1>, document.getElementById("root"));
 } else {
   ReactDOM.render(<App />, document.getElementById("root"));
 }

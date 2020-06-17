@@ -13,19 +13,15 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // Import hooks
 import useMovement from "../../hooks/useMovement";
 
-//Import settings
-import settings from "../../settings";
-const { SPEED } = settings.GAME;
-
 export default function PalmTree(props) {
-  const { destroyObstacle } = props;
+  const { speed, destroyObstacle } = props;
 
   const group = useRef();
   const move = useMovement(group, "z");
   const { nodes, materials } = useLoader(GLTFLoader, "/PalmTrees/scene.gltf");
 
   useFrame(() => {
-    move(0 - SPEED);
+    move(0 - speed);
 
     if (group.current.position.z <= -200) {
       destroyObstacle();

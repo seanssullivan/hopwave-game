@@ -13,6 +13,14 @@ body {
   background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
 }
 
+.transparent {
+  opacity: 0.5;
+}
+
+.transparent:hover {
+  opacity: 1;
+}
+
 .sign {
   position: absolute;
   display: flex;

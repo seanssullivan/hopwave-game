@@ -19,7 +19,13 @@ export default function MusicPlayer(props) {
   const [statusMessage, setStatusMessage] = useState();
   const [spotifyPlayer, setSpotifyPlayer] = useState();
   const [trackInfo, setTrackInfo] = useState();
-  const [tonePlayer, isLoaded, setPlaybackRate] = useTonePlayer();
+  const [
+    tonePlayer,
+    isLoaded,
+    trackNum,
+    setPlaybackRate,
+    playNextTrack,
+  ] = useTonePlayer();
 
   useEffect(() => {
     if (!spotifyOn) {
@@ -32,6 +38,7 @@ export default function MusicPlayer(props) {
       <PlaybackDisplay
         playMusic={playMusic}
         toneLoaded={isLoaded}
+        trackNum={trackNum}
         spotifyOn={spotifyOn}
         spotifyPlayer={spotifyPlayer}
         trackInfo={trackInfo}
@@ -40,6 +47,7 @@ export default function MusicPlayer(props) {
         playMusic={playMusic}
         setPlayMusic={setPlayMusic}
         tonePlayer={tonePlayer}
+        playNextTrack={playNextTrack}
         spotifyOn={spotifyOn}
         setSpotifyOn={setSpotifyOn}
         accessToken={accessToken}
