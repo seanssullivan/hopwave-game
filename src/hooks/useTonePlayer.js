@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import * as Tone from "tone";
 
+
 const TONE_VOLUME = -38;
+
 
 const TRACKS = {
   1: "sounds/loops/Organ.wav",
