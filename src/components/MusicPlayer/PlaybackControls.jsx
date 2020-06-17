@@ -51,19 +51,24 @@ export default function PlaybackControls(props) {
 
   const toggleSpotify = () => {
     if (!useSpotify) {
+      // First time Spotify is being used
       tonePlayer.stop();
       setPlayMusic(true);
       setUseSpotify(true);
       setSpotifyOn(true);
     } else if (playMusic && !spotifyOn) {
+      // Switch back to Spotify screen
       tonePlayer.stop();
       setSpotifyOn(true);
       resumePlayback(spotifyPlayer);
     } else if (!playMusic && spotifyOn) {
+      // Switch back to Tone.js screen while paused
       setSpotifyOn(false);
     } else if (!playMusic && !spotifyOn) {
+      // Switch to Spotify while Tone.js is paused
       setSpotifyOn(true);
     } else if (spotifyOn) {
+      // Switch to Tone.js while Spotify is playing
       pauseTrack(spotifyPlayer);
       setSpotifyOn(false);
       tonePlayer.start();
