@@ -1,10 +1,10 @@
 import React from "react";
 
 export default function ToneDisplay(props) {
-  const { toneLoaded } = props;
+  const { toneLoaded, trackNum } = props;
   return (
     <div className="tone-display">
-      {toneLoaded ? "Playing Tone.js!" : "Buffering..."}
+      {toneLoaded ? `Tone.js: Track ${trackNum}` : "Buffering..."}
     </div>
   );
 }
