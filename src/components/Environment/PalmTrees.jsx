@@ -7,6 +7,7 @@ import settings from "../../settings";
 const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
 
 export default function PalmTrees(props) {
+  const { speed } = props;
   const [objects, setObjects] = useState([]);
   const [key, setKey] = useState(1);
   const [time, setTime] = useState(Date.now());
@@ -26,11 +27,13 @@ export default function PalmTrees(props) {
           <PalmTree
             key={key}
             position={[leftSide, 0, 600]}
+            speed={speed}
             destroyObstacle={destroyObject}
           />,
           <PalmTree
             key={key + 1}
             position={[rightSide, 0, 600]}
+            speed={speed}
             destroyObstacle={destroyObject}
           />,
         ];

@@ -10,7 +10,7 @@ export default function Environment(props) {
     <>
       <Road speed={speed} />
       <Suspense fallback={null}>
-        <PalmTrees />
+        <PalmTrees speed={speed} />
       </Suspense>
     </>
   );

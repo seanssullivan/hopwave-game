@@ -8,7 +8,7 @@ let tonePlayer = null;
 /**
  * useTonePlayer is a hook to manage music playback with Tone.js
  */
-export default function useTonePlayer(speed) {
+export default function useTonePlayer() {
   const [isLoaded, setLoaded] = useState(false);
   const [playbackRate, setRate] = useState(1);
   // const tonePlayer = useRef(null);

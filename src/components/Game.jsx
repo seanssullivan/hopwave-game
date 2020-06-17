@@ -17,7 +17,7 @@ import settings from "../settings";
 const { START_POSITION } = settings.GAME;
 
 export default function Game(props) {
-  const { points, speed, setSpeed, setPoints, difficulty } = props;
+  const { points, avgSpeed, speed, setSpeed, setPoints, difficulty } = props;
   const [playerPosition, setPlayerPosition] = usePlayerPosition(START_POSITION);
 
   return (
@@ -29,11 +29,12 @@ export default function Game(props) {
         difficulty={difficulty}
         points={points}
         setPoints={setPoints}
+        speed={speed}
       />
       <Suspense fallback={null}>
         {points < 100 && (
           <Car
-            avgSpeed={speed}
+            avgSpeed={avgSpeed}
             setSpeed={setSpeed}
             position={playerPosition}
             setPosition={setPlayerPosition}
