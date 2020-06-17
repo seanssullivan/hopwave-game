@@ -10,6 +10,7 @@ export default function PlaybackControls(props) {
     playMusic,
     setPlayMusic,
     tonePlayer,
+    playNextTrack,
     spotifyOn,
     setSpotifyOn,
     accessToken,
@@ -46,6 +47,8 @@ export default function PlaybackControls(props) {
   const playNext = () => {
     if (playMusic && accessToken && spotifyOn) {
       nextSong(spotifyPlayer);
+    } else if (playMusic && !spotifyOn) {
+      playNextTrack();
     }
   };
 

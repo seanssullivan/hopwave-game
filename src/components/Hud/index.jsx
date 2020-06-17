@@ -80,7 +80,6 @@ export default function Hud(props) {
           <h4 className={"transparent"} onClick={setGameMode}>
             {gameMode ? "Game On!" : "start"}
           </h4>
-
           <a
             className={"transparent"}
             href="https://github.com/seanssullivan/hopwave-game"
