@@ -5,7 +5,7 @@ const musicPlayer = new Tone.Player({
   playbackRate: 1,
   autostart: false,
   loop: true,
-  volume: -15,
+  volume: -80,
 }).toMaster();
 
 /**
