@@ -3,14 +3,17 @@
 import settings from "../settings";
 
 const { LENGTH } = settings.CAR;
-const { RADIUS } = settings.SHAPE;
 
 export default async function detectCollisions(player, objects, callback) {
   return Promise.resolve(
     Object.entries(objects)
       .filter((obj) => !obj[1].triggered)
       .map(async ([key, object]) => {
-        return await detectCollision(player, object.position).then((all) => {
+        return await detectCollision(
+          player,
+          object.position,
+          object.radius
+        ).then((all) => {
           // Determine if collision happened on all axis
           if (all.every((axis) => !!axis)) {
             callback(key);
@@ -20,25 +23,29 @@ export default async function detectCollisions(player, objects, callback) {
   );
 }
 
-const detectCollision = async function (playerPosition, objectPosition) {
+const detectCollision = async function (
+  playerPosition,
+  objectPosition,
+  objectRadius
+) {
   const [playerX, playerY, playerZ] = playerPosition;
   const [objectX, objectY, objectZ] = objectPosition;
   return await Promise.all([
-    detectCollisionOnXAxis(playerX, objectX),
-    detectCollisionOnYAxis(playerY, objectY),
+    detectCollisionOnXAxis(playerX, objectX, objectRadius),
+    detectCollisionOnYAxis(playerY, objectY, objectRadius),
     detectCollisionOnZAxis(playerZ, objectZ),
   ]);
 };
 
-const detectCollisionOnXAxis = function (playerX, objectX) {
-  const shapeLeft = objectX - RADIUS;
-  const shapeRight = objectX + RADIUS;
+const detectCollisionOnXAxis = function (playerX, objectX, objectRadius) {
+  const shapeLeft = objectX - objectRadius;
+  const shapeRight = objectX + objectRadius;
   return Promise.resolve(playerX >= shapeLeft && playerX <= shapeRight);
 };
 
-const detectCollisionOnYAxis = function (playerY, objectY) {
-  const shapeBottom = objectY - RADIUS;
-  const shapeTop = objectY + RADIUS;
+const detectCollisionOnYAxis = function (playerY, objectY, objectRadius) {
+  const shapeBottom = objectY - objectRadius;
+  const shapeTop = objectY + objectRadius;
   return Promise.resolve(playerY >= shapeBottom && playerY <= shapeTop);
 };
 

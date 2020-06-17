@@ -63,7 +63,7 @@ export default function SpotifySDK(props) {
           album: trackState.album.name,
           artwork: trackState.album.images[0].url,
         });
-        console.log(state);
+        // console.log(state);
       });
 
       // Ready

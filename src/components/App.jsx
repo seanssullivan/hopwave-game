@@ -8,9 +8,6 @@ import MainMenu from "./MainMenu";
 
 // import OrbitControl from "./OrbitControls";
 
-// Import hooks
-// import useMusic from "../hooks/useMusic";
-
 // Import settings
 import settings from "../settings";
 const { SPEED } = settings.GAME;
@@ -19,8 +16,8 @@ export default function App() {
   const [gameMode, setGameMode] = useState(false);
   const [points, setPoints] = useState(0);
   const [speed, setSpeed] = useState(SPEED);
+  const [avgSpeed, setAvgSpeed] = useState(SPEED);
   const [difficulty, setDifficulty] = useState("EASY");
-  // const [musicPlayer] = useMusic(speed);
 
   return (
     <>
@@ -35,6 +32,7 @@ export default function App() {
         {gameMode && (
           <Game
             points={points}
+            avgSpeed={avgSpeed}
             speed={speed}
             setSpeed={setSpeed}
             setPoints={(prev) => setPoints(prev + 1)}
@@ -47,7 +45,7 @@ export default function App() {
         points={points}
         gameMode={gameMode}
         speed={speed}
-        setSpeed={setSpeed}
+        setAvgSpeed={setAvgSpeed}
         setGameMode={() => setGameMode(!gameMode)}
         difficulty={difficulty}
         setDifficulty={setDifficulty}
