@@ -11,7 +11,7 @@ import settings from "../settings";
 const { ACCELERATION, TURN_SPEED, ROTATION, BOUNDARY } = settings.CAR;
 
 export default function Car(props) {
-  const { avgSpeed, setPosition, setSpeed } = props;
+  const { avgSpeed, setSpeed, setPosition } = props;
   // This reference will give us direct access to the mesh
   const group = useRef();
   const move = useMovement(group, "x", setPosition);
@@ -25,14 +25,14 @@ export default function Car(props) {
   useFrame(() => {
     // Move the car side-to-side using the A and D keys
     if (aKeyPressed && group.current.position.x <= BOUNDARY) {
-      if (group.current.rotation.y < 0.1) {
+      if (group.current.rotation.y < 0.15) {
         // Add a slight rotation when car is moving to the right
         group.current.rotation.y += ROTATION;
       }
       move(TURN_SPEED);
     }
     if (dKeyPressed && group.current.position.x >= 0 - BOUNDARY) {
-      if (group.current.rotation.y > -0.1) {
+      if (group.current.rotation.y > -0.15) {
         // Add a slight rotation when car is moving to the left
         group.current.rotation.y -= ROTATION;
       }
@@ -55,10 +55,14 @@ export default function Car(props) {
 
     // Control speed with W and S keys
     if (wKeyPressed) {
-      setSpeed((prev) => (prev >= 7 ? prev : (prev += ACCELERATION)));
+      setSpeed((prev) =>
+        prev >= avgSpeed + 2 ? avgSpeed + 2 : (prev += ACCELERATION)
+      );
     }
     if (sKeyPressed) {
-      setSpeed((prev) => (prev <= 3 ? prev : (prev -= ACCELERATION)));
+      setSpeed((prev) =>
+        prev <= avgSpeed - 2 ? avgSpeed - 2 : (prev -= ACCELERATION)
+      );
     }
     if (!wKeyPressed && !sKeyPressed) {
       setSpeed((prev) => {

@@ -1,19 +1,22 @@
 import React from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
-import "./index.scss";
 
+// Import components
 import Difficulty from "./Difficulty";
 import MusicPlayer from "../MusicPlayer";
 
 // helpers
 // import pointsMessage from "../../helpers/pointsMessage";
 
+// Import styles
+import "./index.scss";
+
 export default function Hud(props) {
   const {
     points,
     gameMode,
     speed,
-    setSpeed,
+    setAvgSpeed,
     setGameMode,
     setDifficulty,
   } = props;
@@ -56,7 +59,7 @@ export default function Hud(props) {
       );
     }
 
-    if (points === 40 && gameMode) {
+    if (points === 100 && gameMode) {
       return (
         <div className="sign">
           <span className="fast-flicker">Mu</span>s
@@ -74,15 +77,21 @@ export default function Hud(props) {
       </UpperLeft>
       <UpperRight>
         <div className="rightHud">
-          <h4 onClick={setGameMode}>{gameMode ? "game On!" : "start"}</h4>
-          {/* <br /> */}
-          <a href="https://github.com/seanssullivan/hopwave-game">source</a>
+          <h4 className={"transparent"} onClick={setGameMode}>
+            {gameMode ? "Game On!" : "start"}
+          </h4>
+          <a
+            className={"transparent"}
+            href="https://github.com/seanssullivan/hopwave-game"
+          >
+            source
+          </a>
           <br />
         </div>
       </UpperRight>
       <LowerLeft>
         {gameMode && (
-          <Difficulty setDifficulty={setDifficulty} setSpeed={setSpeed} />
+          <Difficulty setDifficulty={setDifficulty} setAvgSpeed={setAvgSpeed} />
         )}
       </LowerLeft>
       <LowerRight>{gameMode && <h2>{points}</h2>}</LowerRight>
@@ -172,20 +181,6 @@ const LowerLeft = styled.li`
     margin: 0;
     line-height: 1em;
     display: inline;
-    // font-size: 1.4em;
-    font-size: ${(props) => {
-      const test = props;
-
-      if (test === "easy") {
-        return "2.0";
-      } else if (test === "medium") {
-        return "2.0";
-      } else if (test === "hard") {
-        return "2.0";
-      } else {
-        return "1.4";
-      }
-    }};
   }
 
   @media only screen and (max-width: 900px) {

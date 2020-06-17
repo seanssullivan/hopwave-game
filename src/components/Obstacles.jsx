@@ -14,10 +14,11 @@ import detectCollision from "../helpers/detectCollision";
 // Import settings
 import settings from "../settings";
 let { DIFFICULTY } = settings.GAME;
+const { RADIUS, RESIZE } = settings.SHAPE;
 
 export default function Obstacles(props) {
   const [time, setTime] = useState(Date.now());
-  const { playerPosition, difficulty, points, setPoints } = props;
+  const { playerPosition, difficulty, speed, points, setPoints } = props;
 
   const [
     shapes,
@@ -26,7 +27,7 @@ export default function Obstacles(props) {
     setTriggered,
     destroyShape,
   ] = useShapePositions();
-  const [playSound, setPlaySound] = useSoundEffects();
+  const [playSound] = useSoundEffects();
 
   detectCollision(playerPosition, shapes, (key) => {
     setTriggered(key);
@@ -34,10 +35,11 @@ export default function Obstacles(props) {
     setPoints(points);
   });
 
+  // Add a new shape to state after a set period of time
   useFrame(() => {
     const now = Date.now();
     if (Date.now() - time >= DIFFICULTY[difficulty]) {
-      addShape();
+      addShape(RADIUS - RESIZE[difficulty]);
       setTime(() => now);
     }
   });
@@ -53,7 +55,8 @@ export default function Obstacles(props) {
                 shapeId={key}
                 shapeName={shape.type}
                 position={shape.position}
-                difficulty={difficulty}
+                radius={shape.radius}
+                speed={speed}
                 destroyShape={destroyShape}
                 setPosition={setShapePosition}
               />
