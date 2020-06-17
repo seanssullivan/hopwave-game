@@ -20,10 +20,8 @@ export default function useCurrentlyPlaying() {
     spotifyPlayer
   ) {
     const { _options } = spotifyPlayer;
-    // console.log("player instance outside", spotifyPlayer);
-    if (_options) {
-      // console.log("player instance inside", _options);
 
+    if (_options) {
       const { getOAuthToken } = _options;
       getOAuthToken((access_token) => {
         fetch(`https://api.spotify.com/v1/me/player/currently-playing`, {
