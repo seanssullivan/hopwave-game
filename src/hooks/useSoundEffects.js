@@ -1,12 +1,11 @@
 // src/hooks/useSoundEffect.js
 import * as Tone from "tone";
 
-// const soundEffect = new Tone.Synth().toMaster();
-const soundEffect = new Tone.PolySynth(4, Tone.Synth).toMaster();
+const soundEffect = new Tone.PolySynth(3, Tone.Synth).toMaster();
 soundEffect.volume.value = -25;
-// soundEffect.triggerAttackRelease("C4", "8n");
 
 export default function useSoundEffects() {
+  // Define chords for each shape
   const circleSound = function () {
     soundEffect.triggerAttackRelease(["E3", "G3", "C4"], "8t");
   };
@@ -20,14 +19,15 @@ export default function useSoundEffects() {
     soundEffect.triggerAttackRelease(["A4", "E4", "C4"], "8t");
   };
 
-  const playSound = function (shapetype) {
-    if (shapetype === "Circle") {
+  // Play a chord based on the shape's type
+  const playSound = function (shapeType) {
+    if (shapeType === "Circle") {
       circleSound();
-    } else if (shapetype === "Square") {
+    } else if (shapeType === "Square") {
       squareSound();
-    } else if (shapetype === "Triangle") {
+    } else if (shapeType === "Triangle") {
       triangleSound();
-    } else {
+    } else if (shapeType === "Hexagon") {
       hexagonSound();
     }
   };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Difficulty(props) {
-  const { setDifficulty, setSpeed } = props;
+  const { setDifficulty, setAvgSpeed } = props;
   const [active, setActive] = useState("easy");
   return (
     <ul>
@@ -10,10 +10,10 @@ export default function Difficulty(props) {
         onClick={() => {
           setDifficulty((prev) => {
             if (prev === "MEDIUM") {
-              setSpeed((prev) => prev - 2);
+              setAvgSpeed((prev) => prev - 2);
             }
             if (prev === "HARD") {
-              setSpeed((prev) => prev - 4);
+              setAvgSpeed((prev) => prev - 4);
             }
             return "EASY";
           });
@@ -30,10 +30,10 @@ export default function Difficulty(props) {
         onClick={() => {
           setDifficulty((prev) => {
             if (prev === "EASY") {
-              setSpeed((prev) => prev + 2);
+              setAvgSpeed((prev) => prev + 2);
             }
             if (prev === "HARD") {
-              setSpeed((prev) => prev - 2);
+              setAvgSpeed((prev) => prev - 2);
             }
             return "MEDIUM";
           });
@@ -47,10 +47,10 @@ export default function Difficulty(props) {
         onClick={() => {
           setDifficulty((prev) => {
             if (prev === "EASY") {
-              setSpeed((prev) => prev + 4);
+              setAvgSpeed((prev) => prev + 4);
             }
             if (prev === "MEDIUM") {
-              setSpeed((prev) => prev + 2);
+              setAvgSpeed((prev) => prev + 2);
             }
             return "HARD";
           });
