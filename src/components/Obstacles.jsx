@@ -18,6 +18,7 @@ const { RADIUS, RESIZE } = settings.SHAPE;
 
 export default function Obstacles(props) {
   const [time, setTime] = useState(Date.now());
+  const [spawnTimer, setSpawnTimer] = useState(DIFFICULTY.EASY);
   const { playerPosition, difficulty, speed, points, setPoints } = props;
 
   const [
@@ -37,10 +38,11 @@ export default function Obstacles(props) {
 
   // Add a new shape to state after a set period of time
   useFrame(() => {
-    const now = Date.now();
-    if (Date.now() - time >= DIFFICULTY[difficulty]) {
+    if (spawnTimer <= 0) {
       addShape(RADIUS - RESIZE[difficulty]);
-      setTime(() => now);
+      setSpawnTimer((prev) => prev - speed + DIFFICULTY[difficulty]);
+    } else {
+      setSpawnTimer((prev) => prev - speed);
     }
   });
 
