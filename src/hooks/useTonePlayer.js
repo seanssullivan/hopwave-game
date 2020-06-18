@@ -5,9 +5,9 @@ import settings from "../settings";
 const { SOUND } = settings;
 
 const TRACKS = {
-  1: "sounds/loops/Organ.wav",
+  1: "sounds/loops/Synth2.wav",
   2: "sounds/loops/Synth.wav",
-  3: "sounds/loops/Synth2.wav",
+  3: "sounds/loops/Organ.wav",
   4: "sounds/loops/Piano.wav",
 };
 
