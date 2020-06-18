@@ -3,6 +3,7 @@ import Script from "react-load-script";
 
 import settings from "../../../settings";
 const { SPOTIFY_URI } = settings.SPOTIFY;
+const { SOUND } = settings;
 
 /*
  * Spotify's Web Playback SDK creates a connection between the app and a user's Spotify account.
@@ -28,7 +29,7 @@ export default function SpotifySDK(props) {
         getOAuthToken: (cb) => {
           cb(accessToken);
         },
-        volume: 0.25,
+        volume: SOUND.SPOTIFY_VOLUME,
       });
 
       // Error handling

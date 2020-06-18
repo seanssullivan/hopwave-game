@@ -4,45 +4,55 @@ import PalmTree from "./PalmTree";
 
 //Import settings
 import settings from "../../settings";
+const { SPAWN } = settings.PALM;
 const { WIDTH: ROAD_WIDTH } = settings.ROAD_SEGMENT;
 
 export default function PalmTrees(props) {
   const { speed } = props;
-  const [objects, setObjects] = useState([]);
   const [key, setKey] = useState(1);
-  const [time, setTime] = useState(Date.now());
+  const [objects, setObjects] = useState([]);
+  const [spawnTimer, setSpawnTimer] = useState(SPAWN);
 
   const destroyObject = function () {
     setObjects((all) => all.slice(1));
   };
 
   useFrame(() => {
-    const now = Date.now();
-    if (Date.now() - time >= 850) {
+    if (spawnTimer <= 0) {
       setObjects((all) => {
         const leftSide = ROAD_WIDTH - 40;
         const rightSide = ROAD_WIDTH - 160;
         return [
           ...all,
-          <PalmTree
-            key={key}
-            position={[leftSide, 0, 600]}
-            speed={speed}
-            destroyObstacle={destroyObject}
-          />,
-          <PalmTree
-            key={key + 1}
-            position={[rightSide, 0, 600]}
-            speed={speed}
-            destroyObstacle={destroyObject}
-          />,
+          {
+            key: key,
+            position: [leftSide, 0, 600],
+          },
+          {
+            key: key + 1,
+            position: [rightSide, 0, 600],
+          },
         ];
       });
-
-      setTime(() => now);
+      setSpawnTimer((prev) => prev - speed + SPAWN);
       setKey((prev) => (prev += 2));
+    } else {
+      setSpawnTimer((prev) => prev - speed);
     }
   });
 
-  return <>{objects}</>;
+  return (
+    <>
+      {objects.map((obj) => {
+        return (
+          <PalmTree
+            key={obj.key}
+            position={obj.position}
+            speed={speed}
+            destroyObstacle={destroyObject}
+          />
+        );
+      })}
+    </>
+  );
 }
