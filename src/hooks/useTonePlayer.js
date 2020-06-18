@@ -4,9 +4,9 @@ import * as Tone from "tone";
 const TONE_VOLUME = -38;
 
 const TRACKS = {
-  1: "sounds/loops/Organ.wav",
+  1: "sounds/loops/Synth2.wav",
   2: "sounds/loops/Synth.wav",
-  3: "sounds/loops/Synth2.wav",
+  3: "sounds/loops/Organ.wav",
   4: "sounds/loops/Piano.wav",
 };
 
