@@ -1,8 +1,11 @@
 // src/hooks/useSoundEffect.js
 import * as Tone from "tone";
 
+import settings from "../settings";
+const { SOUND } = settings;
+
 const soundEffect = new Tone.PolySynth(3, Tone.Synth).toMaster();
-soundEffect.volume.value = -25;
+soundEffect.volume.value = SOUND.EFFECTS_VOLUME;
 
 export default function useSoundEffects() {
   // Define chords for each shape
