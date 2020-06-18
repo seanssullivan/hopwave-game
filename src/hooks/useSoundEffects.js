@@ -2,7 +2,9 @@
 import * as Tone from "tone";
 
 const soundEffect = new Tone.PolySynth(3, Tone.Synth).toMaster();
+
 soundEffect.volume.value = -47;
+
 
 export default function useSoundEffects() {
   // Define chords for each shape
