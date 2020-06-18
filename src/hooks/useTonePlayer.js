@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import * as Tone from "tone";
 
-
-const TONE_VOLUME = -38;
-
+import settings from "../settings";
+const { SOUND } = settings;
 
 const TRACKS = {
   1: "sounds/loops/Organ.wav",
@@ -31,7 +30,7 @@ export default function useTonePlayer() {
       // Establish listener for when buffers are loaded
       Tone.Buffer.on("load", () => {
         console.log("Buffers have loaded!");
-        players.volume.value = TONE_VOLUME;
+        players.volume.value = SOUND.TONE_VOLUME;
         setTonePlayer(players.get(trackNum));
         setLoaded(true);
       });

@@ -5,10 +5,17 @@ const GAME = {
   SPEED: 5,
   START_POSITION: [0, 3, -70],
   DIFFICULTY: {
-    HARD: 1000,
-    MEDIUM: 1500,
-    EASY: 2500,
+    HARD: 400,
+    MEDIUM: 500,
+    EASY: 600,
   },
+};
+
+// Sound settings are defined here:
+const SOUND = {
+  TONE_VOLUME: -38,
+  EFFECTS_VOLUME: -47,
+  SPOTIFY_VOLUME: 0.05,
 };
 
 // Road component settings are defined here:
@@ -23,7 +30,6 @@ const ROAD_SEGMENT = {
   WIDTH: 100,
   HEIGHT: 1,
   LENGTH: 100,
-  COLOR: "#4deeea",
 };
 
 // Shape component settings are defined here:
@@ -53,7 +59,7 @@ const CAR = {
 // PalmTrees component setting are defined here:
 const PALM = {
   CUTOFF: -200,
-  SPAWN: 100,
+  SPAWN: 300,
 };
 
 // Spotify component settings are defined here:
@@ -63,5 +69,5 @@ const SPOTIFY = {
 };
 
 // Combine settings for export
-const settings = { GAME, ROAD, ROAD_SEGMENT, SHAPE, CAR, PALM, SPOTIFY };
+const settings = { GAME, SOUND, ROAD, ROAD_SEGMENT, SHAPE, CAR, PALM, SPOTIFY };
 export default settings;

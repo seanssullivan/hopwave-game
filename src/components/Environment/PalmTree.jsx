@@ -13,6 +13,9 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // Import hooks
 import useMovement from "../../hooks/useMovement";
 
+import settings from "../../settings";
+const { CUTOFF } = settings.PALM;
+
 export default function PalmTree(props) {
   const { speed, destroyObstacle } = props;
 
@@ -23,7 +26,7 @@ export default function PalmTree(props) {
   useFrame(() => {
     move(0 - speed);
 
-    if (group.current.position.z <= -200) {
+    if (group.current.position.z <= CUTOFF) {
       destroyObstacle();
     }
   });
