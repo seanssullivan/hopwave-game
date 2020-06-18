@@ -5,9 +5,9 @@ const GAME = {
   SPEED: 5,
   START_POSITION: [0, 3, -70],
   DIFFICULTY: {
-    HARD: 1000,
-    MEDIUM: 1500,
-    EASY: 2500,
+    HARD: 400,
+    MEDIUM: 500,
+    EASY: 600,
   },
 };
 
