@@ -13,9 +13,9 @@ const GAME = {
 
 // Sound settings are defined here:
 const SOUND = {
-  TONE_VOLUME: -38,
-  EFFECTS_VOLUME: -47,
-  SPOTIFY_VOLUME: 0.01,
+  TONE_VOLUME: -15,
+  EFFECTS_VOLUME: -25,
+  SPOTIFY_VOLUME: 0.25,
 };
 
 // Road component settings are defined here:
