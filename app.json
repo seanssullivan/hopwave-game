@@ -1,0 +1,12 @@
+{
+  "name": "hopwave",
+  "displayName": "hopwave",
+  "expo": {
+    "name": "hopwave",
+    "slug": "hopwave",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
