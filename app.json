@@ -4,9 +4,7 @@
   "expo": {
     "name": "hopwave",
     "slug": "hopwave",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "version": "0.2.0",
+    "assetBundlePatterns": ["**/*"]
   }
 }
