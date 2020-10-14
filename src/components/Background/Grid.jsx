@@ -9,8 +9,13 @@ export default function Grid(props) {
   const mesh = useRef();
 
   return (
-    <mesh {...props} ref={mesh} rotation={[2, 0, 30]} scale={[2, 0.4, 1]}>
-      <planeBufferGeometry attach="geometry" args={[40, 100, 40, 10]} />
+    <mesh
+      {...props}
+      ref={mesh}
+      rotation={[-Math.PI / 2, 0, 0]}
+      scale={[1, 1, 1]}
+    >
+      <planeBufferGeometry attach="geometry" args={[WIDTH, LENGTH, 100, 30]} />
       <meshBasicMaterial
         attach="material"
         color={COLOR}

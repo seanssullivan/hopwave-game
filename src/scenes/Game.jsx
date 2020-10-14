@@ -1,8 +1,9 @@
-import React, {useState, Suspense} from "react";
+import React, { useState, Suspense } from "react";
 import { Canvas } from "react-three-fiber";
 
-import Player from "../components/Player"
+import Player from "../components/Player";
 import Road from "../components/Road";
+import Background from "../components/Background/index";
 
 import settings from "../settings";
 
@@ -19,11 +20,9 @@ export default function Game(props) {
     <Canvas camera={{ position: [0, 25, -100] }}>
       <ambientLight />
       <pointLight position={[100, 100, 100]} />
-      <Player
-        avgSpeed={avgSpeed}
-        setSpeed={setSpeed}
-      />
+      <Player avgSpeed={avgSpeed} setSpeed={setSpeed} />
       <Road speed={speed} />
+      <Background></Background>
     </Canvas>
-  )
+  );
 }
