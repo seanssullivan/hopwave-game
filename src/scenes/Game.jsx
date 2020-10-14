@@ -2,7 +2,8 @@ import React, {useState, Suspense} from "react";
 import { Canvas } from "react-three-fiber";
 
 import Player from "../components/Player"
-import Road from "../components/Road";
+
+import Environment from "../components/Environment";
 
 import settings from "../settings";
 
@@ -23,7 +24,7 @@ export default function Game(props) {
         avgSpeed={avgSpeed}
         setSpeed={setSpeed}
       />
-      <Road speed={speed} />
+      <Environment speed={speed} />
     </Canvas>
   )
 }
