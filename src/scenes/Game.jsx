@@ -2,6 +2,7 @@ import React, {useState, Suspense} from "react";
 import { Canvas } from "react-three-fiber";
 
 import Player from "../components/Player"
+
 import Environment from "../components/Environment";
 
 import settings from "../settings";
