@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Canvas, useFrame } from "react-three-fiber";
 import Grid from "./Background/Grid";
 import Ground from "./Background/Ground";
+import Index from "./Background/index";
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -45,7 +46,7 @@ export default function App() {
         <pointLight position={[10, 10, 10]} />
         <Box position={[-1.2, 0, 0]} />
         <Box position={[1.2, 0, 0]} />
-        <Grid></Grid>
+        <Index></Index>
       </Canvas>
     </View>
   );
