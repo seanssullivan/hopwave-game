@@ -1,6 +1,6 @@
 module.exports = {
   resolver: {
-    assetExts: ["db", "mp3", "ttf", "obj", "png", "jpg"],
+    assetExts: ["mp3", "png", "jpg"],
   },
   transformer: {
     assetPlugins: ["expo-asset/tools/hashAssetFiles"],
