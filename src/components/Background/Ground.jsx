@@ -9,13 +9,8 @@ export default function Ground(props) {
   const mesh = useRef();
 
   return (
-    <mesh
-      {...props}
-      ref={mesh}
-      rotation={[-Math.PI / 2, 0, 0]}
-      scale={[1, 1, 1]}
-    >
-      <planeGeometry attach="geometry" args={[WIDTH, LENGTH, 100, 30]} />
+    <mesh {...props} ref={mesh} rotation={[1, 1, 1]} scale={[2, 0.4, 1]}>
+      <planeGeometry attach="geometry" args={[40, 100, 40, 10]} />
       <meshBasicMaterial attach="material" color={COLOR} />
     </mesh>
   );
