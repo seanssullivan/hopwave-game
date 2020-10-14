@@ -1,0 +1,77 @@
+@import "~normalize.css/normalize.css";
+
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+Canvas {
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background {
+  z-index: -5;
+  top: -13%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url(https://ak.picdn.net/shutterstock/videos/1023859393/thumb/1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  font-family: "Press Start 2P", cursive;
+}
+
+iframe {
+  z-index: -5;
+  top: -13%;
+  left: 0;
+  opacity: 0.8;
+  width: 300px;
+  height: 220px;
+}
+
+@media only screen and (max-width: 624px) {
+  h4 {
+    font-size: 20px;
+  }
+  a {
+    opacity: 0;
+  }
+  ul {
+    font-size: 10px;
+    padding-left: 0px;
+  }
+  div.sc-AxirZ.iWmfPZ {
+    right: 22px;
+    top: 15px;
+  }
+
+  div.sc-AxjAm.fFBPyW {
+    left: 22px;
+    top: 15px;
+
+    iframe {
+      width: 230px;
+      height: 80px;
+    }
+  }
+
+  div.sc-AxhCb.kfRrsa {
+    right: 0px;
+    width: 100px;
+  }
+}
