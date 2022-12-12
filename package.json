@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "axios": "^0.21.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-favicon": "^2.0.1",
     "lerp": "^1.0.3",
     "normalize.css": "^8.0.1",
